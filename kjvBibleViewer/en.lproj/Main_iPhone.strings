@@ -1,0 +1,45 @@
+
+/* Class = "IBUILabel"; text = "성경 읽기"; ObjectID = "2pz-XF-uhl"; */
+"2pz-XF-uhl.text" = "성경 읽기";
+
+/* Class = "IBUIViewController"; title = "Detail"; ObjectID = "Ah7-4n-0Wa"; */
+"Ah7-4n-0Wa.title" = "Detail";
+
+/* Class = "IBUILabel"; text = "Detail view content goes here"; ObjectID = "Lei-5M-9Gs"; */
+"Lei-5M-9Gs.text" = "Detail view content goes here";
+
+/* Class = "IBUILabel"; text = "설정"; ObjectID = "Lwi-O1-3YW"; */
+"Lwi-O1-3YW.text" = "설정";
+
+/* Class = "IBUILabel"; text = "나의 노트"; ObjectID = "PQE-Kt-dZK"; */
+"PQE-Kt-dZK.text" = "나의 노트";
+
+/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "ZPl-XN-q2m"; */
+"ZPl-XN-q2m.title" = " ";
+
+/* Class = "IBUILabel"; text = "역본 선택"; ObjectID = "cfZ-x6-S3a"; */
+"cfZ-x6-S3a.text" = "역본 선택";
+
+/* Class = "IBUINavigationItem"; title = "Detail"; ObjectID = "cra-N8-TIN"; */
+"cra-N8-TIN.title" = "Detail";
+
+/* Class = "IBUILabel"; text = "설정"; ObjectID = "jdf-R5-j8u"; */
+"jdf-R5-j8u.text" = "설정";
+
+/* Class = "IBUILabel"; text = "밑줄 보기"; ObjectID = "kKt-pC-vwG"; */
+"kKt-pC-vwG.text" = "밑줄 보기";
+
+/* Class = "IBUILabel"; text = "검색"; ObjectID = "l7F-Y8-sVe"; */
+"l7F-Y8-sVe.text" = "검색";
+
+/* Class = "IBUILabel"; text = "설정"; ObjectID = "mTI-aw-fXa"; */
+"mTI-aw-fXa.text" = "설정";
+
+/* Class = "IBUILabel"; text = "설정"; ObjectID = "nbw-Ov-nhT"; */
+"nbw-Ov-nhT.text" = "설정";
+
+/* Class = "IBUITableViewController"; title = "Master"; ObjectID = "pGg-6v-bdr"; */
+"pGg-6v-bdr.title" = "Master";
+
+/* Class = "IBUINavigationItem"; title = "Menu"; ObjectID = "tQt-TN-PWz"; */
+"tQt-TN-PWz.title" = "Menu";
