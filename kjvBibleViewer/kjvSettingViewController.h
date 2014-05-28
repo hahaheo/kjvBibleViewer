@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kjvSettingViewController : UITableViewController
+@interface kjvSettingViewController : UITableViewController <UIAlertViewDelegate>
+- (IBAction)leftNavBarButtonClick:(id)sender;
 
+@property (nonatomic, strong) UISwitch *mySwitch;
+@property (nonatomic, strong) UISwitch *mySwitch2;
+@property (nonatomic, strong) UISwitch *mySwitch3;
 @end

@@ -10,4 +10,5 @@
 @interface lfbContainer : NSObject
 
 +(NSMutableArray *)getWithBible:(NSString *)bible Book:(int)book Chapter:(int)chapter;
++(NSString *)getWithBibleVerse:(NSString *)bible Book:(int)book Chapter:(int)chapter Verse:(int)verse;
 @end

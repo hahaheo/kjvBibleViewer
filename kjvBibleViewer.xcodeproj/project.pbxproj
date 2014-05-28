@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52218C9D193131DF00F6F34C /* kjvQuickBibleSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52218C9C193131DF00F6F34C /* kjvQuickBibleSelectController.m */; };
+		52218CA01935FCA000F6F34C /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52218C9F1935FCA000F6F34C /* DejalActivityView.m */; };
+		52267AE7192CDB44002573A7 /* kjvBibleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52267AE4192CDB44002573A7 /* kjvBibleSelectViewController.m */; };
+		52267AEA192CDC16002573A7 /* kjvChapterSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52267AE9192CDC16002573A7 /* kjvChapterSelectController.m */; };
+		52267AED192CDC28002573A7 /* kjvBibleDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52267AEC192CDC28002573A7 /* kjvBibleDownloadViewController.m */; };
+		52267C1C192E1546002573A7 /* Stainless-steel.png in Resources */ = {isa = PBXBuildFile; fileRef = 52267C1B192E1546002573A7 /* Stainless-steel.png */; };
 		5230CB7319271D8900A63792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB2E19271D8900A63792 /* .gitignore */; };
 		5230CB7619271D8900A63792 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB3619271D8900A63792 /* Default.png */; };
 		5230CB7719271D8900A63792 /* GETTING_STARTED.md in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB3719271D8900A63792 /* GETTING_STARTED.md */; };
@@ -40,22 +46,25 @@
 		5230CB9419271D8900A63792 /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6C19271D8900A63792 /* trees.c */; };
 		5230CB9519271D8900A63792 /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6E19271D8900A63792 /* uncompr.c */; };
 		5230CB9619271D8900A63792 /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB7119271D8900A63792 /* zutil.c */; };
-		52D56DB81927E8F800F2579A /* MNMBottomPullToRefresh.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52D56DB11927E8F800F2579A /* MNMBottomPullToRefresh.strings */; };
-		52D56DB91927E8F800F2579A /* MNMBottomPullToRefreshArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D56DB21927E8F800F2579A /* MNMBottomPullToRefreshArrow.png */; };
-		52D56DBA1927E8F800F2579A /* MNMBottomPullToRefreshArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D56DB31927E8F800F2579A /* MNMBottomPullToRefreshArrow@2x.png */; };
-		52D56DBB1927E8F800F2579A /* MNMBottomPullToRefreshManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D56DB51927E8F800F2579A /* MNMBottomPullToRefreshManager.m */; };
-		52D56DBC1927E8F800F2579A /* MNMBottomPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D56DB71927E8F800F2579A /* MNMBottomPullToRefreshView.m */; };
-		52D56DC51928DCCB00F2579A /* kjvChapterSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D56DC41928DCCB00F2579A /* kjvChapterSelectController.m */; };
-		52D56DC81928DEED00F2579A /* kjvQuickBibleSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D56DC71928DEED00F2579A /* kjvQuickBibleSelectController.m */; };
-		52D56DCB1928DF8600F2579A /* kjvBibleSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D56DCA1928DF8600F2579A /* kjvBibleSelectController.m */; };
+		5283A9A9193074240025CEAB /* menu_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A3193074240025CEAB /* menu_1.png */; };
+		5283A9AA193074240025CEAB /* menu_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A4193074240025CEAB /* menu_2.png */; };
+		5283A9AB193074240025CEAB /* menu_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A5193074240025CEAB /* menu_3.png */; };
+		5283A9AC193074240025CEAB /* menu_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A6193074240025CEAB /* menu_4.png */; };
+		5283A9AD193074240025CEAB /* menu_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A7193074240025CEAB /* menu_5.png */; };
+		5283A9AE193074240025CEAB /* menu_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A8193074240025CEAB /* menu_6.png */; };
+		52B9C6BF1935FED600F89711 /* MNMBottomPullToRefresh.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6B81935FED600F89711 /* MNMBottomPullToRefresh.strings */; };
+		52B9C6C01935FED600F89711 /* MNMBottomPullToRefreshArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6B91935FED600F89711 /* MNMBottomPullToRefreshArrow.png */; };
+		52B9C6C11935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6BA1935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png */; };
+		52B9C6C21935FED600F89711 /* MNMBottomPullToRefreshManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B9C6BC1935FED600F89711 /* MNMBottomPullToRefreshManager.m */; };
+		52B9C6C31935FED600F89711 /* MNMBottomPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B9C6BE1935FED600F89711 /* MNMBottomPullToRefreshView.m */; };
+		52B9C6C61935FEF200F89711 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B9C6C51935FEF200F89711 /* SWRevealViewController.m */; };
+		52B9C7A41935FFA700F89711 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7A21935FFA700F89711 /* menu.png */; };
+		52B9C7A51935FFA700F89711 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7A31935FFA700F89711 /* menu@2x.png */; };
 		646DC56C19225AEB0092C090 /* kjvBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC56B19225AEB0092C090 /* kjvBibleViewController.m */; };
 		646DC572192395B80092C090 /* kjvAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC571192395B80092C090 /* kjvAboutViewController.m */; };
 		646DC57919239C8D0092C090 /* kjvSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC57819239C8D0092C090 /* kjvSettingViewController.m */; };
-		646DC57F19239CDB0092C090 /* kjvNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC57E19239CDA0092C090 /* kjvNoteViewController.m */; };
 		646DC58219239D0C0092C090 /* kjvHighlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC58119239D0C0092C090 /* kjvHighlightViewController.m */; };
 		646DC58519239EAE0092C090 /* kjvSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC58419239EAE0092C090 /* kjvSearchViewController.m */; };
-		646DC58819239F390092C090 /* kjvHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC58719239F390092C090 /* kjvHistoryViewController.m */; };
-		648020CA1926586100FB6BB0 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 648020C31926586100FB6BB0 /* CustomCell.m */; };
 		648020CB1926586100FB6BB0 /* global_variable.m in Sources */ = {isa = PBXBuildFile; fileRef = 648020C51926586100FB6BB0 /* global_variable.m */; };
 		648020CC1926586100FB6BB0 /* lfbContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 648020C71926586100FB6BB0 /* lfbContainer.m */; };
 		648020CD1926586100FB6BB0 /* lfbSearchContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 648020C91926586100FB6BB0 /* lfbSearchContainer.m */; };
@@ -69,7 +78,6 @@
 		64BA1DB6192245D9006C07C4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DB4192245D9006C07C4 /* Main_iPhone.storyboard */; };
 		64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DB7192245D9006C07C4 /* Main_iPad.storyboard */; };
 		64BA1DBC192245D9006C07C4 /* kjvMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */; };
-		64BA1DBF192245D9006C07C4 /* kjvDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DBE192245D9006C07C4 /* kjvDetailViewController.m */; };
 		64BA1DC1192245D9006C07C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DC0192245D9006C07C4 /* Images.xcassets */; };
 		64BA1DC8192245D9006C07C4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DC7192245D9006C07C4 /* XCTest.framework */; };
 		64BA1DC9192245D9006C07C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DA2192245D9006C07C4 /* Foundation.framework */; };
@@ -89,6 +97,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52218C9B193131DF00F6F34C /* kjvQuickBibleSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvQuickBibleSelectController.h; sourceTree = "<group>"; };
+		52218C9C193131DF00F6F34C /* kjvQuickBibleSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvQuickBibleSelectController.m; sourceTree = "<group>"; };
+		52218C9E1935FCA000F6F34C /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
+		52218C9F1935FCA000F6F34C /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
+		52267AE3192CDB44002573A7 /* kjvBibleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvBibleSelectViewController.h; sourceTree = "<group>"; };
+		52267AE4192CDB44002573A7 /* kjvBibleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvBibleSelectViewController.m; sourceTree = "<group>"; };
+		52267AE8192CDC16002573A7 /* kjvChapterSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvChapterSelectController.h; sourceTree = "<group>"; };
+		52267AE9192CDC16002573A7 /* kjvChapterSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvChapterSelectController.m; sourceTree = "<group>"; };
+		52267AEB192CDC28002573A7 /* kjvBibleDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvBibleDownloadViewController.h; sourceTree = "<group>"; };
+		52267AEC192CDC28002573A7 /* kjvBibleDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvBibleDownloadViewController.m; sourceTree = "<group>"; };
+		52267C1B192E1546002573A7 /* Stainless-steel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Stainless-steel.png"; path = "kjvBibleViewer/Stainless-steel.png"; sourceTree = "<group>"; };
 		5230CB2E19271D8900A63792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		5230CB3019271D8900A63792 /* ARCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCHelper.h; sourceTree = "<group>"; };
 		5230CB3619271D8900A63792 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -145,35 +164,33 @@
 		5230CB7019271D8900A63792 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		5230CB7119271D8900A63792 /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
 		5230CB7219271D8900A63792 /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
-		52D56DB11927E8F800F2579A /* MNMBottomPullToRefresh.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = MNMBottomPullToRefresh.strings; sourceTree = "<group>"; };
-		52D56DB21927E8F800F2579A /* MNMBottomPullToRefreshArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MNMBottomPullToRefreshArrow.png; sourceTree = "<group>"; };
-		52D56DB31927E8F800F2579A /* MNMBottomPullToRefreshArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MNMBottomPullToRefreshArrow@2x.png"; sourceTree = "<group>"; };
-		52D56DB41927E8F800F2579A /* MNMBottomPullToRefreshManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMBottomPullToRefreshManager.h; sourceTree = "<group>"; };
-		52D56DB51927E8F800F2579A /* MNMBottomPullToRefreshManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMBottomPullToRefreshManager.m; sourceTree = "<group>"; };
-		52D56DB61927E8F800F2579A /* MNMBottomPullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNMBottomPullToRefreshView.h; sourceTree = "<group>"; };
-		52D56DB71927E8F800F2579A /* MNMBottomPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNMBottomPullToRefreshView.m; sourceTree = "<group>"; };
-		52D56DC31928DCCB00F2579A /* kjvChapterSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kjvChapterSelectController.h; path = ../kjvChapterSelectController.h; sourceTree = "<group>"; };
-		52D56DC41928DCCB00F2579A /* kjvChapterSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = kjvChapterSelectController.m; path = ../kjvChapterSelectController.m; sourceTree = "<group>"; };
-		52D56DC61928DEED00F2579A /* kjvQuickBibleSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvQuickBibleSelectController.h; sourceTree = "<group>"; };
-		52D56DC71928DEED00F2579A /* kjvQuickBibleSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvQuickBibleSelectController.m; sourceTree = "<group>"; };
-		52D56DC91928DF8600F2579A /* kjvBibleSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvBibleSelectController.h; sourceTree = "<group>"; };
-		52D56DCA1928DF8600F2579A /* kjvBibleSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvBibleSelectController.m; sourceTree = "<group>"; };
+		5283A9A3193074240025CEAB /* menu_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_1.png; path = kjvBibleViewer/menu_1.png; sourceTree = "<group>"; };
+		5283A9A4193074240025CEAB /* menu_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_2.png; path = kjvBibleViewer/menu_2.png; sourceTree = "<group>"; };
+		5283A9A5193074240025CEAB /* menu_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_3.png; path = kjvBibleViewer/menu_3.png; sourceTree = "<group>"; };
+		5283A9A6193074240025CEAB /* menu_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_4.png; path = kjvBibleViewer/menu_4.png; sourceTree = "<group>"; };
+		5283A9A7193074240025CEAB /* menu_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_5.png; path = kjvBibleViewer/menu_5.png; sourceTree = "<group>"; };
+		5283A9A8193074240025CEAB /* menu_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_6.png; path = kjvBibleViewer/menu_6.png; sourceTree = "<group>"; };
+		52B9C6B81935FED600F89711 /* MNMBottomPullToRefresh.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = MNMBottomPullToRefresh.strings; path = kjvBibleViewer/MNMBottomPullToRefresh.strings; sourceTree = SOURCE_ROOT; };
+		52B9C6B91935FED600F89711 /* MNMBottomPullToRefreshArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MNMBottomPullToRefreshArrow.png; path = kjvBibleViewer/MNMBottomPullToRefreshArrow.png; sourceTree = SOURCE_ROOT; };
+		52B9C6BA1935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MNMBottomPullToRefreshArrow@2x.png"; path = "kjvBibleViewer/MNMBottomPullToRefreshArrow@2x.png"; sourceTree = SOURCE_ROOT; };
+		52B9C6BB1935FED600F89711 /* MNMBottomPullToRefreshManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNMBottomPullToRefreshManager.h; path = kjvBibleViewer/MNMBottomPullToRefreshManager.h; sourceTree = SOURCE_ROOT; };
+		52B9C6BC1935FED600F89711 /* MNMBottomPullToRefreshManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNMBottomPullToRefreshManager.m; path = kjvBibleViewer/MNMBottomPullToRefreshManager.m; sourceTree = SOURCE_ROOT; };
+		52B9C6BD1935FED600F89711 /* MNMBottomPullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MNMBottomPullToRefreshView.h; path = kjvBibleViewer/MNMBottomPullToRefreshView.h; sourceTree = SOURCE_ROOT; };
+		52B9C6BE1935FED600F89711 /* MNMBottomPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MNMBottomPullToRefreshView.m; path = kjvBibleViewer/MNMBottomPullToRefreshView.m; sourceTree = SOURCE_ROOT; };
+		52B9C6C41935FEF200F89711 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = kjvBibleViewer/SWRevealViewController.h; sourceTree = SOURCE_ROOT; };
+		52B9C6C51935FEF200F89711 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = kjvBibleViewer/SWRevealViewController.m; sourceTree = SOURCE_ROOT; };
+		52B9C7A21935FFA700F89711 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = kjvBibleViewer/menu.png; sourceTree = "<group>"; };
+		52B9C7A31935FFA700F89711 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@2x.png"; path = "kjvBibleViewer/menu@2x.png"; sourceTree = "<group>"; };
 		646DC56A19225AEB0092C090 /* kjvBibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvBibleViewController.h; sourceTree = "<group>"; };
 		646DC56B19225AEB0092C090 /* kjvBibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvBibleViewController.m; sourceTree = "<group>"; };
 		646DC570192395B80092C090 /* kjvAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvAboutViewController.h; sourceTree = "<group>"; };
 		646DC571192395B80092C090 /* kjvAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvAboutViewController.m; sourceTree = "<group>"; };
 		646DC57719239C8D0092C090 /* kjvSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvSettingViewController.h; sourceTree = "<group>"; };
 		646DC57819239C8D0092C090 /* kjvSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvSettingViewController.m; sourceTree = "<group>"; };
-		646DC57D19239CDA0092C090 /* kjvNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvNoteViewController.h; sourceTree = "<group>"; };
-		646DC57E19239CDA0092C090 /* kjvNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvNoteViewController.m; sourceTree = "<group>"; };
 		646DC58019239D0C0092C090 /* kjvHighlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvHighlightViewController.h; sourceTree = "<group>"; };
 		646DC58119239D0C0092C090 /* kjvHighlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvHighlightViewController.m; sourceTree = "<group>"; };
 		646DC58319239EAE0092C090 /* kjvSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvSearchViewController.h; sourceTree = "<group>"; };
 		646DC58419239EAE0092C090 /* kjvSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvSearchViewController.m; sourceTree = "<group>"; };
-		646DC58619239F390092C090 /* kjvHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvHistoryViewController.h; sourceTree = "<group>"; };
-		646DC58719239F390092C090 /* kjvHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvHistoryViewController.m; sourceTree = "<group>"; };
-		648020C21926586100FB6BB0 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
-		648020C31926586100FB6BB0 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		648020C41926586100FB6BB0 /* global_variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global_variable.h; sourceTree = "<group>"; };
 		648020C51926586100FB6BB0 /* global_variable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = global_variable.m; sourceTree = "<group>"; };
 		648020C61926586100FB6BB0 /* lfbContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfbContainer.h; sourceTree = "<group>"; };
@@ -195,8 +212,6 @@
 		64BA1DB8192245D9006C07C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		64BA1DBA192245D9006C07C4 /* kjvMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kjvMasterViewController.h; sourceTree = "<group>"; };
 		64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvMasterViewController.m; sourceTree = "<group>"; };
-		64BA1DBD192245D9006C07C4 /* kjvDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kjvDetailViewController.h; sourceTree = "<group>"; };
-		64BA1DBE192245D9006C07C4 /* kjvDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvDetailViewController.m; sourceTree = "<group>"; };
 		64BA1DC0192245D9006C07C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		64BA1DC6192245D9006C07C4 /* kjvBibleViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kjvBibleViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BA1DC7192245D9006C07C4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -230,6 +245,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52267AEE192E1521002573A7 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				52B9C7A21935FFA700F89711 /* menu.png */,
+				52B9C7A31935FFA700F89711 /* menu@2x.png */,
+				5283A9A3193074240025CEAB /* menu_1.png */,
+				5283A9A4193074240025CEAB /* menu_2.png */,
+				5283A9A5193074240025CEAB /* menu_3.png */,
+				5283A9A6193074240025CEAB /* menu_4.png */,
+				5283A9A7193074240025CEAB /* menu_5.png */,
+				5283A9A8193074240025CEAB /* menu_6.png */,
+				52267C1B192E1546002573A7 /* Stainless-steel.png */,
+			);
+			name = Resource;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		52267C1D192F9CFF002573A7 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				52B9C6C41935FEF200F89711 /* SWRevealViewController.h */,
+				52B9C6C51935FEF200F89711 /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController";
+			sourceTree = "<group>";
+		};
 		5230CB2D19271D8900A63792 /* Objective-Zip-master */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,16 +367,31 @@
 			path = ZLib;
 			sourceTree = "<group>";
 		};
+		52B32796192F9D720052BAEB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				52218C9E1935FCA000F6F34C /* DejalActivityView.h */,
+				52218C9F1935FCA000F6F34C /* DejalActivityView.m */,
+				648020C41926586100FB6BB0 /* global_variable.h */,
+				648020C51926586100FB6BB0 /* global_variable.m */,
+				648020C61926586100FB6BB0 /* lfbContainer.h */,
+				648020C71926586100FB6BB0 /* lfbContainer.m */,
+				648020C81926586100FB6BB0 /* lfbSearchContainer.h */,
+				648020C91926586100FB6BB0 /* lfbSearchContainer.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		52D56DB01927E8F800F2579A /* MNMBottomPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				52D56DB11927E8F800F2579A /* MNMBottomPullToRefresh.strings */,
-				52D56DB21927E8F800F2579A /* MNMBottomPullToRefreshArrow.png */,
-				52D56DB31927E8F800F2579A /* MNMBottomPullToRefreshArrow@2x.png */,
-				52D56DB41927E8F800F2579A /* MNMBottomPullToRefreshManager.h */,
-				52D56DB51927E8F800F2579A /* MNMBottomPullToRefreshManager.m */,
-				52D56DB61927E8F800F2579A /* MNMBottomPullToRefreshView.h */,
-				52D56DB71927E8F800F2579A /* MNMBottomPullToRefreshView.m */,
+				52B9C6B81935FED600F89711 /* MNMBottomPullToRefresh.strings */,
+				52B9C6B91935FED600F89711 /* MNMBottomPullToRefreshArrow.png */,
+				52B9C6BA1935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png */,
+				52B9C6BB1935FED600F89711 /* MNMBottomPullToRefreshManager.h */,
+				52B9C6BC1935FED600F89711 /* MNMBottomPullToRefreshManager.m */,
+				52B9C6BD1935FED600F89711 /* MNMBottomPullToRefreshView.h */,
+				52B9C6BE1935FED600F89711 /* MNMBottomPullToRefreshView.m */,
 			);
 			name = MNMBottomPullToRefresh;
 			path = "../../../../Downloads/bottom-pull-to-refresh-master 2/MNMBottomPullToRefreshDemo/MNMBottomPullToRefresh";
@@ -343,28 +400,26 @@
 		646DC56F192395750092C090 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				52D56DC61928DEED00F2579A /* kjvQuickBibleSelectController.h */,
-				52D56DC71928DEED00F2579A /* kjvQuickBibleSelectController.m */,
-				52D56DC91928DF8600F2579A /* kjvBibleSelectController.h */,
-				52D56DCA1928DF8600F2579A /* kjvBibleSelectController.m */,
-				52D56DC31928DCCB00F2579A /* kjvChapterSelectController.h */,
-				52D56DC41928DCCB00F2579A /* kjvChapterSelectController.m */,
+				52267AE8192CDC16002573A7 /* kjvChapterSelectController.h */,
+				52267AE9192CDC16002573A7 /* kjvChapterSelectController.m */,
+				52218C9B193131DF00F6F34C /* kjvQuickBibleSelectController.h */,
+				52218C9C193131DF00F6F34C /* kjvQuickBibleSelectController.m */,
 				64BA1DBA192245D9006C07C4 /* kjvMasterViewController.h */,
 				64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */,
 				646DC56A19225AEB0092C090 /* kjvBibleViewController.h */,
 				646DC56B19225AEB0092C090 /* kjvBibleViewController.m */,
-				646DC570192395B80092C090 /* kjvAboutViewController.h */,
-				646DC571192395B80092C090 /* kjvAboutViewController.m */,
-				646DC57719239C8D0092C090 /* kjvSettingViewController.h */,
-				646DC57819239C8D0092C090 /* kjvSettingViewController.m */,
-				646DC57D19239CDA0092C090 /* kjvNoteViewController.h */,
-				646DC57E19239CDA0092C090 /* kjvNoteViewController.m */,
-				646DC58019239D0C0092C090 /* kjvHighlightViewController.h */,
-				646DC58119239D0C0092C090 /* kjvHighlightViewController.m */,
 				646DC58319239EAE0092C090 /* kjvSearchViewController.h */,
 				646DC58419239EAE0092C090 /* kjvSearchViewController.m */,
-				646DC58619239F390092C090 /* kjvHistoryViewController.h */,
-				646DC58719239F390092C090 /* kjvHistoryViewController.m */,
+				52267AE3192CDB44002573A7 /* kjvBibleSelectViewController.h */,
+				52267AE4192CDB44002573A7 /* kjvBibleSelectViewController.m */,
+				52267AEB192CDC28002573A7 /* kjvBibleDownloadViewController.h */,
+				52267AEC192CDC28002573A7 /* kjvBibleDownloadViewController.m */,
+				646DC57719239C8D0092C090 /* kjvSettingViewController.h */,
+				646DC57819239C8D0092C090 /* kjvSettingViewController.m */,
+				646DC58019239D0C0092C090 /* kjvHighlightViewController.h */,
+				646DC58119239D0C0092C090 /* kjvHighlightViewController.m */,
+				646DC570192395B80092C090 /* kjvAboutViewController.h */,
+				646DC571192395B80092C090 /* kjvAboutViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -412,22 +467,15 @@
 		64BA1DA8192245D9006C07C4 /* kjvBibleViewer */ = {
 			isa = PBXGroup;
 			children = (
+				52267C1D192F9CFF002573A7 /* SWRevealViewController */,
 				52D56DB01927E8F800F2579A /* MNMBottomPullToRefresh */,
 				5230CB2D19271D8900A63792 /* Objective-Zip-master */,
-				648020C21926586100FB6BB0 /* CustomCell.h */,
-				648020C31926586100FB6BB0 /* CustomCell.m */,
-				648020C41926586100FB6BB0 /* global_variable.h */,
-				648020C51926586100FB6BB0 /* global_variable.m */,
-				648020C61926586100FB6BB0 /* lfbContainer.h */,
-				648020C71926586100FB6BB0 /* lfbContainer.m */,
-				648020C81926586100FB6BB0 /* lfbSearchContainer.h */,
-				648020C91926586100FB6BB0 /* lfbSearchContainer.m */,
+				52267AEE192E1521002573A7 /* Resource */,
+				52B32796192F9D720052BAEB /* Classes */,
 				646DC576192399DF0092C090 /* Storyboard */,
 				646DC56F192395750092C090 /* ViewController */,
 				64BA1DB1192245D9006C07C4 /* kjvAppDelegate.h */,
 				64BA1DB2192245D9006C07C4 /* kjvAppDelegate.m */,
-				64BA1DBD192245D9006C07C4 /* kjvDetailViewController.h */,
-				64BA1DBE192245D9006C07C4 /* kjvDetailViewController.m */,
 				64BA1DC0192245D9006C07C4 /* Images.xcassets */,
 				64BA1DA9192245D9006C07C4 /* Supporting Files */,
 			);
@@ -548,21 +596,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52267C1C192E1546002573A7 /* Stainless-steel.png in Resources */,
 				5230CB7319271D8900A63792 /* .gitignore in Resources */,
+				5283A9AC193074240025CEAB /* menu_4.png in Resources */,
+				52B9C7A51935FFA700F89711 /* menu@2x.png in Resources */,
 				5230CB7619271D8900A63792 /* Default.png in Resources */,
+				5283A9AD193074240025CEAB /* menu_5.png in Resources */,
 				64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */,
+				52B9C6BF1935FED600F89711 /* MNMBottomPullToRefresh.strings in Resources */,
+				5283A9AA193074240025CEAB /* menu_2.png in Resources */,
 				64BA1DC1192245D9006C07C4 /* Images.xcassets in Resources */,
-				52D56DB81927E8F800F2579A /* MNMBottomPullToRefresh.strings in Resources */,
+				5283A9AE193074240025CEAB /* menu_6.png in Resources */,
 				5230CB8719271D8900A63792 /* README.md in Resources */,
 				5230CB7819271D8900A63792 /* LICENSE.md in Resources */,
+				5283A9A9193074240025CEAB /* menu_1.png in Resources */,
 				64BA1DB6192245D9006C07C4 /* Main_iPhone.storyboard in Resources */,
+				52B9C7A41935FFA700F89711 /* menu.png in Resources */,
 				64BA1DAD192245D9006C07C4 /* InfoPlist.strings in Resources */,
+				5283A9AB193074240025CEAB /* menu_3.png in Resources */,
 				5230CB7719271D8900A63792 /* GETTING_STARTED.md in Resources */,
 				5230CB8419271D8900A63792 /* Objective_Zip-Info.plist in Resources */,
 				5230CB8519271D8900A63792 /* Objective_ZipViewController.xib in Resources */,
 				5230CB8619271D8900A63792 /* ObjectiveZipIcon.png in Resources */,
-				52D56DB91927E8F800F2579A /* MNMBottomPullToRefreshArrow.png in Resources */,
-				52D56DBA1927E8F800F2579A /* MNMBottomPullToRefreshArrow@2x.png in Resources */,
+				52B9C6C01935FED600F89711 /* MNMBottomPullToRefreshArrow.png in Resources */,
+				52B9C6C11935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png in Resources */,
 				5230CB7A19271D8900A63792 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,41 +640,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				648020CC1926586100FB6BB0 /* lfbContainer.m in Sources */,
+				52B9C6C21935FED600F89711 /* MNMBottomPullToRefreshManager.m in Sources */,
 				5230CB8219271D8900A63792 /* ZipReadStream.m in Sources */,
 				5230CB8E19271D8900A63792 /* gzread.c in Sources */,
 				646DC58519239EAE0092C090 /* kjvSearchViewController.m in Sources */,
-				52D56DC81928DEED00F2579A /* kjvQuickBibleSelectController.m in Sources */,
-				646DC57F19239CDB0092C090 /* kjvNoteViewController.m in Sources */,
 				5230CB8319271D8900A63792 /* ZipWriteStream.m in Sources */,
 				5230CB8C19271D8900A63792 /* gzclose.c in Sources */,
 				648020CD1926586100FB6BB0 /* lfbSearchContainer.m in Sources */,
 				5230CB8F19271D8900A63792 /* gzwrite.c in Sources */,
 				646DC572192395B80092C090 /* kjvAboutViewController.m in Sources */,
 				5230CB8019271D8900A63792 /* ZipException.m in Sources */,
-				646DC58819239F390092C090 /* kjvHistoryViewController.m in Sources */,
 				5230CB9619271D8900A63792 /* zutil.c in Sources */,
 				5230CB7B19271D8900A63792 /* ioapi.c in Sources */,
 				5230CB7F19271D8900A63792 /* FileInZipInfo.m in Sources */,
-				648020CA1926586100FB6BB0 /* CustomCell.m in Sources */,
 				64BA1DB3192245D9006C07C4 /* kjvAppDelegate.m in Sources */,
+				52267AE7192CDB44002573A7 /* kjvBibleSelectViewController.m in Sources */,
 				5230CB7E19271D8900A63792 /* zip.c in Sources */,
+				52267AEA192CDC16002573A7 /* kjvChapterSelectController.m in Sources */,
+				52267AED192CDC28002573A7 /* kjvBibleDownloadViewController.m in Sources */,
+				52B9C6C61935FEF200F89711 /* SWRevealViewController.m in Sources */,
 				646DC58219239D0C0092C090 /* kjvHighlightViewController.m in Sources */,
-				52D56DBB1927E8F800F2579A /* MNMBottomPullToRefreshManager.m in Sources */,
-				64BA1DBF192245D9006C07C4 /* kjvDetailViewController.m in Sources */,
 				5230CB8119271D8900A63792 /* ZipFile.m in Sources */,
-				52D56DBC1927E8F800F2579A /* MNMBottomPullToRefreshView.m in Sources */,
 				5230CB8D19271D8900A63792 /* gzlib.c in Sources */,
+				52B9C6C31935FED600F89711 /* MNMBottomPullToRefreshView.m in Sources */,
 				64BA1DAF192245D9006C07C4 /* main.m in Sources */,
-				52D56DC51928DCCB00F2579A /* kjvChapterSelectController.m in Sources */,
 				646DC56C19225AEB0092C090 /* kjvBibleViewController.m in Sources */,
+				52218C9D193131DF00F6F34C /* kjvQuickBibleSelectController.m in Sources */,
 				5230CB8A19271D8900A63792 /* crc32.c in Sources */,
 				646DC57919239C8D0092C090 /* kjvSettingViewController.m in Sources */,
 				5230CB7C19271D8900A63792 /* mztools.c in Sources */,
 				5230CB9219271D8900A63792 /* inflate.c in Sources */,
 				5230CB9119271D8900A63792 /* inffast.c in Sources */,
+				52218CA01935FCA000F6F34C /* DejalActivityView.m in Sources */,
 				5230CB8B19271D8900A63792 /* deflate.c in Sources */,
 				64BA1DBC192245D9006C07C4 /* kjvMasterViewController.m in Sources */,
-				52D56DCB1928DF8600F2579A /* kjvBibleSelectController.m in Sources */,
 				5230CB9419271D8900A63792 /* trees.c in Sources */,
 				5230CB9019271D8900A63792 /* infback.c in Sources */,
 				5230CB8919271D8900A63792 /* compress.c in Sources */,

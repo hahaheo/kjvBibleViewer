@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class kjvDetailViewController;
-
 @interface kjvMasterViewController : UITableViewController
-
-@property (strong, nonatomic) kjvDetailViewController *detailViewController;
+@property (nonatomic, strong) NSArray *menuItems;
 
 @end

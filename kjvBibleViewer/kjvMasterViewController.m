@@ -6,9 +6,15 @@
 //  Copyright (c) 2014년 chan. All rights reserved.
 //
 
+#import "SWRevealViewController.h"
 #import "kjvMasterViewController.h"
 
-#import "kjvDetailViewController.h"
+#import "kjvAboutViewController.h"
+#import "kjvHighlightViewController.h"
+#import "kjvSettingViewController.h"
+#import "kjvSearchViewController.h"
+#import "kjvBibleViewController.h"
+#import "kjvBibleSelectController.h"
 
 @implementation kjvMasterViewController
 
@@ -39,7 +45,13 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     */
-    [self performSegueWithIdentifier:@"readSegue" sender:self];
+    //[self performSegueWithIdentifier:@"readSegue" sender:self];
+    
+    _menuItems = @[@"title", @"성경 읽기", @"성경 검색", @"밑줄기록 보기", @"역본 선택", @"설정", @"어플리케이션 정보"];
+    
+    self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+    self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+    self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
 
 }
 
@@ -58,7 +70,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 7;
+}
+
+// 셀 배경 초기화
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
 }
 /*
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,6 +117,27 @@
         //NSDate *object = object[indexPath.row];
         //self.detailViewController.detailItem = object;
     }
+}
+
+- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
+{
+    // Set the title of navigation bar by using the menu items
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
+    destViewController.title = [[_menuItems objectAtIndex:indexPath.row] capitalizedString];
+    
+    if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
+        SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
+        
+        swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
+            
+            UINavigationController* navController = (UINavigationController*)self.revealViewController.frontViewController;
+            [navController setViewControllers: @[dvc] animated: NO ];
+            [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
+        };
+        
+    }
+    
 }
 
 

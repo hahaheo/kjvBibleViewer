@@ -6,6 +6,10 @@
 //  Copyright (c) 2014년 chan. All rights reserved.
 //
 
+#import "global_variable.h"
+#import "lfbContainer.h"
+#import "SWRevealViewController.h"
+#import "kjvBibleViewController.h"
 #import "kjvHighlightViewController.h"
 
 @interface kjvHighlightViewController ()
@@ -27,11 +31,32 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // 폰트랑 배경은 항상 디폴트
+    font = [global_variable fontForCell:DEF_FONT_SIZE];
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    
+    NSString *BookName = [[NSUserDefaults standardUserDefaults] stringForKey:@"saved_bookname"];
+    // 첫 실행시 검색 기록이 있다면 불러와서 띄우기
+    NSString *highlightLog = [[NSUserDefaults standardUserDefaults] objectForKey:@"saved_highlight"];
+    if(highlightLog.length > 1)
+    {
+        contents = [[NSMutableArray alloc] init]; // init.
+        //읽은 기록을 쪼갠다
+        NSString *sep_bar = @"|";
+        NSArray *a_highlightLog = [highlightLog componentsSeparatedByString:sep_bar];
+        
+        //쪼갠 다음에 내용을 불러온다 bookid/chapterid/verseid 00_00_000
+        for(int i=0; i<a_highlightLog.count; i++)
+        {
+            NSArray *bibleIndex = [[a_highlightLog objectAtIndex:i] componentsSeparatedByString:@"_"];
+            // 인덱스 데이터를 통해 해당 절을 가져오고 그것을 contents에 추가한다
+            [contents addObject:[lfbContainer getWithBibleVerse:BookName Book:[[bibleIndex objectAtIndex:0] intValue] Chapter:[[bibleIndex objectAtIndex:1] intValue] Verse:[[bibleIndex objectAtIndex:2] intValue]]];
+        }
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,70 +65,117 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)leftNavBarButtonClick:(id)sender {
+    [self.revealViewController revealToggleAnimated:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [contents count];
 }
 
-/*
+// 행을 선택한 경우
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 클릭한 구절 파싱
+    NSString *result = [contents objectAtIndex:indexPath.row];
+    //읽은 기록을 쪼갠다
+    NSArray *a_result = [result componentsSeparatedByString:@" "];
+    // 첫번째는 성경
+    NSString *shortBible = [a_result objectAtIndex:0];
+    int indexShortBible = [[shortBible substringToIndex:2] intValue];
+    // 두번째에서 또 쪼갬
+    NSString *temp = [a_result objectAtIndex:1];
+    NSArray *aa_result = [temp componentsSeparatedByString:@":"];
+    //  첫번째는 장, 두번째는 절
+    NSString *chapter = [aa_result objectAtIndex:0];
+    NSString *verse = [aa_result objectAtIndex:1];
+        
+    // 본문으로 이동하면서 tableview 셋팅하기
+    [kjvBibleViewController setdoSearch:indexShortBible chapterid:[chapter integerValue] verse:[verse integerValue]];
+    [self performSegueWithIdentifier:@"highlightFindSegue" sender:self];
+}
+
+// 셀 배경 초기화
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
+}
+
+// 행 높이 설정
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL isLast = NO;
+    NSString *cellText = [contents objectAtIndex:indexPath.row];
+    // 마지막 절 _ 지우기
+    if ([cellText hasPrefix:@"_"])
+    {
+        isLast = YES;
+        cellText = [cellText substringFromIndex:1];
+    }
+    
+    float lineheight = DEF_FONT_GAP;
+    //if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) // 아이패드면 좀더 크게 그린다
+    //    lineheight += IPAD_GAP_PLUS;
+    
+    // 폰트사이즈 가지고 온다
+    //CGSize labelSize = [cellText sizeWithFont:font constrainedToSize:CGSizeMake(295,999) lineBreakMode:NSLineBreakByCharWrapping];
+    
+    // 화면크기 구하기
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    int screen_width = screen.size.width - GAP_CORDI;
+    int screen_height = screen.size.height - GAP_CORDI;
+    //누워있다면 width/height 바꿔서 계산하기
+    if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
+        screen_width = screen_height;
+    //화면 넓이를 토대로 폰트길이구하기(290)
+    CGSize labelSize = [cellText sizeWithFont:font constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];
+    
+    //TODO: HARDCODING
+    // 마지막절은 보정해준다
+    if(isLast)
+    {
+        if([[NSUserDefaults standardUserDefaults] floatForKey:@"saved_fontsize"] == SMALL_FONT_SIZE)
+            labelSize.height -= 11.9f; // sml
+        else if([[NSUserDefaults standardUserDefaults] floatForKey:@"saved_fontsize"] == BIG_FONT_SIZE && lineheight == BIG_FONT_GAP )
+            labelSize.height -= 27.9f; // nor
+        else
+            labelSize.height -= 17.9f; // nor
+    }
+    
+    return labelSize.height + (lineheight*2);
+}
+
+// 행 보여줄 내용 설정
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    NSString *content = [contents objectAtIndex:indexPath.row];
+    // 마지막 절 _ 지우기
+    if ([content hasPrefix:@"_"])
+        content = [content substringFromIndex:3];
+    else
+        content = [content substringFromIndex:2];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell"];
     
-    // Configure the cell...
+    cell.textLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.font = font;
+    cell.textLabel.text = content;
+    cell.textLabel.textColor = [UIColor blackColor];
     
     return cell;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

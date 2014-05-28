@@ -6,7 +6,9 @@
 //  Copyright (c) 2014년 chan. All rights reserved.
 //
 
+#import "global_variable.h"
 #import "kjvBibleSelectController.h"
+#import "kjvChapterSelectController.h"
 
 @interface kjvBibleSelectController ()
 
@@ -14,9 +16,9 @@
 
 @implementation kjvBibleSelectController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
     }
@@ -26,8 +28,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    BibleList = [global_variable getGroupedNamedBookofBible];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -35,15 +44,66 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Table view data source
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [[BibleList objectAtIndex:section] objectForKey:@"grouptitle"];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return [BibleList count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [[[BibleList objectAtIndex:section] objectForKey:@"data"] count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"bibleChapterSegue" sender:indexPath];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (int i=0; i<BibleList.count; i++)
+    {
+        [arr addObject:[[[BibleList objectAtIndex:i] objectForKey:@"data"] objectAtIndex:0]];
+    }
+    return arr;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *content = [[[BibleList objectAtIndex:indexPath.section] objectForKey:@"data"]objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plainCell"];
+    
+    cell.textLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.text = [NSString stringWithFormat:@"  %@",content];
+    
+    return cell;
+}
+
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"bibleChapterSegue"]) {
+        int row_c = 0;
+        for(int i=0; i<[(NSIndexPath *)sender section]; i++)
+        {
+            row_c += [[[BibleList objectAtIndex:i] objectForKey:@"data"] count];
+        }
+        NSInteger tagIndex = [(NSIndexPath *)sender row] + row_c;
+        [[segue destinationViewController] setNumberofChapter:tagIndex];
+    }
 }
-*/
 
 @end

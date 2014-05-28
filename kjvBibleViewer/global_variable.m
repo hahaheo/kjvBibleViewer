@@ -31,6 +31,13 @@
     return NamedBookofBible;
 }
 
++(NSArray *) getKoreanBookofBible{
+    NSArray *KoreanBookofBible;
+    KoreanBookofBible = [NSArray arrayWithObjects:@"korHKJV",@"korhrv",@"korktv",@"korcath",nil];
+    
+    return KoreanBookofBible;
+}
+
 +(NSArray *) getNumberofChapterinBook{
     NSArray *NumberofChapterinBook;
     NumberofChapterinBook = [NSArray arrayWithObjects:@"50",@"40",@"27",@"36",@"34",@"24",@"21",@"4",@"31",@"24",@"22",@"25",@"29",@"36",@"10",@"13",@"10",@"42",@"150",@"31",@"12",@"8",@"66",@"52",@"5",@"48",@"12",@"14",@"3",@"9",@"1",@"4",@"7",@"3",@"3",@"3",@"2",@"14",@"4",@"28",@"16",@"24",@"21",@"28",@"16",@"16",@"13",@"6",@"6",@"4",@"4",@"5",@"3",@"6",@"4",@"3",@"1",@"13",@"5",@"5",@"3",@"5",@"1",@"1",@"1",@"22",nil];
@@ -60,7 +67,7 @@
                          @"역사서", @"grouptitle",
                          [NSMutableArray arrayWithObjects:@"사도행전",nil],@"data",nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:
-                         @"바울 서신서", @"grouptitle",
+                         @"바울서신서", @"grouptitle",
                          [NSMutableArray arrayWithObjects:@"로마서",@"고린도전서",@"고린도후서",@"갈라디아서",@"에베소서",@"빌립보서",@"골로새서",@"데살로니가전서",@"데살로니가후서",@"디모데전서",@"디모데후서",@"디도서",@"빌레몬서",nil],@"data",nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:
                          @"공동서신", @"grouptitle",
@@ -93,6 +100,16 @@
 {
     NSString *URLString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];
     return (URLString != NULL) ? YES : NO;
+}
+
++ (UIFont *)fontForCell:(CGFloat) size
+{
+    float lineheight;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) // 아이패드면 좀더 크게 그린다
+        return [UIFont systemFontOfSize:size + IPAD_FONT_PLUS];
+    else
+        return [UIFont systemFontOfSize:size];
+    
 }
 
 @end

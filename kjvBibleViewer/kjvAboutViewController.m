@@ -6,6 +6,7 @@
 //  Copyright (c) 2014년 chan. All rights reserved.
 //
 
+#import "SWRevealViewController.h"
 #import "kjvAboutViewController.h"
 
 @interface kjvAboutViewController ()
@@ -26,7 +27,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+
     // Do any additional setup after loading the view.
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"Stainless-steel.png"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //TODO: 화면 크기에 따라 택스트 출력 변환하기
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    NSLog(@"%f %f", screenRect.size.height, screenRect.size.width);
+    // iphone에서 누워있는 경우
+    if((screenRect.size.width <= 320) && (orientation != UIDeviceOrientationPortrait))
+    {
+        CGRect frame = _aboutText.frame;
+        frame.origin.y = 40;//pass the cordinate which you want
+        _aboutText.frame = frame;
+    }
+    // ipad 경우
+    else if(screenRect.size.width > 320)
+    {
+        CGRect frame = _aboutText.frame;
+        frame.origin.y = 40;//pass the cordinate which you want
+        _aboutText.frame = frame;
+    }
+    [_aboutText updateConstraints];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,4 +82,7 @@
 }
 */
 
+- (IBAction)leftNavBarButtonClick:(id)sender {
+    [self.revealViewController revealToggleAnimated:YES];
+}
 @end

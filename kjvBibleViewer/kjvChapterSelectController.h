@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-static int book_id;
+
 
 @interface kjvChapterSelectController : UIViewController
+{
+    int book_id;
+}
 @property (strong, nonatomic) IBOutlet UINavigationItem *NavTitle;
 -(void)setNumberofChapter:(int)num;
 @end

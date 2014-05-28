@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kjvQuickBibleSelectController : UIViewController
-
+@interface kjvQuickBibleSelectController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+- (IBAction)bibleViewSelect:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *bibleQuickView;
+@property (strong, nonatomic) IBOutlet UITableView *bibleListView;
+@property (strong, nonatomic) NSArray *BibleList;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *bibleSegControl;
 @end

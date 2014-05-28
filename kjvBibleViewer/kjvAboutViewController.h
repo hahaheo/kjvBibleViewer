@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface kjvAboutViewController : UIViewController
+- (IBAction)leftNavBarButtonClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *aboutText;
 
 @end

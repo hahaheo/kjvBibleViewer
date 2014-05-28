@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface kjvHighlightViewController : UITableViewController
-
+{
+    NSMutableArray *contents;
+    UIFont *font;   
+}
+- (IBAction)leftNavBarButtonClick:(id)sender;
 @end

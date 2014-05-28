@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kjvBibleSelectController : UIViewController
-
+@interface kjvBibleSelectController : UITableViewController
+{
+    NSArray *BibleList;
+}
 @end

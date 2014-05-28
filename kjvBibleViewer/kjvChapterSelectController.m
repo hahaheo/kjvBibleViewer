@@ -37,26 +37,42 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([[segue identifier] isEqualToString:@"selectedChapterandBibleSegue"]) {
-        NSInteger tagIndex = [(UIButton*)sender tag];
-        [[segue destinationViewController] saveTargetedid:book_id chapterid:tagIndex];
-    }
-}
-
-
 - (void)buttonClicked:(UIButton*)sender
 {
-    [self performSegueWithIdentifier:@"selectedChapterandBibleSegue" sender:sender];
+    // 선택한 성경과 장을 저장하고
+    [kjvBibleViewController saveTargetedid:book_id chapterid:sender.tag];
+    
+    // 새로고침 하기
+    [kjvBibleViewController setdoviewDidLoad:YES];
+    
+    // 그전으로 이동하기
+    UIViewController *prevVC = [self.navigationController.viewControllers objectAtIndex:0];
+    [self.navigationController popToViewController:prevVC animated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)setNumberofChapter:(int)num
 {
+    int BUTTON_SIZE = 50;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) // 아이패드면 좀더 크게 그린다
+        BUTTON_SIZE += IPAD_ICON_PLUS;
     NSString *temp = [[global_variable getNumberofChapterinBook] objectAtIndex:num];
     CGRect screen = [[UIScreen mainScreen] bounds];
-    UIScrollView *chapterSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0,100,screen.size.width,screen.size.height-70)];
-    [chapterSV setContentSize:CGSizeMake(screen.size.width, ([temp integerValue]/6)*45)];
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    int screen_width = screen.size.width;
+    int screen_height = screen.size.height;
+    int diff = 0;
+    //누워있다면 width/height 바꿔서 계산하기
+    if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
+    {
+        diff = 15; // 누웠을때 보정값
+        screen_width = screen_height;
+        screen_height = screen.size.width;
+    }
+    int lineCount = (int)(screen_width / BUTTON_SIZE);
+    UIScrollView *chapterSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 60, screen_width, screen_height - 60)];
+    [chapterSV setContentSize:CGSizeMake(screen_width, ([temp integerValue] / lineCount) * (BUTTON_SIZE + 2) + diff)]; // 스크린의 전체 크기 구하기
     [chapterSV setShowsVerticalScrollIndicator:YES];
     [chapterSV setShowsHorizontalScrollIndicator:NO];
     [self.view addSubview:chapterSV];
@@ -64,9 +80,9 @@
     for (int i=1; i<=[temp integerValue]; i++)
     {
         UIButton *abutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        abutton.frame = CGRectMake(12+((i-1)%6)*50,((i-1)/6)*45,44,40);
+        abutton.frame = CGRectMake(5 + ((i - 1) % lineCount) * BUTTON_SIZE, ((i - 1) / lineCount) * BUTTON_SIZE, BUTTON_SIZE, BUTTON_SIZE);
         
-        NSString *string = [NSString stringWithFormat:@"%02d_%03d",num+1,i];
+        NSString *string = [NSString stringWithFormat:@"%02d_%03d",num + 1, i];
         NSRange Range = [[[NSUserDefaults standardUserDefaults] stringForKey:@"saved_readbible"] rangeOfString:string];
         if(Range.location != NSNotFound)
             [abutton titleLabel].backgroundColor = [UIColor yellowColor];
@@ -74,13 +90,23 @@
             [abutton titleLabel].backgroundColor = [UIColor whiteColor];
         
         [abutton setTag:i];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) // 아이패드면 좀더 크게 그린다
+            abutton.titleLabel.font = [UIFont systemFontOfSize:23.0f];
+        else
+            abutton.titleLabel.font = [UIFont systemFontOfSize:17.0f];
         [abutton setTitle:[NSString stringWithFormat:@"%d", i] forState:UIControlStateNormal];
         [abutton addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [chapterSV addSubview:abutton];
     }
     
     _NavTitle.title = [[global_variable getNamedBookofBible] objectAtIndex:num];
-    book_id = num;
+    book_id = num+1;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [[self.view subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)]; // view 초기화
+    [self setNumberofChapter:book_id - 1];
 }
 
 /*
