@@ -77,7 +77,7 @@ CGFloat const kAnimationDuration = 0.2f;
         int frame_width = CGRectGetWidth([table_ frame]);
         int frame_height = CGRectGetHeight([table_ frame]);
         //누워있다면 width/height 바꿔서 계산하기
-        if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
+        if(((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight)) && (frame_width < frame_height))
             frame_width = frame_height;
         
         // 뷰를 중앙에 방향 맞추기
@@ -205,7 +205,7 @@ CGFloat const kAnimationDuration = 0.2f;
 //TODO 내가 대충만든 펑션
 - (void)tableViewDelete {
     CGFloat yOrigin = 0.0f;
-    yOrigin = CGRectGetHeight([table_ frame]) + 1000;
+    yOrigin = CGRectGetHeight([table_ frame]) + 10000;
     
     CGRect frame = [pullToRefreshView_ frame];
     frame.origin.y = yOrigin;

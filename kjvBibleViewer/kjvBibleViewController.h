@@ -23,7 +23,8 @@ static BOOL doviewDidLoad = NO; // viewdidload에서 초기화 처리 함
     NSString *a_BookName; // 얼터 역본 이름
     NSString *readBible; // 읽은 성경 범위
     NSString *BibleName;
-    NSArray *highlightRange; // 하이라이트 해야할 범위
+    NSArray *highlightRange; // 사용자 밑줄 해야할 범위
+    NSMutableArray *selectedRows; // 선택된 내용 저장
     
     // 최초 오픈시 설정되어있던 성경과 챕터
     int startChapterid;
@@ -41,9 +42,10 @@ static BOOL doviewDidLoad = NO; // viewdidload에서 초기화 처리 함
     NSMutableArray *chapterVerseCount;
     MNMBottomPullToRefreshManager *pullToRefreshManager_;
 }
+@property (nonatomic, strong) UIActivityViewController *activityViewController;
 @property (strong, nonatomic) IBOutlet UIButton *navTitleBibleButton;
-- (IBAction)navTitleBibleClick:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *navTitleChapterButton;
+- (IBAction)navTitleBibleClick:(UIButton *)sender;
 - (IBAction)navTitleChapterClick:(UIButton *)sender;
 - (IBAction)leftNavBarButtonClick:(id)sender;
 

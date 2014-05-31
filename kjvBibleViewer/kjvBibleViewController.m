@@ -13,6 +13,7 @@
 #import "kjvBibleViewController.h"
 #import "kjvChapterSelectController.h"
 #import "kjvBibleSelectController.h"
+#import "kjvActivity.h"
 
 @interface kjvBibleViewController ()
 
@@ -74,19 +75,11 @@
     // 백버튼 컬러 변경하기
     self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     
-    //롱클릭 제스쳐 설정
-    /*
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.0; //seconds
-    lpgr.delegate = self;
-    [self.tableView addGestureRecognizer:lpgr];
-     */
-
-    
     //필요 변수 초기화
     doviewDidLoad = NO;
     contents = [[NSMutableArray alloc] init];
     chapterVerseCount = [[NSMutableArray alloc] init];
+    selectedRows = [[NSMutableArray alloc] init];
     cellCount = 0;
     self.title = @"읽기"; // back버튼을 위한 타이틀 초기화
     
@@ -480,12 +473,51 @@
 }
 
 - (IBAction)navTitleChapterClick:(UIButton *)sender {
-    if(!doSearch) // 검색모드때 disable
-        [self performSegueWithIdentifier:@"chapterSegue" sender:self];
-    else
+    // 선택된 것이 있다면 activity로 이동
+    if ([self.tableView indexPathForSelectedRow] != nil)
+    {
+        // 선택한 결과 정렬하기
+        NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
+        selectedRows = [[selectedRows sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]] mutableCopy];
+        
+        // 인덱스 제거
+        for(NSMutableDictionary *dic in selectedRows)
+        {
+            [dic removeObjectForKey:@"id"];
+        }
+        
+        // 맨 처음에 역본/성경 추가하기
+        [selectedRows insertObject:[NSString stringWithFormat:@"[%@] %@",[[global_variable getBibleNameConverter] objectForKey:BookName], [[global_variable getNamedBookofBible] objectAtIndex:(bookid-1)]] atIndex:0];
+        
+        // activity 실행        
+        // 커스텀 액티비티 추가
+        kjvActivity *ha = [[kjvActivity alloc] init];
+        NSArray *applicationActivities = [NSArray arrayWithObject:ha];
+        
+        self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:selectedRows applicationActivities:applicationActivities];
+        [self presentViewController:self.activityViewController animated:YES
+                         completion:^{
+                             // 선택한 범위 모두 없애고
+                             for (NSString *string in selectedRows)
+                             {
+                                 NSIndexPath *ip = [NSIndexPath indexPathForRow:[contents indexOfObject:string] inSection:0];
+                                 [self.tableView deselectRowAtIndexPath:ip animated:NO];
+                             }
+                             // 완료되면 오브젝트 삭제하고
+                             [selectedRows removeAllObjects];
+                             // 오른쪽 아이콘 이름 변경한다
+                             [self updateSelectedRowCountButton];
+                         }];
+        
+    }
+    else if(doSearch) // 검색모드때 disable
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"검색모드에서는 다른 성경으로 이동할 수 없습니다" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
         [alert show];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"chapterSegue" sender:self];
     }
 }
 
@@ -494,18 +526,19 @@
     //_sidebarButton.tintColor = [UIColor colorWithWhite:0.96f alpha:0.2f];
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
     [self.revealViewController revealToggleAnimated:YES];
-//    _sidebarButton.target = self.revealViewController;
-//    _sidebarButton.action = @selector(revealToggle:);
+    //_sidebarButton.target = self.revealViewController;
+    //_sidebarButton.action = @selector(revealToggle:);
 }
 
 - (IBAction)navTitleBibleClick:(id)sender {
-    if(!doSearch) // 검색모드때 disable
-        [self performSegueWithIdentifier:@"bibleSegue" sender:self];
-    else
+    if(doSearch) // 검색모드때 disable
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"검색모드에서는 다른 장으로 이동할 수 없습니다" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
         [alert show];
+
     }
+    else
+        [self performSegueWithIdentifier:@"bibleSegue" sender:self];
 }
 
 + (void)saveTargetedid:(int)book_id chapterid:(int)chapter_id
@@ -689,6 +722,9 @@
     // 이동할때마다 보여지는 셀의 가장 첫번째 장을 따서 장 업데이트 하기
     for(UITableViewCell *cell in [self.tableView visibleCells])
     {
+        // 셀에 선택한 부분이 있으면 업데이트 생략
+        if([selectedRows count] != 0)
+            break;
         // 상단 이름 업데이트
         //NSLog(@"%@", cell.textLabel.text);
         NSArray *chapterStrA = [cell.textLabel.text componentsSeparatedByString:@":"];
@@ -709,8 +745,8 @@
     // 마지막 앞3으로 다가오면 새로운 장 업데이트 하기 (스레드 런)
     if(!doSearch && !refreshDownLock && (([contents count] - 2) == indexPath.row))
     {
-        NSArray *cellChapter = [[contents objectAtIndex:indexPath.row] componentsSeparatedByString:@":"];
-        NSNumber *nextChapter = [NSNumber numberWithInt:[[cellChapter objectAtIndex:0] intValue] + 1];
+        //NSArray *cellChapter = [[contents objectAtIndex:indexPath.row] componentsSeparatedByString:@":"];
+        //NSNumber *nextChapter = [NSNumber numberWithInt:[[cellChapter objectAtIndex:0] intValue] + 1];
         [NSThread detachNewThreadSelector:@selector(refreshDown:) toTarget:self withObject:nil];
     }
     
@@ -800,6 +836,33 @@
     }
 }
 
+// 열을 선택해제한 경우
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //성경읽음 체크 선택한경우
+    if([chapterVerseCount indexOfObject:[NSNumber numberWithInt:indexPath.row]] != NSNotFound)
+    {
+        // 아무일 없음
+        return;
+    }
+    else
+    {
+        // 선택한 내용을 삭제하기
+        NSString *deSelectedRow = [contents objectAtIndex:indexPath.row];
+        // key/value 로 bibleid_bookid_chapterid를 구함
+        NSArray *tem = [deSelectedRow componentsSeparatedByString:@":"]; // 12:11 ...
+        NSArray *tem2 = [[tem objectAtIndex:1] componentsSeparatedByString:@" "]; // 11 하나님 가라사대...
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:[NSString stringWithFormat:@"%02d_%02d_%03d", bookid, [[tem objectAtIndex:0] intValue], [[tem2 objectAtIndex:0] intValue]] forKey:@"id"];
+        [dic setObject:deSelectedRow forKey:@"content"];
+        [selectedRows removeObject:dic];
+        //NSLog(@"%d",[tableView indexPathForSelectedRow].row);
+        
+        // 오른쪽 아이콘 이름 바꾸기
+        [self updateSelectedRowCountButton];
+    }
+}
+
 // 열을 선택한 경우
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -850,19 +913,98 @@
         */
         [self.tableView reloadData];
     }
+    else
+    {
+        // 일반 성경 내용을 선택한 경우 해당 내용을 배열에 넣기
+        NSString *selectedRow = [contents objectAtIndex:indexPath.row];
+        // key/value 로 bibleid_bookid_chapterid를 구함
+        NSArray *tem = [selectedRow componentsSeparatedByString:@":"]; // 12:11 ...
+        NSArray *tem2 = [[tem objectAtIndex:1] componentsSeparatedByString:@" "]; // 11 하나님 가라사대...
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:[NSString stringWithFormat:@"%02d_%02d_%03d", bookid, [[tem objectAtIndex:0] intValue], [[tem2 objectAtIndex:0] intValue]] forKey:@"id"];
+        [dic setObject:selectedRow forKey:@"content"];
+        [selectedRows addObject:dic];
+        
+        // 오른쪽 아이콘 이름 바꾸기
+        [self updateSelectedRowCountButton];
+        //NSLog(@"%@",selectedRows);
+    }
     
     return;
 }
+
+- (void)updateSelectedRowCountButton
+{
+
+    if([selectedRows count] == 0)
+    {
+        // 선택된것이 아무것도 없으면 상단 장 표시 정상화 - 새로고침
+        [self.tableView reloadData];
+    }
+    else
+    {
+        // 오른쪽 아이콘 이름 바꾸기
+        NSString *str = [NSString stringWithFormat:@"%d개 선택됨", [selectedRows count]];
+        NSString *navBibleChapter = [NSString stringWithFormat:@"%@ ▼", str];
+        NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:navBibleChapter];
+        UIColor *_black = [UIColor blackColor];
+        UIFont *_font = [UIFont fontWithName:@"Apple SD 산돌고딕 Neo" size:15.0f];
+        UIFont *font = [UIFont fontWithName:@"Apple SD 산돌고딕 Neo" size:8.0f];
+        [attString addAttribute:NSFontAttributeName value:_font range:NSMakeRange(0, [str length])];
+        [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange([str length] + 1, 1)];
+        [attString addAttribute:NSForegroundColorAttributeName value:_black range:NSMakeRange(0, [navBibleChapter length])];
+        [_navTitleChapterButton setAttributedTitle:attString forState:UIControlStateNormal];
+    }
+}
+
+
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //[_objects removeObjectAtIndex:indexPath.row];
+        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
+}
+
+
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+*/
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
 
 // 길게 선택시 메뉴 보임
 /*
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     return YES;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     return (action == @selector(copy:));
 }
 

@@ -47,7 +47,7 @@
     //TODO: 화면 크기에 따라 택스트 출력 변환하기
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    NSLog(@"%f %f", screenRect.size.height, screenRect.size.width);
+    //NSLog(@"%f %f", screenRect.size.height, screenRect.size.width);
     // iphone에서 누워있는 경우
     if((screenRect.size.width <= 320) && (orientation != UIDeviceOrientationPortrait))
     {

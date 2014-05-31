@@ -104,7 +104,7 @@
 
 + (UIFont *)fontForCell:(CGFloat) size
 {
-    float lineheight;
+    //float lineheight;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) // 아이패드면 좀더 크게 그린다
         return [UIFont systemFontOfSize:size + IPAD_FONT_PLUS];
     else

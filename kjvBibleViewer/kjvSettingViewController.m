@@ -204,7 +204,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:DEF_FONT_SIZE];
         
         // 폰트 높이대로 체크표시 = (실사이즈 - 폰트사이즈) / 2
-        CGRect frame = [tableView rectForRowAtIndexPath:indexPath];
+        //CGRect frame = [tableView rectForRowAtIndexPath:indexPath];
         // 애매해서 변경할래
         /*
         if((int)[[NSUserDefaults standardUserDefaults] floatForKey:@"saved_lineheightsize"] == ((frame.size.height - DEF_FONT_SIZE) / 2))

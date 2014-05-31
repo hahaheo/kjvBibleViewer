@@ -60,7 +60,8 @@
         //읽은 기록을 쪼갠다
         NSString *sep_bar = @"|";
         NSArray *a_searchlog = [searchlog componentsSeparatedByString:sep_bar];
-        for(int i=0; i<a_searchlog.count; i++)
+        //역순으로 넣기
+        for(int i=a_searchlog.count - 1; i>=0; i--)
             [contents addObject:[a_searchlog objectAtIndex:i]];
     }
 }
@@ -85,8 +86,7 @@
     _TableView.scrollEnabled = NO;
     
     // 최하단 리플래쉬 컨트롤 추가
-    if(pullToRefreshManager_ == nil)
-        pullToRefreshManager_ = [[MNMBottomPullToRefreshManager alloc] initWithPullToRefreshViewHeight:60.0f tableView:self.TableView withClient:self];
+    pullToRefreshManager_ = [[MNMBottomPullToRefreshManager alloc] initWithPullToRefreshViewHeight:60.0f tableView:self.TableView withClient:self];
 }
 
 
@@ -166,27 +166,31 @@
     [DejalBezelActivityView removeViewAnimated:YES];
     // 검색범위를 넘으면 리플래시 출력 중단
     if(SEARCH_SPACE_LEVEL >= (NUMBER_OF_CHAPTER / SIZE_OF_SEARCHSPACE))
-        [pullToRefreshManager_ tableViewDelete];
-    
+        [pullToRefreshManager_ setPullToRefreshViewVisible:NO];
+
     return;
 }
 
 - (void)bottomPullToRefreshTriggered:(MNMBottomPullToRefreshManager *)manager {
     SEARCH_SPACE_LEVEL++;
-    //[DejalBezelActivityView activityViewForView:self.view withLabel:@"더 많은 성경을 검색중입니다\n검색에 많은 시간이 소요될수 있습니다"];
-    [NSThread detachNewThreadSelector:@selector(searchDataCall:) toTarget:self withObject:nil];
+    [DejalBezelActivityView activityViewForView:self.view withLabel:@"더 많은 성경을 검색중입니다\n검색에 많은 시간이 소요될수 있습니다"];
+    [NSThread detachNewThreadSelector:@selector(searchDataCall:) toTarget:self withObject:@"nojump"];
 
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     // 검색범위 안에 있을때만 리플래쉬
-    if(SEARCH_SPACE_LEVEL < (NUMBER_OF_CHAPTER / SIZE_OF_SEARCHSPACE))
-        [pullToRefreshManager_ tableViewReleased];
+    if(!is_not_input_Search)
+    {
+        if(SEARCH_SPACE_LEVEL < (NUMBER_OF_CHAPTER / SIZE_OF_SEARCHSPACE))
+            [pullToRefreshManager_ tableViewReleased];
+    }
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [pullToRefreshManager_ relocatePullToRefreshView];
+    if(!is_not_input_Search)
+       [pullToRefreshManager_ relocatePullToRefreshView];
 }
 
 

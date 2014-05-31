@@ -60,6 +60,8 @@
 		52B9C6C61935FEF200F89711 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B9C6C51935FEF200F89711 /* SWRevealViewController.m */; };
 		52B9C7A41935FFA700F89711 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7A21935FFA700F89711 /* menu.png */; };
 		52B9C7A51935FFA700F89711 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7A31935FFA700F89711 /* menu@2x.png */; };
+		52B9C7F11939626500F89711 /* kjvActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B9C7F01939626500F89711 /* kjvActivity.m */; };
+		52B9C7F3193970A500F89711 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9C7F2193970A500F89711 /* KakaoOpenSDK.framework */; };
 		646DC56C19225AEB0092C090 /* kjvBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC56B19225AEB0092C090 /* kjvBibleViewController.m */; };
 		646DC572192395B80092C090 /* kjvAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC571192395B80092C090 /* kjvAboutViewController.m */; };
 		646DC57919239C8D0092C090 /* kjvSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC57819239C8D0092C090 /* kjvSettingViewController.m */; };
@@ -68,7 +70,6 @@
 		648020CB1926586100FB6BB0 /* global_variable.m in Sources */ = {isa = PBXBuildFile; fileRef = 648020C51926586100FB6BB0 /* global_variable.m */; };
 		648020CC1926586100FB6BB0 /* lfbContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 648020C71926586100FB6BB0 /* lfbContainer.m */; };
 		648020CD1926586100FB6BB0 /* lfbSearchContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 648020C91926586100FB6BB0 /* lfbSearchContainer.m */; };
-		64B4CC3619224CE000583180 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B4CC3519224CE000583180 /* StoreKit.framework */; };
 		64BA1DA3192245D9006C07C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DA2192245D9006C07C4 /* Foundation.framework */; };
 		64BA1DA5192245D9006C07C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DA4192245D9006C07C4 /* CoreGraphics.framework */; };
 		64BA1DA7192245D9006C07C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DA6192245D9006C07C4 /* UIKit.framework */; };
@@ -181,6 +182,9 @@
 		52B9C6C51935FEF200F89711 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = kjvBibleViewer/SWRevealViewController.m; sourceTree = SOURCE_ROOT; };
 		52B9C7A21935FFA700F89711 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = kjvBibleViewer/menu.png; sourceTree = "<group>"; };
 		52B9C7A31935FFA700F89711 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@2x.png"; path = "kjvBibleViewer/menu@2x.png"; sourceTree = "<group>"; };
+		52B9C7EF1939626500F89711 /* kjvActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvActivity.h; sourceTree = "<group>"; };
+		52B9C7F01939626500F89711 /* kjvActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvActivity.m; sourceTree = "<group>"; };
+		52B9C7F2193970A500F89711 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		646DC56A19225AEB0092C090 /* kjvBibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvBibleViewController.h; sourceTree = "<group>"; };
 		646DC56B19225AEB0092C090 /* kjvBibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvBibleViewController.m; sourceTree = "<group>"; };
 		646DC570192395B80092C090 /* kjvAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvAboutViewController.h; sourceTree = "<group>"; };
@@ -197,7 +201,6 @@
 		648020C71926586100FB6BB0 /* lfbContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lfbContainer.m; sourceTree = "<group>"; };
 		648020C81926586100FB6BB0 /* lfbSearchContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfbSearchContainer.h; sourceTree = "<group>"; };
 		648020C91926586100FB6BB0 /* lfbSearchContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lfbSearchContainer.m; sourceTree = "<group>"; };
-		64B4CC3519224CE000583180 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		64BA1D9F192245D9006C07C4 /* kjvBibleViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kjvBibleViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BA1DA2192245D9006C07C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64BA1DA4192245D9006C07C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -226,9 +229,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				64BA1DA5192245D9006C07C4 /* CoreGraphics.framework in Frameworks */,
+				52B9C7F3193970A500F89711 /* KakaoOpenSDK.framework in Frameworks */,
 				64BA1DA7192245D9006C07C4 /* UIKit.framework in Frameworks */,
 				64BA1DA3192245D9006C07C4 /* Foundation.framework in Frameworks */,
-				64B4CC3619224CE000583180 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +381,8 @@
 				648020C71926586100FB6BB0 /* lfbContainer.m */,
 				648020C81926586100FB6BB0 /* lfbSearchContainer.h */,
 				648020C91926586100FB6BB0 /* lfbSearchContainer.m */,
+				52B9C7EF1939626500F89711 /* kjvActivity.h */,
+				52B9C7F01939626500F89711 /* kjvActivity.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -455,7 +460,7 @@
 		64BA1DA1192245D9006C07C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				64B4CC3519224CE000583180 /* StoreKit.framework */,
+				52B9C7F2193970A500F89711 /* KakaoOpenSDK.framework */,
 				64BA1DA2192245D9006C07C4 /* Foundation.framework */,
 				64BA1DA4192245D9006C07C4 /* CoreGraphics.framework */,
 				64BA1DA6192245D9006C07C4 /* UIKit.framework */,
@@ -640,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				648020CC1926586100FB6BB0 /* lfbContainer.m in Sources */,
+				52B9C7F11939626500F89711 /* kjvActivity.m in Sources */,
 				52B9C6C21935FED600F89711 /* MNMBottomPullToRefreshManager.m in Sources */,
 				5230CB8219271D8900A63792 /* ZipReadStream.m in Sources */,
 				5230CB8E19271D8900A63792 /* gzread.c in Sources */,
@@ -818,10 +824,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kjvBibleViewer/kjvBibleViewer-Prefix.pch";
 				INFOPLIST_FILE = "kjvBibleViewer/kjvBibleViewer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -835,10 +846,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kjvBibleViewer/kjvBibleViewer-Prefix.pch";
 				INFOPLIST_FILE = "kjvBibleViewer/kjvBibleViewer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

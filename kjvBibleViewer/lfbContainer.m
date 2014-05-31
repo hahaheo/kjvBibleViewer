@@ -99,7 +99,8 @@
             NSString *temp = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
             
             // 앞에 \n을 자름으로써 형태를 잡는다
-            f_return = [[temp componentsSeparatedByString:[NSString stringWithFormat:@"%\n", book, sBookName]] mutableCopy];
+            //f_return = [[temp componentsSeparatedByString:[NSString stringWithFormat:@"%\n", book, sBookName]] mutableCopy];
+            f_return = [[temp componentsSeparatedByString:@"\n"] mutableCopy];
             //[f_return removeObjectAtIndex:0];
             
             //dealloc

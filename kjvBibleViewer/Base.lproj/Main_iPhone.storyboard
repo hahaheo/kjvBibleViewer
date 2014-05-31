@@ -326,7 +326,7 @@
                         </button>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="WQn-Tf-LBp">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="GIR-MN-eAi">
-                                <rect key="frame" x="233" y="5" width="71" height="33"/>
+                                <rect key="frame" x="227" y="5" width="77" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -1149,6 +1149,6 @@ Cg
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="3U1-IH-3oO"/>
-        <segue reference="IU1-Rj-A9y"/>
+        <segue reference="t5M-QZ-7YT"/>
     </inferredMetricsTieBreakers>
 </document>
