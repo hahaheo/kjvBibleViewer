@@ -48,8 +48,8 @@
         NSString *sep_bar = @"|";
         NSArray *a_highlightLog = [highlightLog componentsSeparatedByString:sep_bar];
         
-        //쪼갠 다음에 내용을 불러온다 bookid/chapterid/verseid 00_00_000
-        for(int i=0; i<a_highlightLog.count; i++)
+        //쪼갠 다음에 내용을 불러온다 bookid/chapterid/verseid 00_00_000 (맨앞에있는것은 제외)
+        for(int i=1; i<a_highlightLog.count; i++)
         {
             NSArray *bibleIndex = [[a_highlightLog objectAtIndex:i] componentsSeparatedByString:@"_"];
             // 인덱스 데이터를 통해 해당 절을 가져오고 그것을 contents에 추가한다

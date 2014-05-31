@@ -62,6 +62,10 @@
 		52B9C7A51935FFA700F89711 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7A31935FFA700F89711 /* menu@2x.png */; };
 		52B9C7F11939626500F89711 /* kjvActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B9C7F01939626500F89711 /* kjvActivity.m */; };
 		52B9C7F3193970A500F89711 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9C7F2193970A500F89711 /* KakaoOpenSDK.framework */; };
+		52B9C7FE1939EB0100F89711 /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FA1939EB0100F89711 /* highlight.png */; };
+		52B9C7FF1939EB0100F89711 /* highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FB1939EB0100F89711 /* highlight@2x.png */; };
+		52B9C8001939EB0100F89711 /* kakaotalk.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FC1939EB0100F89711 /* kakaotalk.png */; };
+		52B9C8011939EB0100F89711 /* kakaotalk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FD1939EB0100F89711 /* kakaotalk@2x.png */; };
 		646DC56C19225AEB0092C090 /* kjvBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC56B19225AEB0092C090 /* kjvBibleViewController.m */; };
 		646DC572192395B80092C090 /* kjvAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC571192395B80092C090 /* kjvAboutViewController.m */; };
 		646DC57919239C8D0092C090 /* kjvSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC57819239C8D0092C090 /* kjvSettingViewController.m */; };
@@ -185,6 +189,12 @@
 		52B9C7EF1939626500F89711 /* kjvActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvActivity.h; sourceTree = "<group>"; };
 		52B9C7F01939626500F89711 /* kjvActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvActivity.m; sourceTree = "<group>"; };
 		52B9C7F2193970A500F89711 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		52B9C7FA1939EB0100F89711 /* highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight.png; sourceTree = "<group>"; };
+		52B9C7FB1939EB0100F89711 /* highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "highlight@2x.png"; sourceTree = "<group>"; };
+		52B9C7FC1939EB0100F89711 /* kakaotalk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakaotalk.png; sourceTree = "<group>"; };
+		52B9C7FD1939EB0100F89711 /* kakaotalk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kakaotalk@2x.png"; sourceTree = "<group>"; };
+		52CCF991193A0974002AAAFC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		52CCF992193A0984002AAAFC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		646DC56A19225AEB0092C090 /* kjvBibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvBibleViewController.h; sourceTree = "<group>"; };
 		646DC56B19225AEB0092C090 /* kjvBibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvBibleViewController.m; sourceTree = "<group>"; };
 		646DC570192395B80092C090 /* kjvAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvAboutViewController.h; sourceTree = "<group>"; };
@@ -211,7 +221,6 @@
 		64BA1DB0192245D9006C07C4 /* kjvBibleViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kjvBibleViewer-Prefix.pch"; sourceTree = "<group>"; };
 		64BA1DB1192245D9006C07C4 /* kjvAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kjvAppDelegate.h; sourceTree = "<group>"; };
 		64BA1DB2192245D9006C07C4 /* kjvAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvAppDelegate.m; sourceTree = "<group>"; };
-		64BA1DB5192245D9006C07C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		64BA1DB8192245D9006C07C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		64BA1DBA192245D9006C07C4 /* kjvMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kjvMasterViewController.h; sourceTree = "<group>"; };
 		64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvMasterViewController.m; sourceTree = "<group>"; };
@@ -251,6 +260,10 @@
 		52267AEE192E1521002573A7 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				52B9C7FA1939EB0100F89711 /* highlight.png */,
+				52B9C7FB1939EB0100F89711 /* highlight@2x.png */,
+				52B9C7FC1939EB0100F89711 /* kakaotalk.png */,
+				52B9C7FD1939EB0100F89711 /* kakaotalk@2x.png */,
 				52B9C7A21935FFA700F89711 /* menu.png */,
 				52B9C7A31935FFA700F89711 /* menu@2x.png */,
 				5283A9A3193074240025CEAB /* menu_1.png */,
@@ -568,7 +581,7 @@
 						DevelopmentTeam = P67HCTD2FJ;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -605,6 +618,7 @@
 				5230CB7319271D8900A63792 /* .gitignore in Resources */,
 				5283A9AC193074240025CEAB /* menu_4.png in Resources */,
 				52B9C7A51935FFA700F89711 /* menu@2x.png in Resources */,
+				52B9C7FE1939EB0100F89711 /* highlight.png in Resources */,
 				5230CB7619271D8900A63792 /* Default.png in Resources */,
 				5283A9AD193074240025CEAB /* menu_5.png in Resources */,
 				64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */,
@@ -613,8 +627,10 @@
 				64BA1DC1192245D9006C07C4 /* Images.xcassets in Resources */,
 				5283A9AE193074240025CEAB /* menu_6.png in Resources */,
 				5230CB8719271D8900A63792 /* README.md in Resources */,
+				52B9C8011939EB0100F89711 /* kakaotalk@2x.png in Resources */,
 				5230CB7819271D8900A63792 /* LICENSE.md in Resources */,
 				5283A9A9193074240025CEAB /* menu_1.png in Resources */,
+				52B9C8001939EB0100F89711 /* kakaotalk.png in Resources */,
 				64BA1DB6192245D9006C07C4 /* Main_iPhone.storyboard in Resources */,
 				52B9C7A41935FFA700F89711 /* menu.png in Resources */,
 				64BA1DAD192245D9006C07C4 /* InfoPlist.strings in Resources */,
@@ -623,6 +639,7 @@
 				5230CB8419271D8900A63792 /* Objective_Zip-Info.plist in Resources */,
 				5230CB8519271D8900A63792 /* Objective_ZipViewController.xib in Resources */,
 				5230CB8619271D8900A63792 /* ObjectiveZipIcon.png in Resources */,
+				52B9C7FF1939EB0100F89711 /* highlight@2x.png in Resources */,
 				52B9C6C01935FED600F89711 /* MNMBottomPullToRefreshArrow.png in Resources */,
 				52B9C6C11935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png in Resources */,
 				5230CB7A19271D8900A63792 /* MainWindow.xib in Resources */,
@@ -721,7 +738,7 @@
 		64BA1DB4192245D9006C07C4 /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				64BA1DB5192245D9006C07C4 /* Base */,
+				52CCF992193A0984002AAAFC /* ko */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -730,6 +747,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				64BA1DB8192245D9006C07C4 /* Base */,
+				52CCF991193A0974002AAAFC /* ko */,
 			);
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
@@ -777,7 +795,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -810,7 +828,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

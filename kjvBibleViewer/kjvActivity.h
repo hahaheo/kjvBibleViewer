@@ -13,3 +13,6 @@
 
 @interface kjvActivity : UIActivity
 @end
+
+@interface kjvKakaoActivity : UIActivity
+@end

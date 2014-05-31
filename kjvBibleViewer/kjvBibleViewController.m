@@ -138,7 +138,7 @@
     highlightRange = [highlight componentsSeparatedByString:@"|"];
     
     //DEBUG 용
-    //[[NSUserDefaults standardUserDefaults] setObject:@"01_01_001|03_02_012|02_11_010|10_01_002|66_02_011" forKey:@"saved_highlight"];
+    //[[NSUserDefaults standardUserDefaults] setObject:@"|01_01_001|03_02_012|02_11_010|10_01_002|66_02_011" forKey:@"saved_highlight"];
     
     // 폰트/배경색 역전 확인
     int color = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_color"];
@@ -491,12 +491,13 @@
         
         // activity 실행        
         // 커스텀 액티비티 추가
-        kjvActivity *ha = [[kjvActivity alloc] init];
-        NSArray *applicationActivities = [NSArray arrayWithObject:ha];
+        kjvActivity *highlightCustomActivity = [[kjvActivity alloc] init];
+        kjvKakaoActivity *kakaoCustomActivity = [[kjvKakaoActivity alloc] init];
+        NSArray *applicationActivities = [NSArray arrayWithObjects:highlightCustomActivity,kakaoCustomActivity,nil];
         
         self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:selectedRows applicationActivities:applicationActivities];
         [self presentViewController:self.activityViewController animated:YES
-                         completion:^{
+                         completion:^{ // 완료시 실행이 아니라 액티비티 버튼 누르면 시작되는 거임
                              // 선택한 범위 모두 없애고
                              for (NSString *string in selectedRows)
                              {
@@ -506,8 +507,18 @@
                              // 완료되면 오브젝트 삭제하고
                              [selectedRows removeAllObjects];
                              // 오른쪽 아이콘 이름 변경한다
-                             [self updateSelectedRowCountButton];
+                             //[self updateSelectedRowCountButton];
                          }];
+        // 완료시 테이블 업데이트
+        [self.activityViewController setCompletionHandler:^(NSString *act, BOOL done)
+         {
+             // 밑줄 업데이트 하고
+             // 하이라이트 있으면 파싱하기
+             NSString *highlight = [[NSUserDefaults standardUserDefaults] stringForKey:@"saved_highlight"];
+             highlightRange = [highlight componentsSeparatedByString:@"|"];
+             // 오른쪽 아이콘 이름 변경한다
+             [self updateSelectedRowCountButton];
+         }];
         
     }
     else if(doSearch) // 검색모드때 disable
@@ -637,14 +648,15 @@
         else
             [cell setBackgroundColor:[UIColor clearColor]];
     }
-    else
+    else // 성경이 아닌것을 볼때는 패스
         [cell setBackgroundColor:[UIColor clearColor]];
     
     if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
         //end of loading
         //for example [activityIndicator stopAnimating];
         // 검색모드일 경우 선택한 절로 점프하기
-        if(doSearch && (verseid > 0)) [self setSearchVerseJump];
+        if(doSearch && (verseid > 0))
+            [self setSearchVerseJump];
     }
 }
 
@@ -957,7 +969,7 @@
     }
 }
 
-
+/*
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -976,7 +988,7 @@
     }
 }
 
-
+*/
 
 /*
  // Override to support rearranging the table view.
