@@ -60,7 +60,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="킹제임스 흠정역" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llR-jA-G6g">
-                                                    <rect key="frame" x="20" y="9" width="154" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="154" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,6 +234,9 @@
                     <navigationItem key="navigationItem" title="킹제임스 흠정역" id="tQt-TN-PWz">
                         <barButtonItem key="backBarButtonItem" title=" " id="ZPl-XN-q2m"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="Title" destination="llR-jA-G6g" id="Af9-og-PD0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
@@ -249,7 +252,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="plainCell" id="kAY-eV-ru1">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kAY-eV-ru1" id="w6w-gD-EAz">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -257,7 +260,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checkCell" textLabel="Fo3-Gz-jPo" detailTextLabel="DhQ-cM-pma" style="IBUITableViewCellStyleSubtitle" id="LN3-Ws-NY2">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LN3-Ws-NY2" id="MQd-Gw-8cA">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -299,6 +302,7 @@
                                     <action selector="leftNavBarButtonClick:" destination="jhW-v0-VOf" eventType="touchUpInside" id="cN5-Sw-j0r"/>
                                 </connections>
                             </button>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="PQQ-wE-aK2">
                             <rect key="frame" x="99" y="6" width="122" height="33"/>
@@ -387,7 +391,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aha-7j-RAV">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aha-7j-RAV">
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -435,7 +439,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="qpX-Sx-Lwz">
                         <nil key="title"/>
-                        <barButtonItem key="backBarButtonItem" title=" " id="088-rL-njn"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="088-rL-njn" userLabel="Bar Button Item -">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2Lf-2H-7zS">
                             <rect key="frame" x="96" y="7" width="128" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -443,6 +449,7 @@
                                 <segment title="간략보기"/>
                                 <segment title="목록보기"/>
                             </segments>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="bibleViewSelect:" destination="iAt-rm-4dL" eventType="valueChanged" id="Mwz-Bd-oEl"/>
                             </connections>
@@ -473,7 +480,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="장 선택" id="YvH-jL-CSu">
-                        <barButtonItem key="backBarButtonItem" title=" " id="RBB-7Z-WvK"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="RBB-7Z-WvK">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="NavTitle" destination="YvH-jL-CSu" id="cIt-gz-mIt"/>
@@ -506,7 +515,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="2.0">
+                                    <fragment content="2.01">
                                         <attributes>
                                             <color key="NSColor" white="0.84557481751824815" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="18" name="Arial-BoldMT"/>
@@ -528,11 +537,11 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">바른 성경인 킹제임스 흠정역 성경을 많은사람들이 볼 수 있도록 아이폰 앱을 제작하였습니다. 또한 다양한 성경을 비교/검색 할 수 있도록 제작하였습니다.
+                                        <mutableString key="content">바른 성경인 킹제임스 흠정역 성경을 많은사람들이 볼 수 있도록 아이폰 앱을 제작하였습니다. 또한 다양한 성경을 비교/검색 할 수 있도록 제작하였습니다.
 
 작년에 선보였던 킹제임스 흠정역 1.0 버전과 큰 기능은 다르지 않지만, 여러분들이 의견 주신 기능을 추가하고, 인터페이스를 개선하고, 성능, 버그를 수정하기 위해 처음부터 새롭게 개발하여 출시 되었습니다.
 특히 아이패드 해상도를 지원하게 되어 모든 Apple기기에서 이질감 없이 사용할 수 있게 되었습니다  다른 전문적인 앱에 비교했을 때 불편한 점이 보일 수 있겠지만, Apple기기를 사용하는 분들께도 킹제임스 성경을 언제 어디서나 무료로 사용할 수 있게 해드리고자 노력했습니다. 
- 버그 &amp; 요청 등 어플리케이션에 관한 문의사항은 아래 개발자 연락처를 통해 문의주시기 바랍니다.  마지막으로 많은 도움 주신 사랑침례교회 정동수 목사님께 감사드립니다.  감사합니다.  </string>
+ 버그 &amp; 요청 등 어플리케이션에 관한 문의사항은 아래 개발자 연락처를 통해 문의주시기 바랍니다.  마지막으로 많은 도움 주신 사랑침례교회 정동수 목사님께 감사드립니다.  감사합니다.  </mutableString>
                                         <attributes>
                                             <color key="NSColor" white="0.84557481751824815" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="12" name="AppleSDGothicNeo-Regular"/>
@@ -865,6 +874,24 @@ Cg
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="del_verseline" textLabel="aJZ-uN-0Fu" style="IBUITableViewCellStyleDefault" id="GBi-zk-kmT">
+                                <rect key="frame" x="0.0" y="552" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GBi-zk-kmT" id="VvX-YN-eRr">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" horizontalCompressionResistancePriority="250" text="절 구분선 보이지 않기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aJZ-uN-0Fu">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="contentStretch" x="1.3877787807814457e-17" y="0.0" width="1" height="1"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -1148,7 +1175,7 @@ Cg
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3U1-IH-3oO"/>
-        <segue reference="IU1-Rj-A9y"/>
+        <segue reference="bJk-sH-KUS"/>
+        <segue reference="t5M-QZ-7YT"/>
     </inferredMetricsTieBreakers>
 </document>

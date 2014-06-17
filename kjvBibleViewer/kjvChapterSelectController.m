@@ -25,10 +25,19 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    // 네비 타이틀 항상 흰색
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    // 네비 타이틀 항상 흰색
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,7 +68,8 @@
         BUTTON_SIZE += IPAD_ICON_PLUS;
     NSString *temp = [[global_variable getNumberofChapterinBook] objectAtIndex:num];
     CGRect screen = [[UIScreen mainScreen] bounds];
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     int screen_width = screen.size.width;
     int screen_height = screen.size.height;
     int diff = 0;

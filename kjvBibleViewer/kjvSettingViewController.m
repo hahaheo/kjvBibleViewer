@@ -32,9 +32,13 @@
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
+    // 네비 타이틀 항상 흰색
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    
     // 컬러 반전 스위치 만들고 설정하기
     // 로테이션에 따라 넓이값 다르게 주기
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     int frame_width = self.view.frame.size.width;
     int frame_height = self.view.frame.size.height;
     //누워있다면 width/height 바꿔서 계산하기
@@ -73,6 +77,17 @@
         [self.mySwitch3 setOn:NO];
     //attach action method to the switch when the value changes
     [self.mySwitch3 addTarget:self action:@selector(defBibleSelection:) forControlEvents:UIControlEventValueChanged];
+    
+    // 줄간격 지우기 버튼 만들기
+    self.mySwitch4 = [[UISwitch alloc] initWithFrame:myFrame];
+    self.mySwitch4.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+    //set the switch to ON
+    if ((int)[[NSUserDefaults standardUserDefaults] integerForKey:@"saved_deleteverseline"] == 1)
+        [self.mySwitch4 setOn:YES];
+    else
+        [self.mySwitch4 setOn:NO];
+    //attach action method to the switch when the value changes
+    [self.mySwitch4 addTarget:self action:@selector(deleteVerseLine:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,7 +130,7 @@
     else if (section == 1) // 글씨 줄간격
         num_cell = 3;
     else if (section == 2) // 기타 설정s
-        num_cell = 6;
+        num_cell = 7;
     
     return num_cell;
 }
@@ -165,12 +180,15 @@
                 identifier = @"do_lockscreen";
                 break;
             case 3:
-                identifier = @"init_readdata";
+                identifier = @"del_verseline";
                 break;
             case 4:
-                identifier = @"init_searchlog";
+                identifier = @"init_readdata";
                 break;
             case 5:
+                identifier = @"init_searchlog";
+                break;
+            case 6:
                 identifier = @"init_highlight";
                 break;
         }
@@ -236,6 +254,10 @@
         {
             [cell addSubview:self.mySwitch2];
         }
+        if(indexPath.row == 3)
+        {
+            [cell addSubview:self.mySwitch4];
+        }
     }
     
     return cell;
@@ -299,20 +321,20 @@
     {
         UIAlertView *alert;
         switch (indexPath.row) {
-            case 3:
+            case 4:
                 // 기록삭제 경고 설정하기
                 alert = [[UIAlertView alloc] initWithTitle:@"알람" message:@"정말로 성경읽은 기록을 삭제하시겠습니까?" delegate:self cancelButtonTitle: @"삭제" otherButtonTitles: @"취소",nil];
                 alert.tag = 101;
                 [alert show];
                 //[alert release];
                 break;
-            case 4:
+            case 5:
                 alert = [[UIAlertView alloc] initWithTitle:@"알람" message:@"정말로 검색기록을 삭제하시겠습니까?" delegate:self cancelButtonTitle: @"삭제" otherButtonTitles: @"취소",nil];
                 alert.tag = 102;
                 [alert show];
                 //[alert release];
                 break;
-            case 5:
+            case 6:
                 alert = [[UIAlertView alloc] initWithTitle:@"알람" message:@"정말로 저장된 밑줄 기록을 삭제하시겠습니까?" delegate:self cancelButtonTitle: @"삭제" otherButtonTitles: @"취소",nil];
                 alert.tag = 103;
                 [alert show];
@@ -372,6 +394,20 @@
     else
     {
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saved_defbibleselect"];
+        [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    }
+    return;
+}
+
+- (IBAction)deleteVerseLine:(UISwitch *)sender {
+    if(sender.on)
+    {
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saved_deleteverseline"];
+        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saved_deleteverseline"];
         [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     }
     return;

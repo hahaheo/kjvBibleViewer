@@ -30,6 +30,8 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    // 네비 타이틀 항상 흰색
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 
     // Do any additional setup after loading the view.
     UIGraphicsBeginImageContext(self.view.frame.size);

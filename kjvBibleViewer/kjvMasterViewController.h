@@ -10,5 +10,5 @@
 
 @interface kjvMasterViewController : UITableViewController
 @property (nonatomic, strong) NSArray *menuItems;
-
+@property (weak, nonatomic) IBOutlet UILabel *Title;
 @end

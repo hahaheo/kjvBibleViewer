@@ -33,6 +33,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    int color = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_color"];
+    if(color == 1)
+    {
+        self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+        //self.navigationController.navigationBar.translucent = NO;
+    }
+    else
+    {
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        //self.navigationController.navigationBar.translucent = YES;
+    }
     // 다른view에서 새로고침이 필요한 경우 수행됨
     if(doviewDidLoad)
        [self viewDidLoad];
@@ -54,7 +66,7 @@
         //검색모드 끄기 및 변수 초기화
         doSearch = NO;
         //verseHeight = 0.0;
-        verseid = 0;
+        verseJumpid = 0;
     }
 }
 
@@ -133,6 +145,15 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"고전 사랑 믿음|창 사랑|권능 구원|부활|마 구원|사 행위" forKey:@"saved_searchlog"];
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"saved_highlight"];
     }
+    
+    //저장소로 부터 미리 저장된 데이터 값 확인하기 - 2.01 update check
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"saved_deleteverseline"] == nil)
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saved_deleteverseline"];
+    
+    // 설정값을 보고 셀 줄간표시 삭제
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"saved_deleteverseline"] == 1)
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
     // 하이라이트 있으면 파싱하기
     NSString *highlight = [[NSUserDefaults standardUserDefaults] stringForKey:@"saved_highlight"];
     highlightRange = [highlight componentsSeparatedByString:@"|"];
@@ -140,12 +161,19 @@
     //DEBUG 용
     //[[NSUserDefaults standardUserDefaults] setObject:@"|01_01_001|03_02_012|02_11_010|10_01_002|66_02_011" forKey:@"saved_highlight"];
     
-    // 폰트/배경색 역전 확인
     int color = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_color"];
     if(color == 1)
+    {
         self.tableView.backgroundColor = [UIColor blackColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+        //self.navigationController.navigationBar.translucent = NO;
+    }
     else
+    {
         self.tableView.backgroundColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        //self.navigationController.navigationBar.translucent = YES;
+    }
     
     // 락스크린 해제/설정 확인
     int lockscreen = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_lockscreen"];
@@ -467,9 +495,9 @@
 - (void)setSearchVerseJump {
     //설정된 verse 길이 만큼 점프
     //[self.tableView setContentOffset:CGPointMake(0, 200)];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:verseid-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:verseJumpid inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     [self.tableView reloadData];
-    verseid = 0;
+    verseJumpid = 0;
 }
 
 - (IBAction)navTitleChapterClick:(UIButton *)sender {
@@ -566,9 +594,15 @@
     [[NSUserDefaults standardUserDefaults] setInteger:[[NSUserDefaults standardUserDefaults] integerForKey:@"saved_bookid"] forKey:@"saved_searchbookid"];
     [[NSUserDefaults standardUserDefaults] setInteger:[[NSUserDefaults standardUserDefaults] integerForKey:@"saved_chapterid"] forKey:@"saved_searchchapterid"];
     
+    // 여러역본보기 얼마나 선택중인지 확인해서 배수곱하기
+    NSArray* na_BookName = [[[NSUserDefaults standardUserDefaults] stringForKey:@"saved_another_bookname"] componentsSeparatedByString:@"|"];
+    int BookCount = 1;
+    if([na_BookName[0] length] > 1)
+        BookCount += na_BookName.count;
+
     // segue로 이동오면 변할수 있게 데이터 저장
     [self saveTargetedid:book_id chapterid:chapter_id];
-    verseid = _verse;
+    verseJumpid = (_verse * BookCount) + (BookCount * -1);
     //verseHeight = 0.0;
     // 검색중 표시
     doSearch = YES;
@@ -655,7 +689,7 @@
         //end of loading
         //for example [activityIndicator stopAnimating];
         // 검색모드일 경우 선택한 절로 점프하기
-        if(doSearch && (verseid > 0))
+        if(doSearch && (verseJumpid > 0))
             [self setSearchVerseJump];
     }
 }
@@ -706,7 +740,7 @@
         CGSize labelSize = [content sizeWithFont:cellFont constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];
         
         // 검색시 verse까지의 height를 구한다
-        //if ((verseid - 1) > indexPath.row)
+        //if ((verseJumpid - 1) > indexPath.row)
         //    verseHeight += labelSize.height;
         
         //TODO: HARDCODING

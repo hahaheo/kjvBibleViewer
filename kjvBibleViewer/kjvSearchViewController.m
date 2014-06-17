@@ -29,13 +29,20 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    // 네비 타이틀 항상 흰색
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
+
     // 폰트랑 배경은 항상 디폴트
     font = [global_variable fontForCell:DEF_FONT_SIZE];
     _TableView.backgroundColor = [UIColor whiteColor];
@@ -64,12 +71,6 @@
         for(int i=a_searchlog.count - 1; i>=0; i--)
             [contents addObject:[a_searchlog objectAtIndex:i]];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    //[_SearchBar becomeFirstResponder];
-    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

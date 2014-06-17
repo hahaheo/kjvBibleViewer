@@ -27,6 +27,13 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    // 네비 타이틀 항상 흰색
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

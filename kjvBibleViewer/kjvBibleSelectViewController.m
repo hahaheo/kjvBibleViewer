@@ -8,6 +8,7 @@
 
 #import "global_variable.h"
 #import "SWRevealViewController.h"
+#import "kjvMasterViewController.h"
 #import "kjvBibleSelectViewController.h"
 
 @interface kjvBibleSelectViewController ()
@@ -28,8 +29,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    // 역본 다운로드 후 업데이트 된 내용이 보여주어야 하기 떄문에 어피어시 업데이트
     
+    // 네비 타이틀 항상 흰색
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    
+    // 역본 다운로드 후 업데이트 된 내용이 보여주어야 하기 떄문에 어피어시 업데이트
     selectedCell =  -1;
     // 받아온 역본들 있나 확인하는 셋팅
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -184,9 +188,17 @@
         NSString *bname = [bible_files objectAtIndex:(indexPath.row)];
         [[NSUserDefaults standardUserDefaults] setObject:bname forKey:@"saved_bookname"];
         
+        // 보고있는 다중역본 초기화
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"saved_another_bookname"];
+        
         // 순서대로 역본을 리스트에다 추가
         [self arrangeBibleListforMulti];
         [self.tableView reloadData];
+        
+        
+        // 사이드메뉴 타이틀 바꾸기
+        NSString* BookName = [[global_variable getBibleNameConverter] objectForKey:bname];
+        //[(kjvMasterViewController *)[[UIApplication sharedApplication] delegate] vc].Title.text = BookName;
     }
     //다중역본 선택한 경우
     else if(indexPath.section == 1)

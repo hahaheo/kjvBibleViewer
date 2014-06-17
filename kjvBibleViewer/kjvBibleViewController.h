@@ -10,7 +10,7 @@
 #import "MNMBottomPullToRefreshManager.h"
 
 // 검색중에는 자동업데이트금지/장-챕터고르기 금지 시키는 변수
-static int verseid = 0; // 펑션에서 불러올때 값을 홀딩해야함. disappear에서 초기화 처리 함
+static int verseJumpid = 0; // 펑션에서 불러올때 값을 홀딩해야함. disappear에서 초기화 처리 함
 static BOOL doSearch = NO; // disappear에서 초기화 처리 함
 static BOOL refreshDownLock = YES; // 초기화 처리할 필요 없음
 static BOOL doviewDidLoad = NO; // viewdidload에서 초기화 처리 함

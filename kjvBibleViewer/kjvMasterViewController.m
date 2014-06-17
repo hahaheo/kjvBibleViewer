@@ -7,6 +7,7 @@
 //
 
 #import "SWRevealViewController.h"
+#import "global_variable.h"
 #import "kjvMasterViewController.h"
 
 #import "kjvAboutViewController.h"
@@ -17,6 +18,7 @@
 #import "kjvBibleSelectController.h"
 
 @implementation kjvMasterViewController
+@synthesize Title;
 
 - (void)awakeFromNib
 {
@@ -25,6 +27,14 @@
         self.preferredContentSize = CGSizeMake(320.0, 600.0);
     }
     [super awakeFromNib];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // 타이틀 보고있는 역본으로 변경하기
+    NSString* BookName = [[global_variable getBibleNameConverter] objectForKey:[[NSUserDefaults standardUserDefaults] stringForKey:@"saved_bookname"]];
+    Title.text = BookName;
 }
 
 - (void)viewDidLoad
