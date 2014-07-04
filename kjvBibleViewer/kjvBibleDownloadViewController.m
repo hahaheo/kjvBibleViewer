@@ -87,7 +87,12 @@
     NSString *finalPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv",arg]];
     NSData *datalfa = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:KJV_DOWNLOAD_URL,arg]]];
     if(datalfa)
+    {
         [datalfa writeToFile:finalPath atomically:YES];
+        // 파일 백업 금지하기 (icloud위반)
+        NSURL *url = [NSURL fileURLWithPath:finalPath];
+        [global_variable addSkipBackupAttributeToItemAtURL:url];
+    }
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"다운로드 url주소가 정확하지 않습니다. 개발자에게 문의바랍니다." delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];

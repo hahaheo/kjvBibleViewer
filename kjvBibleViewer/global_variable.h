@@ -45,5 +45,6 @@
 +(NSArray *)getDownloadableBibleName;
 +(BOOL)checkConnectedToInternet;
 +(UIFont *)fontForCell:(CGFloat)size;
++(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
 
 @end

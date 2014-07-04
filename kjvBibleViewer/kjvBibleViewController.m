@@ -205,15 +205,18 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"성경 파일이 없습니다. 한글KJV흠정역을 기본으로 다운로드 받습니다." delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
             [alert show];
             [DejalBezelActivityView activityViewForView:self.view withLabel:@"다운로드중입니다..."];
-            //[NSThread detachNewThreadSelector:@selector(lfaDefaultDownloadThread:) toTarget:self withObject:DEFAULT_BIBLE];
-            [self kjvDownloadThread: DEFAULT_BIBLE];
+            [NSThread detachNewThreadSelector:@selector(kjvDownloadThread:) toTarget:self withObject:DEFAULT_BIBLE];
+            //[self kjvDownloadThread: DEFAULT_BIBLE];
             //is_firststart = NO;
         }
     }
+    else
+    {
+        [self loadContent:BookName bookid:bookid chapterid:chapterid];
+        //처음 성경 이동후 맨 위로 이동
+        [self.tableView setContentOffset:CGPointMake(0, 0)];
+    }
     
-    [self loadContent:BookName bookid:bookid chapterid:chapterid];
-    //처음 성경 이동후 맨 위로 이동
-    [self.tableView setContentOffset:CGPointMake(0, 0)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -229,7 +232,12 @@
     NSString *finalPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv",arg]];
     NSData *datakjv = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:KJV_DOWNLOAD_URL,arg]]];
     if(datakjv)
+    {
         [datakjv writeToFile:finalPath atomically:YES];
+        // 파일 백업 금지하기 (icloud위반)
+        NSURL *url = [NSURL fileURLWithPath:finalPath];
+        [global_variable addSkipBackupAttributeToItemAtURL:url];
+    }
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"다운로드 url주소가 정확하지 않습니다. 개발자에게 문의바랍니다." delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
@@ -242,7 +250,7 @@
     BookName = [[NSUserDefaults standardUserDefaults] stringForKey:@"saved_bookname"];
     
     //[self saveCurrentid];
-    //[self loadContent:BookName bookid:bookid chapterid:chapterid];
+    [self loadContent:BookName bookid:bookid chapterid:chapterid];
 }
 
 - (void)loadContent:(NSString*)bible_name bookid:(int)book_id chapterid:(int)chapter_id

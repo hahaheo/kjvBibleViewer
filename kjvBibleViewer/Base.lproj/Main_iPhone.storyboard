@@ -513,7 +513,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="2.01">
+                                    <fragment content="2.1">
                                         <attributes>
                                             <color key="NSColor" white="0.84557481751824815" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="18" name="Arial-BoldMT"/>
