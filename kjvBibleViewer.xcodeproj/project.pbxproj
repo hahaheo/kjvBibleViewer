@@ -66,6 +66,7 @@
 		52B9C7FF1939EB0100F89711 /* highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FB1939EB0100F89711 /* highlight@2x.png */; };
 		52B9C8001939EB0100F89711 /* kakaotalk.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FC1939EB0100F89711 /* kakaotalk.png */; };
 		52B9C8011939EB0100F89711 /* kakaotalk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FD1939EB0100F89711 /* kakaotalk@2x.png */; };
+		52C0245219DFDC7100DDB428 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DB4192245D9006C07C4 /* Main_iPhone.storyboard */; };
 		646DC56C19225AEB0092C090 /* kjvBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC56B19225AEB0092C090 /* kjvBibleViewController.m */; };
 		646DC572192395B80092C090 /* kjvAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC571192395B80092C090 /* kjvAboutViewController.m */; };
 		646DC57919239C8D0092C090 /* kjvSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC57819239C8D0092C090 /* kjvSettingViewController.m */; };
@@ -80,7 +81,6 @@
 		64BA1DAD192245D9006C07C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DAB192245D9006C07C4 /* InfoPlist.strings */; };
 		64BA1DAF192245D9006C07C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DAE192245D9006C07C4 /* main.m */; };
 		64BA1DB3192245D9006C07C4 /* kjvAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DB2192245D9006C07C4 /* kjvAppDelegate.m */; };
-		64BA1DB6192245D9006C07C4 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DB4192245D9006C07C4 /* Main_iPhone.storyboard */; };
 		64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DB7192245D9006C07C4 /* Main_iPad.storyboard */; };
 		64BA1DBC192245D9006C07C4 /* kjvMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */; };
 		64BA1DC1192245D9006C07C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DC0192245D9006C07C4 /* Images.xcassets */; };
@@ -193,6 +193,7 @@
 		52B9C7FB1939EB0100F89711 /* highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "highlight@2x.png"; sourceTree = "<group>"; };
 		52B9C7FC1939EB0100F89711 /* kakaotalk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakaotalk.png; sourceTree = "<group>"; };
 		52B9C7FD1939EB0100F89711 /* kakaotalk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kakaotalk@2x.png"; sourceTree = "<group>"; };
+		52C0245919DFDD6100DDB428 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		646DC56A19225AEB0092C090 /* kjvBibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvBibleViewController.h; sourceTree = "<group>"; };
 		646DC56B19225AEB0092C090 /* kjvBibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvBibleViewController.m; sourceTree = "<group>"; };
 		646DC570192395B80092C090 /* kjvAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvAboutViewController.h; sourceTree = "<group>"; };
@@ -229,7 +230,6 @@
 		64BA1DCF192245D9006C07C4 /* kjvBibleViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kjvBibleViewerTests-Info.plist"; sourceTree = "<group>"; };
 		64BA1DD1192245D9006C07C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		64BA1DD3192245D9006C07C4 /* kjvBibleViewerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvBibleViewerTests.m; sourceTree = "<group>"; };
-		64C30D2319506CEB0007D38C /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -625,6 +625,7 @@
 				64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */,
 				52B9C6BF1935FED600F89711 /* MNMBottomPullToRefresh.strings in Resources */,
 				5283A9AA193074240025CEAB /* menu_2.png in Resources */,
+				52C0245219DFDC7100DDB428 /* Main_iPhone.storyboard in Resources */,
 				64BA1DC1192245D9006C07C4 /* Images.xcassets in Resources */,
 				5283A9AE193074240025CEAB /* menu_6.png in Resources */,
 				5230CB8719271D8900A63792 /* README.md in Resources */,
@@ -632,7 +633,6 @@
 				5230CB7819271D8900A63792 /* LICENSE.md in Resources */,
 				5283A9A9193074240025CEAB /* menu_1.png in Resources */,
 				52B9C8001939EB0100F89711 /* kakaotalk.png in Resources */,
-				64BA1DB6192245D9006C07C4 /* Main_iPhone.storyboard in Resources */,
 				52B9C7A41935FFA700F89711 /* menu.png in Resources */,
 				64BA1DAD192245D9006C07C4 /* InfoPlist.strings in Resources */,
 				5283A9AB193074240025CEAB /* menu_3.png in Resources */,
@@ -740,7 +740,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				647E93D61942906A007A1BDC /* Base */,
-				64C30D2319506CEB0007D38C /* ko */,
+				52C0245919DFDD6100DDB428 /* ko */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -848,7 +848,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 찬 Chan (85KYZ3DMU3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -861,8 +861,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "732A01C7-3311-4A8B-9F6E-1963C35137DB";
-				SDKROOT = iphoneos7.1;
+				PROVISIONING_PROFILE = "F8FB61EA-E92A-4F84-AEA9-0E69EAC14DF1";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -872,7 +872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 찬 Chan (85KYZ3DMU3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -885,8 +885,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "732A01C7-3311-4A8B-9F6E-1963C35137DB";
-				SDKROOT = iphoneos7.1;
+				PROVISIONING_PROFILE = "F8FB61EA-E92A-4F84-AEA9-0E69EAC14DF1";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

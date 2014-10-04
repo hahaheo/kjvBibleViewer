@@ -42,7 +42,8 @@
     int frame_width = self.view.frame.size.width;
     int frame_height = self.view.frame.size.height;
     //누워있다면 width/height 바꿔서 계산하기
-    if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
+    //IOS8 대응 업데이트
+    if(((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight)) && (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1))
         frame_width = frame_height;
     
     CGRect myFrame = CGRectMake(frame_width - 65.0f, 6.0f, 250.0f, 25.0f);

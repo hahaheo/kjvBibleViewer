@@ -376,7 +376,7 @@
     NSString *navBibleTitle = [NSString stringWithFormat:@"%@ ▼", BibleName];
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:navBibleTitle];
     UIColor *_black = [UIColor blackColor];
-    UIFont *font = [UIFont fontWithName:@"Apple SD 산돌고딕 Neo" size:8.0f];
+    UIFont *font = [UIFont systemFontOfSize:8.0f];
     [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange([BibleName length] + 1, 1)];
     [attString addAttribute:NSForegroundColorAttributeName value:_black range:NSMakeRange(0, [navBibleTitle length])];
     [_navTitleBibleButton setAttributedTitle:attString forState:UIControlStateNormal];
@@ -531,30 +531,35 @@
         kjvKakaoActivity *kakaoCustomActivity = [[kjvKakaoActivity alloc] init];
         NSArray *applicationActivities = [NSArray arrayWithObjects:highlightCustomActivity,kakaoCustomActivity,nil];
         
+        //item 추가
         self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:selectedRows applicationActivities:applicationActivities];
-        [self presentViewController:self.activityViewController animated:YES
-                         completion:^{ // 완료시 실행이 아니라 액티비티 버튼 누르면 시작되는 거임
-                             // 선택한 범위 모두 없애고
-                             for (NSString *string in selectedRows)
-                             {
-                                 NSIndexPath *ip = [NSIndexPath indexPathForRow:[contents indexOfObject:string] inSection:0];
-                                 [self.tableView deselectRowAtIndexPath:ip animated:NO];
-                             }
-                             // 완료되면 오브젝트 삭제하고
-                             [selectedRows removeAllObjects];
-                             // 오른쪽 아이콘 이름 변경한다
-                             //[self updateSelectedRowCountButton];
-                         }];
+        self.activityViewController.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter,UIActivityTypeAirDrop];
+        //ios8 대응 업데이트
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1)
+            self.activityViewController.popoverPresentationController.sourceView = sender;
+        [self presentViewController:self.activityViewController animated:YES completion:^
+        { // 완료시 실행이 아니라 액티비티 버튼 누르면 시작되는 거임
+            // 선택한 범위 모두 없애고
+            for (NSString *string in selectedRows)
+            {
+                NSIndexPath *ip = [NSIndexPath indexPathForRow:[contents indexOfObject:string] inSection:0];
+                [self.tableView deselectRowAtIndexPath:ip animated:NO];
+            }
+            // 완료되면 오브젝트 삭제하고
+            [selectedRows removeAllObjects];
+            // 오른쪽 아이콘 이름 변경한다
+            //[self updateSelectedRowCountButton];
+        }];
         // 완료시 테이블 업데이트
         [self.activityViewController setCompletionHandler:^(NSString *act, BOOL done)
-         {
+        {
              // 밑줄 업데이트 하고
              // 하이라이트 있으면 파싱하기
              NSString *highlight = [[NSUserDefaults standardUserDefaults] stringForKey:@"saved_highlight"];
              highlightRange = [highlight componentsSeparatedByString:@"|"];
              // 오른쪽 아이콘 이름 변경한다
              [self updateSelectedRowCountButton];
-         }];
+        }];
         
     }
     else if(doSearch) // 검색모드때 disable
@@ -737,10 +742,18 @@
         CGRect screen = [[UIScreen mainScreen] bounds];
         //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        
+        //GAP_CORDI는 마지막글자 잘리는것 보정하기 위한 값, 경우에따라 계속 변함
         int screen_width = screen.size.width - GAP_CORDI;
         int screen_height = screen.size.height - GAP_CORDI;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+        {
+            screen_width -= GAP_PAD_CORDI;
+            screen_height -= GAP_PAD_CORDI;
+        }
         //누워있다면 width/height 바꿔서 계산하기
-        if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
+        //IOS8 대응 업데이트
+        if(((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight)) && (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1))
             screen_width = screen_height;
 
         //화면 넓이를 토대로 폰트길이구하기(290)
@@ -789,7 +802,7 @@
         NSString *navBibleChapter = [NSString stringWithFormat:@"%@장 ▼", chapterStr];
         NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:navBibleChapter];
         UIColor *_black = [UIColor blackColor];
-        UIFont *font = [UIFont fontWithName:@"Apple SD 산돌고딕 Neo" size:8.0f];
+        UIFont *font = [UIFont systemFontOfSize:8.0f];
         [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange([chapterStr length] + 2, 1)];
         [attString addAttribute:NSForegroundColorAttributeName value:_black range:NSMakeRange(0, [navBibleChapter length])];
         [_navTitleChapterButton setAttributedTitle:attString forState:UIControlStateNormal];
@@ -1002,8 +1015,8 @@
         NSString *navBibleChapter = [NSString stringWithFormat:@"%@ ▼", str];
         NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:navBibleChapter];
         UIColor *_black = [UIColor blackColor];
-        UIFont *_font = [UIFont fontWithName:@"Apple SD 산돌고딕 Neo" size:15.0f];
-        UIFont *font = [UIFont fontWithName:@"Apple SD 산돌고딕 Neo" size:8.0f];
+        UIFont *_font = [UIFont systemFontOfSize:13.0f];
+        UIFont *font = [UIFont systemFontOfSize:8.0f];
         [attString addAttribute:NSFontAttributeName value:_font range:NSMakeRange(0, [str length])];
         [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange([str length] + 1, 1)];
         [attString addAttribute:NSForegroundColorAttributeName value:_black range:NSMakeRange(0, [navBibleChapter length])];

@@ -69,22 +69,25 @@
     int BUTTON_SIZE = 50;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) // 아이패드면 좀더 크게 그린다
         BUTTON_SIZE += IPAD_ICON_PLUS;
-    CGRect screen = [[UIScreen mainScreen] bounds];
+    //CGRect screen = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = [global_variable getScreenSize]; //IOS8이상부터 자동 디텍팅 되므로 하위호환
     //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    int screen_width = screen.size.width;
-    int screen_height = screen.size.height;
-    //누워있다면 width/height 바꿔서 계산하기
-    if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
-    {
-        screen_width = screen_height;
-        screen_height = screen.size.width;
-    }
+    int screen_width = screenSize.width;
+    int screen_height = screenSize.height;
     int lineCount = (int)(screen_width / BUTTON_SIZE);
     
     // 로테이션 방향에 따라 그림 그리기
-    UIScrollView *lfaSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height - 60)];
-    [lfaSV setContentSize:CGSizeMake(screen.size.width, (NUMBER_OF_BIBLE / lineCount) * (BUTTON_SIZE + 2))];
+    UIScrollView *lfaSV;
+    if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
+        lfaSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height - 30)];
+    else if((orientation == UIDeviceOrientationPortrait) || (orientation == UIDeviceOrientationPortraitUpsideDown))
+        lfaSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height - 60)];
+    // 값 보정
+    int linePlus = 0;
+    if((NUMBER_OF_BIBLE % lineCount) != 0)
+        linePlus++;
+    [lfaSV setContentSize:CGSizeMake(screenSize.width, ((NUMBER_OF_BIBLE / lineCount) + linePlus) * BUTTON_SIZE)];
     [lfaSV setShowsVerticalScrollIndicator:YES];
     [lfaSV setShowsHorizontalScrollIndicator:NO];
     [_bibleQuickView addSubview:lfaSV];

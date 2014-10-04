@@ -63,26 +63,45 @@
 
 - (void)setNumberofChapter:(int)num
 {
+    [self setNumberofChapter:num isChangeOrientation:false];
+}
+
+- (void)setNumberofChapter:(int)num isChangeOrientation:(BOOL)isCO
+{
     int BUTTON_SIZE = 50;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) // 아이패드면 좀더 크게 그린다
         BUTTON_SIZE += IPAD_ICON_PLUS;
     NSString *temp = [[global_variable getNumberofChapterinBook] objectAtIndex:num];
-    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = [global_variable getScreenSize]; //IOS8이상부터 자동 디텍팅 되므로 하위호환
     //UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    int screen_width = screen.size.width;
-    int screen_height = screen.size.height;
-    int diff = 0;
+    int screen_width = screenSize.width;
+    int screen_height = screenSize.height;
+    //int diff = 0;
     //누워있다면 width/height 바꿔서 계산하기
-    if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
-    {
-        diff = 15; // 누웠을때 보정값
-        screen_width = screen_height;
-        screen_height = screen.size.width;
-    }
+    //if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
+    //    diff = 15; // 누웠을때 보정값
     int lineCount = (int)(screen_width / BUTTON_SIZE);
-    UIScrollView *chapterSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 60, screen_width, screen_height - 60)];
-    [chapterSV setContentSize:CGSizeMake(screen_width, ([temp integerValue] / lineCount) * (BUTTON_SIZE + 2) + diff)]; // 스크린의 전체 크기 구하기
+    // uiscroll을 만들어서 내용 추가
+    UIScrollView *chapterSV;
+    //ios8 대응, 첫 시작시에만 적용
+    if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) // 7.1 이하인 경우 무조껀 실행,
+        chapterSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 60, screen_width, screen_height - 60)];
+    else if (isCO) // 7.1 이상인데 landscape로 화면 돌린경우 적용
+    {
+        if(((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight)) && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+            chapterSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 30, screen_width, screen_height - 30)];
+        else
+            chapterSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 60, screen_width, screen_height - 60)];
+    }
+    else // 7.1 이상인데 첫 화면 진입한 경우
+        chapterSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height)];
+    
+    // 값 보정
+    int linePlus = 0;
+    if(([temp integerValue] % lineCount) != 0)
+        linePlus++;
+    [chapterSV setContentSize:CGSizeMake(screen_width, (([temp integerValue] / lineCount) + linePlus) * BUTTON_SIZE)]; // 스크린의 전체 크기 구하기
     [chapterSV setShowsVerticalScrollIndicator:YES];
     [chapterSV setShowsHorizontalScrollIndicator:NO];
     [self.view addSubview:chapterSV];
@@ -116,7 +135,7 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [[self.view subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)]; // view 초기화
-    [self setNumberofChapter:book_id - 1];
+    [self setNumberofChapter:book_id - 1 isChangeOrientation:true];
 }
 
 /*

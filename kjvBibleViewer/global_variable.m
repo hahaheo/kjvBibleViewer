@@ -124,4 +124,14 @@
     return success;
 }
 
++ (CGSize)getScreenSize {
+    //IOS8이상부터 자동 디텍팅 되므로 하위호환 필요
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    if ((NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        return CGSizeMake(screenSize.height, screenSize.width);
+    } else {
+        return screenSize;
+    }
+}
+
 @end

@@ -30,7 +30,8 @@
 #define IPAD_ICON_PLUS 25
 
 // 테이블 셀 갭 보정값
-#define GAP_CORDI 28
+#define GAP_CORDI 31
+#define GAP_PAD_CORDI 8
 
 #define COLOR_REVERSED 0
 
@@ -46,5 +47,6 @@
 +(BOOL)checkConnectedToInternet;
 +(UIFont *)fontForCell:(CGFloat)size;
 +(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
++(CGSize)getScreenSize;
 
 @end

@@ -265,8 +265,13 @@
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     int screen_width = screen.size.width - GAP_CORDI;
     int screen_height = screen.size.height - GAP_CORDI;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        screen_width -= GAP_PAD_CORDI;
+        screen_height -= GAP_PAD_CORDI;
+    }
     //누워있다면 width/height 바꿔서 계산하기
-    if((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight))
+    if(((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight)) && (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1))
         screen_width = screen_height;
     //화면 넓이를 토대로 폰트길이구하기(290)
     CGSize labelSize = [cellText sizeWithFont:font constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];

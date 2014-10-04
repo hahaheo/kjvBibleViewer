@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gKb-Rm-rnv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gKb-Rm-rnv">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -41,7 +41,7 @@
             </objects>
             <point key="canvasLocation" x="373" y="834"/>
         </scene>
-        <!--Kjv Master View Controller - Master-->
+        <!--Master-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController title="Master" id="pGg-6v-bdr" customClass="kjvMasterViewController" sceneMemberID="viewController">
@@ -61,7 +61,6 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="킹제임스 흠정역" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llR-jA-G6g">
                                                     <rect key="frame" x="20" y="11" width="154" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -82,11 +81,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-0Y-JEV">
                                                     <rect key="frame" x="20" y="12" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="성경 읽기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gK-gz-5s9">
                                                     <rect key="frame" x="53" y="11" width="98" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -107,11 +104,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ye5-7b-7h1">
                                                     <rect key="frame" x="20" y="12" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="성경 검색" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvy-4K-3iw">
                                                     <rect key="frame" x="53" y="11" width="98" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -132,11 +127,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_3.png" translatesAutoresizingMaskIntoConstraints="NO" id="b5B-bz-cEs">
                                                     <rect key="frame" x="20" y="12" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="밑줄 보기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opu-yU-GC3">
                                                     <rect key="frame" x="53" y="11" width="98" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -157,11 +150,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_4.png" translatesAutoresizingMaskIntoConstraints="NO" id="t6z-fH-r8s">
                                                     <rect key="frame" x="20" y="12" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="역본 선택" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BK1-Nh-HyU">
                                                     <rect key="frame" x="53" y="11" width="98" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -182,11 +173,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="jGK-aD-gzU">
                                                     <rect key="frame" x="20" y="12" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="설정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2M-QM-AkV">
                                                     <rect key="frame" x="53" y="11" width="98" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -207,11 +196,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_6.png" translatesAutoresizingMaskIntoConstraints="NO" id="zKd-59-TJz">
                                                     <rect key="frame" x="20" y="12" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="정보" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pku-5K-ECN">
                                                     <rect key="frame" x="53" y="11" width="98" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -393,12 +380,10 @@
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aha-7j-RAV">
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Zr6-R7-mYX">
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="plainCell" textLabel="EYb-Ku-VIm" style="IBUITableViewCellStyleDefault" id="vcu-xB-AGK">
@@ -466,7 +451,7 @@
             </objects>
             <point key="canvasLocation" x="2380" y="-117"/>
         </scene>
-        <!--Kjv Chapter Select Controller - 장 선택-->
+        <!--장 선택-->
         <scene sceneID="ogb-0J-9me">
             <objects>
                 <viewController id="pHX-eL-pbt" customClass="kjvChapterSelectController" sceneMemberID="viewController">
@@ -490,7 +475,7 @@
             </objects>
             <point key="canvasLocation" x="2768" y="408"/>
         </scene>
-        <!--Kjv About View Controller - About-->
+        <!--About-->
         <scene sceneID="gGe-TP-lDd">
             <objects>
                 <viewController title="About" id="oYO-gU-0SJ" customClass="kjvAboutViewController" sceneMemberID="viewController">
@@ -504,7 +489,6 @@
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="296" translatesAutoresizingMaskIntoConstraints="NO" id="MH5-qm-7ts">
                                 <rect key="frame" x="12" y="47" width="296" height="407"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="킹제임스 흠정역 - ">
                                         <attributes>
@@ -513,7 +497,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="2.1">
+                                    <fragment content="2.11">
                                         <attributes>
                                             <color key="NSColor" white="0.84557481751824815" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="18" name="Arial-BoldMT"/>
@@ -535,11 +519,11 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">바른 성경인 킹제임스 흠정역 성경을 많은사람들이 볼 수 있도록 아이폰 앱을 제작하였습니다. 또한 다양한 성경을 비교/검색 할 수 있도록 제작하였습니다.
+                                        <string key="content">바른 성경인 킹제임스 흠정역 성경을 많은사람들이 볼 수 있도록 아이폰 앱을 제작하였습니다. 또한 다양한 성경을 비교/검색 할 수 있도록 제작하였습니다.
 
 작년에 선보였던 킹제임스 흠정역 1.0 버전과 큰 기능은 다르지 않지만, 여러분들이 의견 주신 기능을 추가하고, 인터페이스를 개선하고, 성능, 버그를 수정하기 위해 처음부터 새롭게 개발하여 출시 되었습니다.
 특히 아이패드 해상도를 지원하게 되어 모든 Apple기기에서 이질감 없이 사용할 수 있게 되었습니다  다른 전문적인 앱에 비교했을 때 불편한 점이 보일 수 있겠지만, Apple기기를 사용하는 분들께도 킹제임스 성경을 언제 어디서나 무료로 사용할 수 있게 해드리고자 노력했습니다. 
- 버그 &amp; 요청 등 어플리케이션에 관한 문의사항은 아래 개발자 연락처를 통해 문의주시기 바랍니다.  마지막으로 많은 도움 주신 사랑침례교회 정동수 목사님께 감사드립니다.  감사합니다.  </mutableString>
+ 버그 &amp; 요청 등 어플리케이션에 관한 문의사항은 아래 개발자 연락처를 통해 문의주시기 바랍니다.  마지막으로 많은 도움 주신 사랑침례교회 정동수 목사님께 감사드립니다.  감사합니다.  </string>
                                         <attributes>
                                             <color key="NSColor" white="0.84557481751824815" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="12" name="AppleSDGothicNeo-Regular"/>
@@ -995,7 +979,7 @@ Cg
             </objects>
             <point key="canvasLocation" x="1954" y="2450"/>
         </scene>
-        <!--Kjv Bible Download View Controller - 역본 다운로드-->
+        <!--역본 다운로드-->
         <scene sceneID="T7q-lU-8O1">
             <objects>
                 <tableViewController id="mzk-sn-vKI" customClass="kjvBibleDownloadViewController" sceneMemberID="viewController">
@@ -1072,7 +1056,7 @@ Cg
             </objects>
             <point key="canvasLocation" x="1954" y="1762"/>
         </scene>
-        <!--Kjv Search View Controller - About-->
+        <!--About-->
         <scene sceneID="ser-P5-KVN">
             <objects>
                 <viewController title="About" id="2r9-8R-rc8" customClass="kjvSearchViewController" sceneMemberID="viewController">
@@ -1086,7 +1070,6 @@ Cg
                         <subviews>
                             <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" searchBarStyle="minimal" text="검색범위 설정시 성경약어를 단어로 입력합니다" prompt="띄어쓰기로 검색어를 구분합니다. 예)고전 사랑 믿음" translatesAutoresizingMaskIntoConstraints="NO" id="KdO-dN-Xdf">
                                 <rect key="frame" x="0.0" y="64" width="320" height="75"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="2r9-8R-rc8" id="UHj-Nc-wUr"/>
@@ -1094,7 +1077,6 @@ Cg
                             </searchBar>
                             <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="l2C-Ul-NSQ">
                                 <rect key="frame" x="0.0" y="139" width="320" height="429"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="plainCell" id="aVu-KY-euO">
@@ -1173,7 +1155,7 @@ Cg
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bJk-sH-KUS"/>
+        <segue reference="XNa-Ne-U3s"/>
         <segue reference="t5M-QZ-7YT"/>
     </inferredMetricsTieBreakers>
 </document>
