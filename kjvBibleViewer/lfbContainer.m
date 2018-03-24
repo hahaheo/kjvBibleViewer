@@ -8,31 +8,27 @@
 
 #import "lfbContainer.h"
 #import "global_variable.h"
-#import "ZipFile.h"
-#import "ZipException.h"
-#import "FileInZipInfo.h"
-#import "ZipWriteStream.h"
-#import "ZipReadStream.h"
+#import "Objective-Zip.h"
 
 @implementation lfbContainer
 
 +(NSMutableArray *)getWithBible:(NSString *)bible Book:(int)book Chapter:(int)chapter
 {
     NSString *documentsDirectory = (NSString *)[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    ZipFile *unzipFile = [[ZipFile alloc] initWithFileName:[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv", bible]] mode:ZipFileModeUnzip];
+    OZZipFile *unzipFile = [[OZZipFile alloc] initWithFileName:[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv", bible]] mode:OZZipFileModeUnzip];
     
     NSMutableArray *f_return; // 결과값 저장소
-    NSArray *lists = [unzipFile listFileInZipInfos];
-    for (FileInZipInfo *info in lists) {
+    NSArray *infos= [unzipFile listFileInZipInfos];
+    for (OZFileInZipInfo *info in infos) {
         //NSLog(@"- %@ %@ %d (%d)", info.name, info.date, info.size, info.level);
         
         if([info.name isEqualToString:[NSString stringWithFormat:@"%@%02d_%d.lfb", bible, book, chapter]]) {
             //locate the file in the zip
             [unzipFile locateFileInZip:info.name];
             
-            //expand the file in memory
-            ZipReadStream *read = [unzipFile readCurrentFileInZip];
-            NSMutableData *data = [[NSMutableData alloc] initWithLength:BUFFER_SIZE]; // !!TODO: 가변 buffer size require
+            // Expand the file in memory
+            OZZipReadStream *read= [unzipFile readCurrentFileInZip];
+            NSMutableData *data= [[NSMutableData alloc] initWithLength:info.length];
             [read readDataWithBuffer:data];
             [read finishedReading];
             
@@ -44,7 +40,7 @@
                sBookName = [[global_variable getShortedEngBookofBible] objectAtIndex:(book-1)];
                
             //lfb 파일의 모든 내용을 하나의 String으로 받아옴
-            NSString *temp = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+            NSString *temp = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
             // 앞에 \n01창 을 자름으로써 형태를 잡는다
             f_return = [[temp componentsSeparatedByString:[NSString stringWithFormat:@"\n%02d%@ ", book, sBookName]] mutableCopy];
@@ -52,14 +48,7 @@
             NSString *first = [f_return objectAtIndex:0] ;
             NSString *last = [f_return objectAtIndex:[f_return count]-1];
             [f_return replaceObjectAtIndex:0 withObject:[first substringFromIndex:[[NSString stringWithFormat:@"%02d%@ ", book, sBookName] length]]];
-            [f_return replaceObjectAtIndex:[f_return count]-1 withObject:[last substringToIndex:[last length] - 2]];
-            
-            //dealloc
-            [data release];
-            [read release];
-            [sBookName release];
-            [lists release];
-            [unzipFile release];
+            [f_return replaceObjectAtIndex:[f_return count]-1 withObject:[last substringToIndex:[last length] - 1]];
             
             return f_return;
         }
@@ -71,20 +60,20 @@
 +(NSString *)getWithBibleVerse:(NSString *)bible Book:(int)book Chapter:(int)chapter Verse:(int)verse
 {
     NSString *documentsDirectory = (NSString *)[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    ZipFile *unzipFile = [[ZipFile alloc] initWithFileName:[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv", bible]] mode:ZipFileModeUnzip];
+    OZZipFile *unzipFile = [[OZZipFile alloc] initWithFileName:[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv", bible]] mode:OZZipFileModeUnzip];
     
     NSMutableArray *f_return;
-    NSArray *lists = [unzipFile listFileInZipInfos];
-    for (FileInZipInfo *info in lists) {
+    NSArray *infos= [unzipFile listFileInZipInfos];
+    for (OZFileInZipInfo *info in infos) {
         //NSLog(@"- %@ %@ %d (%d)", info.name, info.date, info.size, info.level);
         
         if([info.name isEqualToString:[NSString stringWithFormat:@"%@%02d_%d.lfb", bible, book, chapter]]) {
             //locate the file in the zip
             [unzipFile locateFileInZip:info.name];
             
-            //expand the file in memory
-            ZipReadStream *read = [unzipFile readCurrentFileInZip];
-            NSMutableData *data = [[NSMutableData alloc] initWithLength:BUFFER_SIZE]; // !!TODO: 가변 buffer size require
+            // Expand the file in memory
+            OZZipReadStream *read= [unzipFile readCurrentFileInZip];
+            NSMutableData *data= [[NSMutableData alloc] initWithLength:info.length];
             [read readDataWithBuffer:data];
             [read finishedReading];
             
@@ -96,19 +85,12 @@
                 sBookName = [[global_variable getShortedEngBookofBible] objectAtIndex:(book-1)];
             
             //lfb 파일의 모든 내용을 하나의 String으로 받아옴
-            NSString *temp = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+            NSString *temp = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
             // 앞에 \n을 자름으로써 형태를 잡는다
             //f_return = [[temp componentsSeparatedByString:[NSString stringWithFormat:@"%\n", book, sBookName]] mutableCopy];
             f_return = [[temp componentsSeparatedByString:@"\n"] mutableCopy];
             //[f_return removeObjectAtIndex:0];
-            
-            //dealloc
-            [data release];
-            [read release];
-            [sBookName release];
-            [lists release];
-            [unzipFile release];
             
             //마지막절일 경우_를 붙혀준다
             if(verse == [f_return count])

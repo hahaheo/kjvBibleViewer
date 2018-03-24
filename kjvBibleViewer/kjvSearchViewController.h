@@ -15,7 +15,7 @@ static MNMBottomPullToRefreshManager *pullToRefreshManager_;
 {
     int SEARCH_SPACE_LEVEL;
     BOOL is_not_input_Search;
-    BOOL is_internet_connectable;
+    BOOL is_not_bookname;
     NSMutableArray *contents;
     UIFont *font;
 }

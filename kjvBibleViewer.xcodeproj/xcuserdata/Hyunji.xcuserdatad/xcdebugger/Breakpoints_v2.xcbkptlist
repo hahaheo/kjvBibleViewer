@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "kjvBibleViewer/kjvBibleViewController.m"
-            timestampString = "434039339.150089"
+            filePath = "kjvBibleViewer/DejalActivityView.m"
+            timestampString = "489330081.273283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "-contentDataCall:"
+            startingLineNumber = "680"
+            endingLineNumber = "680"
+            landmarkName = "+removeViewAnimated:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -53,6 +53,8 @@
 
 - (void)prepareWithActivityItems:(NSArray *)activityItems
 {
+    // 다중역본 case: 같은 세션일 경우 체크
+    NSString *bhighlight;
     // 이미 하이라이트된 정보 가져오기
     NSMutableString *highlight = [[[NSUserDefaults standardUserDefaults] stringForKey:@"saved_highlight"] mutableCopy];
     // 현재 보고있는 성경
@@ -63,9 +65,19 @@
     {
         NSArray *temp = [[activityItems[i] valueForKey:@"content"] componentsSeparatedByString:@":"];
         NSArray *temp2 = [temp[1] componentsSeparatedByString:@" "];
+        // 다중역본일 경우 앞에 역본괄호 제거
+        NSArray *sep = [[[NSUserDefaults standardUserDefaults] stringForKey:@"saved_another_bookname"] componentsSeparatedByString:@"|"];
         NSString *chapterNum = temp[0]; // 장
+        if (sep.count > 1)
+        {
+            NSArray *temp3 = [temp[0] componentsSeparatedByString:@"]"];
+            chapterNum = temp3[1];
+        }
+        else chapterNum = temp[0]; // 장
         NSString *verseNum = temp2[0]; // 절
         NSString *nhighlight = [NSString stringWithFormat:@"|%02d_%02d_%03d", bookid, [chapterNum intValue], [verseNum intValue]];
+        if ([bhighlight isEqualToString:nhighlight]) continue;
+        bhighlight = nhighlight;
 
         // 해당 내용을 바탕으로 하이라이트에 이미 저장되어있나 체크하기
         NSRange textRange = [highlight rangeOfString:nhighlight];

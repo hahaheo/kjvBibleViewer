@@ -7,6 +7,7 @@
 //
 
 #import "global_variable.h"
+#import "Reachability.h"
 
 @implementation global_variable
 
@@ -98,8 +99,9 @@
 
 + (BOOL)checkConnectedToInternet
 {
-    NSString *URLString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.google.com"]];
-    return (URLString != NULL) ? YES : NO;
+    // apple example 제공
+    int result = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
+    return (result != 0) ? YES : NO;
 }
 
 + (UIFont *)fontForCell:(CGFloat) size

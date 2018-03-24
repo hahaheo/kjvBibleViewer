@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 Kakao Corp.
+ * Copyright 2015-2016 Kakao Corp.
  *
  * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
  *
@@ -40,6 +40,10 @@ extern NSString *const KOErrorDomain;
  @constant  KOServerErrorUnknown 일반적인 서버 오류 응답. message를 확인해야 함
  @constant  KOServerErrorBadParameter 파라미터 이상
  @constant  KOServerErrorUnSupportedApi 지원되지 않은 API 호출
+ @constant  KOServerErrorBlocked 계정 제재 또는 특정 서비스에서 해당 사용자의 제재로 인해 API 호출이 금지된 경우
+ @constant  KOServerErrorPermission 해당 API에 대한 권한/퍼미션이 없는 경우
+ @constant  KOServerErrorMisConfigured 개발환경 설정 오류 (bundle id 등)
+ @constant  KOServerErrorInternal 내부 서버 오류
  @constant  KOServerErrorApiLimitExceed API 호출 횟수가 제한을 초과
  @constant  KOServerErrorNotSignedUpUser 미가입(가가입) 사용자
  @constant  KOServerErrorAlreadySignedUpUser 이미 가입된 사용자. 가입된 사용자에 대해 다시 가입 요청(앱 연결 요청)을 한 경우
@@ -47,8 +51,18 @@ extern NSString *const KOErrorDomain;
  @constant  KOServerErrorInvalidUserPropertyKey 등록되지 않은 user property key
  @constant  KOServerErrorNoSuchApp 존재하지 않는 앱
  @constant  KOServerErrorInvalidAccessToken access_token이 비정상적이거나 만료된 경우
- @constant  KOServerErrorInsufficientScope scope을 벗어난 api를 호출했을때
+ @constant  KOServerErrorInsufficientScope 해당 API에 대한 사용자의 동의 퍼미션이 없는 경우
+ @constant  KOServerErrorNotAgeAuthorized 연령인증이 필요한 경우
+ @constant  KOServerErrorLowerAgeLimit 현재 앱의 연령제한보다 사용자의 연령이 낮은 경우
+ @constant  KOServerErrorAlreadyAgeAuthorized 이미 연령인증이 완료된 경우
+ @constant  KOServerErrorAgeCheckLimitExceed 연령인증 최대 횟수를 초과한 경우
+ @constant  KOServerErrorAgeResultMismatched 이전에 인증했던 정보와 불일치 한 경우
+ @constant  KOServerErrorCIResultMismatched CI 정보가 불일치 할 경우
  @constant  KOServerErrorNotTalkUser 카카오톡 유저가 아닐때
+ @constant  KOServerErrorUserDeviceUnsupported 유저 디바이스가 해당 기능을 지원하지 않는 경우
+ @constant  KOServerErrorTalkMessageDisabled 받는이가 메시지 수신 거부를 설정한 경우
+ @constant  KOServerErrorTalkSendMessageMonthlyLimitExceed 한명이 특정앱에 대해 특정인에게 보낼 수 있는 한달 쿼터 초과시 발생
+ @constant  KOServerErrorTalkSendMessageDailyLimitExceed 한명이 특정앱에 대해 보낼 수 있는 하루 쿼터(받는 사람 관계없이) 초과시 발생
  @constant  KOServerErrorNotStoryUser 카카오스토리 유저가 아닐때
  @constant  KOServerErrorStoryImageUploadSizeExceed 카카오스토리 이미지 업로드 사이즈 제한 초과
  @constant  KOServerErrorStoryUploadTimeout 카카오스토리 이미지 업로드시 타임아웃
@@ -70,33 +84,48 @@ typedef enum {
     KOErrorHTTP = 9,
     KOErrorNotSupported = 10,
     KOErrorBadParameter = 11,
-    
+
     KOServerErrorUnknown = -1,
     KOServerErrorBadParameter = -2,
     KOServerErrorUnSupportedApi = -3,
+    KOServerErrorBlocked = -4,
+    KOServerErrorSecurity = -5,
+    KOServerErrorMisConfigured = -6,
+    KOServerErrorInternal = -9,
     KOServerErrorApiLimitExceed = -10,
 
     KOServerErrorNotSignedUpUser = -101,
     KOServerErrorAlreadySignedUpUser = -102,
-    KOServerErrorNotKakaoAcccountUser = -103,
-    
+    KOServerErrorNotKakaoAccountUser = -103,
+
     KOServerErrorInvalidUserPropertyKey = -201,
-    
+
     KOServerErrorNoSuchApp = -301,
 
     KOServerErrorInvalidAccessToken = -401,
     KOServerErrorInsufficientScope = -402,
-    
+    KOServerErrorNotAgeAuthorized = -450,
+    KOServerErrorLowerAgeLimit = -451,
+    KOServerErrorAlreadyAgeAuthorized = -452,
+    KOServerErrorAgeCheckLimitExceed = -453,
+    KOServerErrorAgeResultMismatched = -480,
+    KOServerErrorCIResultMismatched = -481,
+
     KOServerErrorNotTalkUser = -501,
+    KOServerErrorUserDeviceUnsupported = -504,
+    KOServerErrorTalkMessageDisabled = -530,
+    KOServerErrorTalkSendMessageMonthlyLimitExceed = -531,
+    KOServerErrorTalkSendMessageDailyLimitExceed = -532,
+    
     KOServerErrorNotStoryUser = -601,
     KOServerErrorStoryImageUploadSizeExceed = -602,
     KOServerErrorStoryUploadTimeout = -603,
     KOServerErrorStoryInvalidScrapUrl = -604,
     KOServerErrorStoryInvalidPostId = -605,
     KOServerErrorStoryMaxUploadNumberExceed = -606,
-    
+
     KOServerErrorPushNotExistPushToken = -901,
-    
+
     KOServerErrorUnderMaintenance = -9798
 
 } KOErrorCode;

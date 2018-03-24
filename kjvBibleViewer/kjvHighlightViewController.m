@@ -153,7 +153,9 @@
     if(((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight)) && (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1))
         screen_width = screen_height;
     //화면 넓이를 토대로 폰트길이구하기(290)
-    CGSize labelSize = [cellText sizeWithFont:font constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];
+    //CGSize labelSize = [cellText sizeWithFont:font constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];
+    CGSize labelSize = [cellText boundingRectWithSize:CGSizeMake(screen_width, 9999) options: NSStringDrawingUsesLineFragmentOrigin
+                                           attributes: @{ NSFontAttributeName:font } context: nil].size;
     
     //TODO: HARDCODING
     // 마지막절은 보정해준다

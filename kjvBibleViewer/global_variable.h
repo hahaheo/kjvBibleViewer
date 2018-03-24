@@ -14,7 +14,6 @@
 #define REFRESH_HEADER_HEIGHT 52.0f
 #define NUMBER_OF_BIBLE 66
 #define NUMBER_OF_CHAPTER 1189
-#define KJV_DOWNLOAD_URL @"http://hahaheo.iptime.org/kjvBibles/%@.kjv"
 #define DEFAULT_BIBLE @"korHKJV"
 #define MAXIMUM_CONCURRNET_BIBLE 3
 

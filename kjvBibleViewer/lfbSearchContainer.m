@@ -8,11 +8,7 @@
 
 #import "lfbSearchContainer.h"
 #import "global_variable.h"
-#import "ZipFile.h"
-#import "ZipException.h"
-#import "FileInZipInfo.h"
-#import "ZipWriteStream.h"
-#import "ZipReadStream.h"
+#import "Objective-Zip.h"
 
 @implementation lfbSearchContainer
 
@@ -51,33 +47,36 @@
     }
     
     NSString *documentsDirectory = (NSString *)[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    ZipFile *unzipFile = [[ZipFile alloc] initWithFileName:[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv", bible]] mode:ZipFileModeUnzip];
-    
+    OZZipFile *unzipFile = [[OZZipFile alloc] initWithFileName:[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv", bible]] mode:OZZipFileModeUnzip];
     NSMutableArray *result_return = [NSMutableArray arrayWithCapacity:(MAX_SEARCH_RESULT)];
-    NSArray *lists = [unzipFile listFileInZipInfos];
+    
     int chapter_count = (nextLevel * SIZE_OF_SEARCHSPACE); // nextlevel은 0부터 시작
     int k=0;
-    for (FileInZipInfo *info in lists) {
+    NSArray *infos= [unzipFile listFileInZipInfos];
+    for (OZFileInZipInfo *info in infos) {
         // 특정성경에서만 검색시 필요없는 파일은 스킵
         if((limitbiblespace != 0) && ![info.name hasPrefix:[NSString stringWithFormat:@"%@%02d_", bible, limitbiblespace]])
             continue;
-            
+        
         // 재검색일 경우 앞전에 스캔 내용은 skip
         if(k++ < chapter_count)
             continue;
         
+        // Locate the file in the zip
         [unzipFile locateFileInZip:info.name];
-        ZipReadStream *read = [unzipFile readCurrentFileInZip];
-
-        NSMutableData *data = [[NSMutableData alloc] initWithLength:BUFFER_SIZE]; // !!TODO: 가변 buffer size require
+        
+        // Expand the file in memory
+        OZZipReadStream *read= [unzipFile readCurrentFileInZip];
+        NSMutableData *data= [[NSMutableData alloc] initWithLength:info.length];
         [read readDataWithBuffer:data];
         [read finishedReading];
-        NSString *temp = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+        
+        NSString *temp = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
         // 검색 알고리즘
         // 전체에서 한번 검색하고 나서 있으면 세부적으로 팔까? 경우에수가 너무 많을듯.
         // 절별로 자르고, 검색한다? 직관적임 하지만 너무 많은 loop..
-        NSArray *temp_return = [[temp componentsSeparatedByString:[NSString stringWithFormat:@"\n"]] autorelease];
+        NSArray *temp_return = [temp componentsSeparatedByString:[NSString stringWithFormat:@"\n"]];
         
         for(int j=0; j<temp_return.count; j++)
         {
@@ -95,7 +94,7 @@
             if(c_searchText.count == i)
             {
                 NSRange range = NSMakeRange(2, [[temp_return objectAtIndex:j] length]-2);
-                NSString *resultString = [[[temp_return objectAtIndex:j] substringWithRange:range] autorelease];
+                NSString *resultString = [[temp_return objectAtIndex:j] substringWithRange:range];
                 [result_return addObject:resultString];
             }
         }
@@ -103,6 +102,7 @@
         chapter_count++;
         if(chapter_count > SIZE_OF_SEARCHSPACE * (nextLevel+1))
             break;
+
     }
     
     return result_return;

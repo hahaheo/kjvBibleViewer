@@ -11,6 +11,7 @@
 #import "kjvBibleDownloadViewController.h"
 #import "DejalActivityView.h"
 
+@import CloudKit;
 @interface kjvBibleDownloadViewController ()
 
 @end
@@ -32,8 +33,11 @@
     
     if(![global_variable checkConnectedToInternet])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"성경을 다운로드 받기 위해서는 인터넷 연결이 필요합니다. 인터넷 연결 후 다시 시도하세요" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"ERROR" message:@"성경을 다운로드 받기 위해서는 인터넷 연결이 필요합니다. 인터넷 연결 후 다시 시도하세요" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        });
         is_internet_connectable = NO;
         return;
     }
@@ -85,31 +89,45 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *finalPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv",arg]];
-    NSData *datalfa = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:KJV_DOWNLOAD_URL,arg]]];
-    if(datalfa)
-    {
-        [datalfa writeToFile:finalPath atomically:YES];
-        // 파일 백업 금지하기 (icloud위반)
-        NSURL *url = [NSURL fileURLWithPath:finalPath];
-        [global_variable addSkipBackupAttributeToItemAtURL:url];
-    }
-    else
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"다운로드 url주소가 정확하지 않습니다. 개발자에게 문의바랍니다." delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    int svd_bookid = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_bookid"];
-    int svd_chapterid = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_chapterid"];
-    if(!(svd_bookid > 0) && !(svd_chapterid > 0))
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:arg forKey:@"saved_bookname"];
-        [kjvBibleViewController saveTargetedid:1 chapterid:1];
-    }
     
-    [DejalBezelActivityView removeViewAnimated:YES];
-    [self loadDownloadableData];
-    [self.tableView reloadData];
+    CKDatabase *publicDatabase = [[CKContainer defaultContainer] publicCloudDatabase];
+    CKRecordID *recordID = [[CKRecordID alloc] initWithRecordName:arg];
+    [publicDatabase fetchRecordWithID:recordID completionHandler:^(CKRecord *record, NSError *error) {
+        if (error) {
+            // Error handling for failed fetch from public database
+            UIAlertController *alert = [UIAlertController alloc];
+            if ([error code] == 1) {
+                alert = [UIAlertController alertControllerWithTitle:@"ERROR" message:@"애플계정이 활성화되지 않았습니다. 역본 다운로드를 위해 애플계정 로그인이 필요합니다. 설정->iCloud 에서 애플계정 로그인을 해주세요." preferredStyle:UIAlertControllerStyleAlert];
+            }
+            else {
+                alert = [UIAlertController alertControllerWithTitle:@"ERROR" message:@"다운로드가 유효하지 않습니다. 개발자에게 문의 바랍니다." preferredStyle:UIAlertControllerStyleAlert];
+            }
+            [self presentViewController:alert animated:YES completion:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            });
+        }
+        else {
+            // Display the fetched record
+            CKAsset *asset = [record objectForKey:@"file"];
+            NSData *datalfa = [NSData dataWithContentsOfURL:[asset fileURL]];
+            [datalfa writeToFile:finalPath atomically:YES];
+            // 파일 백업 금지하기 (icloud위반)
+            [global_variable addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:finalPath]];
+            
+            NSInteger svd_bookid = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_bookid"];
+            NSInteger svd_chapterid = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_chapterid"];
+            if(!(svd_bookid > 0) && !(svd_chapterid > 0))
+            {
+                [[NSUserDefaults standardUserDefaults] setObject:arg forKey:@"saved_bookname"];
+                [kjvBibleViewController saveTargetedid:1 chapterid:1];
+            }
+            
+            [DejalActivityView removeView];
+            [self loadDownloadableData];
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -145,7 +163,7 @@
 {
     if(is_internet_connectable)
     {
-        [DejalBezelActivityView activityViewForView:self.view withLabel:@"다운로드중입니다..."];
+        [DejalBezelActivityView activityViewForView:self.view withLabel:@"다운로드중입니다."];
         [NSThread detachNewThreadSelector:@selector(kjvDownloadThread:) toTarget:self withObject:[availList_down objectAtIndex:indexPath.row]];
     }
 }

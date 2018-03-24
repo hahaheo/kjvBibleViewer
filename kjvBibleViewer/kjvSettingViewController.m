@@ -320,28 +320,47 @@
     // 그외
     else if (indexPath.section == 2)
     {
-        UIAlertView *alert;
+        UIAlertAction *delete;
+        UIAlertAction *cancel = [UIAlertAction
+                                 actionWithTitle:@"취소"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action) {}];;
+        UIAlertController *alert;
         switch (indexPath.row) {
             case 4:
                 // 기록삭제 경고 설정하기
-                alert = [[UIAlertView alloc] initWithTitle:@"알람" message:@"정말로 성경읽은 기록을 삭제하시겠습니까?" delegate:self cancelButtonTitle: @"삭제" otherButtonTitles: @"취소",nil];
-                alert.tag = 101;
-                [alert show];
-                //[alert release];
+                alert = [UIAlertController alertControllerWithTitle:@"알림" message:@"정말로 성경읽은 기록을 삭제하시겠습니까?" preferredStyle:UIAlertControllerStyleAlert];
+                delete = [UIAlertAction
+                          actionWithTitle:@"삭제"
+                          style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action) {
+                              [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"saved_readbible"];
+                          }];
                 break;
             case 5:
-                alert = [[UIAlertView alloc] initWithTitle:@"알람" message:@"정말로 검색기록을 삭제하시겠습니까?" delegate:self cancelButtonTitle: @"삭제" otherButtonTitles: @"취소",nil];
-                alert.tag = 102;
-                [alert show];
-                //[alert release];
+                // 검색기록삭제 경고 설정하기
+                alert = [UIAlertController alertControllerWithTitle:@"알림" message:@"정말로 검색기록을 삭제하시겠습니까?" preferredStyle:UIAlertControllerStyleAlert];
+                delete = [UIAlertAction
+                          actionWithTitle:@"삭제"
+                          style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action) {
+                              [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"saved_searchlog"];
+                          }];
                 break;
             case 6:
-                alert = [[UIAlertView alloc] initWithTitle:@"알람" message:@"정말로 저장된 밑줄 기록을 삭제하시겠습니까?" delegate:self cancelButtonTitle: @"삭제" otherButtonTitles: @"취소",nil];
-                alert.tag = 103;
-                [alert show];
-                //[alert release];
+                // 밑줄기록삭제 경고 설정하기
+                alert = [UIAlertController alertControllerWithTitle:@"알림" message:@"정말로 저장된 밑줄 기록을 삭제하시겠습니까?" preferredStyle:UIAlertControllerStyleAlert];
+                delete = [UIAlertAction
+                          actionWithTitle:@"삭제"
+                          style:UIAlertActionStyleDefault
+                          handler:^(UIAlertAction * action) {
+                              [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"saved_highlight"];
+                          }];
                 break;
         }
+        [alert addAction:delete];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     
     else return;
@@ -350,7 +369,7 @@
 }
 
 // 성경읽은 데이터 삭제시 트리거
--(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+/*-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0) {
         if (alertView.tag == 101) {
             [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"saved_readbible"];
@@ -363,6 +382,7 @@
         }
     }
 }
+*/
 
 - (IBAction)changeColorReverse:(UISwitch *)sender {
     if(sender.on)

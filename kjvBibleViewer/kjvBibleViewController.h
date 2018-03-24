@@ -12,7 +12,8 @@
 // 검색중에는 자동업데이트금지/장-챕터고르기 금지 시키는 변수
 static int verseJumpid = 0; // 펑션에서 불러올때 값을 홀딩해야함. disappear에서 초기화 처리 함
 static BOOL doSearch = NO; // disappear에서 초기화 처리 함
-static BOOL refreshDownLock = YES; // 초기화 처리할 필요 없음
+static BOOL refreshDownLock = NO; // 초기화 처리할 필요 없음
+static BOOL refreshDownBottomCheck = YES;
 static BOOL doviewDidLoad = NO; // viewdidload에서 초기화 처리 함
 
 @interface kjvBibleViewController : UITableViewController <MNMBottomPullToRefreshManagerClient>
@@ -27,13 +28,13 @@ static BOOL doviewDidLoad = NO; // viewdidload에서 초기화 처리 함
     NSMutableArray *selectedRows; // 선택된 내용 저장
     
     // 최초 오픈시 설정되어있던 성경과 챕터
-    int startChapterid;
-    int startBookid;
-    int lastChapterid;
+    NSInteger startChapterid;
+    NSInteger startBookid;
+    NSInteger lastChapterid;
     
     // 현재 설정된 성경과 챕터
-    int bookid;
-    int chapterid;
+    NSInteger bookid;
+    NSInteger chapterid;
     
     // 나타내야할 셀 갯수
     int cellCount;

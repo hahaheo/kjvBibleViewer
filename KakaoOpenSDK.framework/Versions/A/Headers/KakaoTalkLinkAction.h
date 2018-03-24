@@ -1,20 +1,20 @@
 /**
- * Copyright 2014 Kakao Corp.
- *
- * Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright 2015 Kakao Corp.
+*
+* Redistribution and modification in source or binary forms are not permitted without specific prior written permission.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 /*!
  @header KakaoTalkLinkAction.h
@@ -49,30 +49,43 @@ typedef NS_ENUM(NSInteger, KakaoTalkLinkActionDeviceType) {
  */
 @interface KakaoTalkLinkAction : NSObject
 
-@property (nonatomic, readonly) NSString *type;
-@property (nonatomic, readonly) NSString *URL;
-@property (nonatomic, readonly) NSString *OS;
-@property (nonatomic, readonly) NSString *devicetype;
-@property (nonatomic, readonly) NSString *execparam;
+@property(nonatomic, readonly) NSString *type;
+@property(nonatomic, readonly) NSString *URL;
+@property(nonatomic, readonly) NSString *OS;
+@property(nonatomic, readonly) NSString *devicetype;
+@property(nonatomic, readonly) NSString *marketparam;
+@property(nonatomic, readonly) NSString *execparam;
 
-+ (KakaoTalkLinkAction*)createWebAction;
++ (KakaoTalkLinkAction *)createWebAction;
 
 /*!
- @abstract 웹용 Action을 생성한다.
+ @abstract 웹용 Action을 생성한다. 앱링크에 연결할 수 없는 플랫폼일 경우, 사용될 web url 로 지정할 수 있다. e.g. PC (Mac OS, Windows)
  @param url 웹 url
 */
-+ (KakaoTalkLinkAction*)createWebAction:(NSString*)url;
++ (KakaoTalkLinkAction *)createWebAction:(NSString *)url;
 
 //+ (KakaoTalkLinkAction*)createAppAction;
 
 /*!
  @abstract 앱용 Action을 생성한다.
- @param os 단말의 OS Platform. KakaoTalkLinkActionOSPlatform enum 참조.
- @param devicetype 단말의 종류. KakaoTalkLinkActionDeviceType enum 참조.
+ @param os 단말의 OS Platform. KakaoTalkLinkActionOSPlatform enum 참조
+ @param devicetype 단말의 종류. KakaoTalkLinkActionDeviceType enum 참조
  @param execparam 애플리케이션 구동 url 의 parameter
  */
-+ (KakaoTalkLinkAction*)createAppAction:(KakaoTalkLinkActionOSPlatform)os
-                             devicetype:(KakaoTalkLinkActionDeviceType)devicetype
-                              execparam:(NSDictionary*)execparam;
++ (KakaoTalkLinkAction *)createAppAction:(KakaoTalkLinkActionOSPlatform)os
+                              devicetype:(KakaoTalkLinkActionDeviceType)devicetype
+                               execparam:(NSDictionary *)execparam;
+
+/*!
+ @abstract 앱용 Action을 생성한다.
+ @param os 단말의 OS Platform. KakaoTalkLinkActionOSPlatform enum 참조
+ @param devicetype 단말의 종류. KakaoTalkLinkActionDeviceType enum 참조
+ @param marketparam 애플리케이션이 없을 시 설치 url 의 parameter
+ @param execparam 애플리케이션 구동 url 의 parameter
+ */
++ (KakaoTalkLinkAction *)createAppAction:(KakaoTalkLinkActionOSPlatform)os
+                              devicetype:(KakaoTalkLinkActionDeviceType)devicetype
+                             marketparam:(NSDictionary *)marketparam
+                               execparam:(NSDictionary *)execparam;
 
 @end

@@ -47,16 +47,19 @@
     font = [global_variable fontForCell:DEF_FONT_SIZE];
     _TableView.backgroundColor = [UIColor whiteColor];
     
-    // 인터넷 연결되어있나 확인
-    if(![global_variable checkConnectedToInternet])
+    // 지정된 성경책이 있나 확인
+    if([[[NSUserDefaults standardUserDefaults] stringForKey:@"saved_bookname"]isEqualToString:@""])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"지정된 성경이 없으므로 검색을 사용할수 없습니다" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-        [alert show];
-        is_internet_connectable = NO;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"알림" message:@"지정된 성경이 없으므로 검색을 사용할수 없습니다" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        });
+        is_not_bookname = NO;
         return;
     }
     else
-        is_internet_connectable = YES;
+        is_not_bookname = YES;
     
     // 첫 실행시 검색 기록이 있다면 불러와서 띄우기
     is_not_input_Search = YES;
@@ -102,16 +105,22 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar
 {
-    if(!is_internet_connectable)
+    if(!is_not_bookname)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"지정된 성경이 없으므로 검색을 사용할수 없습니다" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"알림" message:@"지정된 성경이 없으므로 검색을 사용할수 없습니다" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        });
         return;
     }
     else if(_SearchBar.text.length < 2)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"검색어는 2자 이상 작성해야 합니다" message:@"" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"알림" message:@"검색어는 2자 이상 작성해야 합니다" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        });
         return;
     }
     // 검색 기록에 추가
@@ -164,7 +173,7 @@
     
     [pullToRefreshManager_ relocatePullToRefreshView];
     
-    [DejalBezelActivityView removeViewAnimated:YES];
+    [DejalActivityView removeView];
     // 검색범위를 넘으면 리플래시 출력 중단
     if(SEARCH_SPACE_LEVEL >= (NUMBER_OF_CHAPTER / SIZE_OF_SEARCHSPACE))
         [pullToRefreshManager_ setPullToRefreshViewVisible:NO];
@@ -221,10 +230,11 @@
         // 첫번째는 성경
         NSString *shortBible = [a_result objectAtIndex:0];
         int indexShortBible = [[global_variable getShortedBookofBible] indexOfObject:shortBible] + 1;
-        if(indexShortBible > 66) // 못찾으면 영어성경과 대조
+        if(indexShortBible > 66 || indexShortBible < 1) // 못찾으면 영어성경과 대조
         {
             indexShortBible = [[global_variable getShortedEngBookofBible] indexOfObject:shortBible] + 1;
         }
+        
         // 두번째에서 또 쪼갬
         NSString *temp = [a_result objectAtIndex:1];
         NSArray *aa_result = [temp componentsSeparatedByString:@":"];
@@ -274,9 +284,9 @@
     if(((orientation == UIDeviceOrientationLandscapeLeft) || (orientation == UIDeviceOrientationLandscapeRight)) && (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1))
         screen_width = screen_height;
     //화면 넓이를 토대로 폰트길이구하기(290)
-    CGSize labelSize = [cellText sizeWithFont:font constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];
-
-    
+    //CGSize labelSize = [cellText sizeWithFont:font constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];
+    CGSize labelSize = [cellText boundingRectWithSize:CGSizeMake(screen_width, 9999) options: NSStringDrawingUsesLineFragmentOrigin
+                                             attributes: @{ NSFontAttributeName: font } context: nil].size;
     // 마지막절은 17.9 만큼 빼준다
     //if([chapterVerseCount indexOfObject:[NSNumber numberWithInt:(indexPath.row + 1)]] != NSNotFound)
     //    labelSize.height -= 17.9f;
@@ -298,7 +308,7 @@
     {
         NSRange nextString; nextString.location = 0;
         // 전체에서 한번 찾는다 (뒤에서부터 찾기)
-        NSRange findString = [content rangeOfString:[searchWord objectAtIndex:i] options:NSBackwardsSearch];
+        NSRange findString = [content rangeOfString:[searchWord objectAtIndex:i] options:NSCaseInsensitiveSearch];
         while (!(findString.location == NSNotFound)) // 못찾을때까지 루프 돌림
         {
             // 찾은 부분을 색칠 한다

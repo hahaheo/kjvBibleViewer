@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,45 +13,42 @@
 		52267AEA192CDC16002573A7 /* kjvChapterSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52267AE9192CDC16002573A7 /* kjvChapterSelectController.m */; };
 		52267AED192CDC28002573A7 /* kjvBibleDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52267AEC192CDC28002573A7 /* kjvBibleDownloadViewController.m */; };
 		52267C1C192E1546002573A7 /* Stainless-steel.png in Resources */ = {isa = PBXBuildFile; fileRef = 52267C1B192E1546002573A7 /* Stainless-steel.png */; };
-		5230CB7319271D8900A63792 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB2E19271D8900A63792 /* .gitignore */; };
-		5230CB7619271D8900A63792 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB3619271D8900A63792 /* Default.png */; };
-		5230CB7719271D8900A63792 /* GETTING_STARTED.md in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB3719271D8900A63792 /* GETTING_STARTED.md */; };
-		5230CB7819271D8900A63792 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB3819271D8900A63792 /* LICENSE.md */; };
-		5230CB7A19271D8900A63792 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB3A19271D8900A63792 /* MainWindow.xib */; };
-		5230CB7B19271D8900A63792 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB3D19271D8900A63792 /* ioapi.c */; };
-		5230CB7C19271D8900A63792 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB3F19271D8900A63792 /* mztools.c */; };
-		5230CB7D19271D8900A63792 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB4119271D8900A63792 /* unzip.c */; };
-		5230CB7E19271D8900A63792 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB4319271D8900A63792 /* zip.c */; };
-		5230CB7F19271D8900A63792 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB4719271D8900A63792 /* FileInZipInfo.m */; };
-		5230CB8019271D8900A63792 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB4919271D8900A63792 /* ZipException.m */; };
-		5230CB8119271D8900A63792 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB4B19271D8900A63792 /* ZipFile.m */; };
-		5230CB8219271D8900A63792 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB4D19271D8900A63792 /* ZipReadStream.m */; };
-		5230CB8319271D8900A63792 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB4F19271D8900A63792 /* ZipWriteStream.m */; };
-		5230CB8419271D8900A63792 /* Objective_Zip-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB5319271D8900A63792 /* Objective_Zip-Info.plist */; };
-		5230CB8519271D8900A63792 /* Objective_ZipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB5519271D8900A63792 /* Objective_ZipViewController.xib */; };
-		5230CB8619271D8900A63792 /* ObjectiveZipIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB5619271D8900A63792 /* ObjectiveZipIcon.png */; };
-		5230CB8719271D8900A63792 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5230CB5719271D8900A63792 /* README.md */; };
-		5230CB8819271D8900A63792 /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB5919271D8900A63792 /* adler32.c */; };
-		5230CB8919271D8900A63792 /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB5A19271D8900A63792 /* compress.c */; };
-		5230CB8A19271D8900A63792 /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB5B19271D8900A63792 /* crc32.c */; };
-		5230CB8B19271D8900A63792 /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB5D19271D8900A63792 /* deflate.c */; };
-		5230CB8C19271D8900A63792 /* gzclose.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB5F19271D8900A63792 /* gzclose.c */; };
-		5230CB8D19271D8900A63792 /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6119271D8900A63792 /* gzlib.c */; };
-		5230CB8E19271D8900A63792 /* gzread.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6219271D8900A63792 /* gzread.c */; };
-		5230CB8F19271D8900A63792 /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6319271D8900A63792 /* gzwrite.c */; };
-		5230CB9019271D8900A63792 /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6419271D8900A63792 /* infback.c */; };
-		5230CB9119271D8900A63792 /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6519271D8900A63792 /* inffast.c */; };
-		5230CB9219271D8900A63792 /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6819271D8900A63792 /* inflate.c */; };
-		5230CB9319271D8900A63792 /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6A19271D8900A63792 /* inftrees.c */; };
-		5230CB9419271D8900A63792 /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6C19271D8900A63792 /* trees.c */; };
-		5230CB9519271D8900A63792 /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB6E19271D8900A63792 /* uncompr.c */; };
-		5230CB9619271D8900A63792 /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 5230CB7119271D8900A63792 /* zutil.c */; };
+		5256733F1D27A3FD008B804E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5256733E1D27A3FD008B804E /* Reachability.m */; };
+		5256738B1D27A683008B804E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 525673421D27A683008B804E /* .gitignore */; };
+		5256738C1D27A683008B804E /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 525673431D27A683008B804E /* LICENSE.md */; };
+		5256738D1D27A683008B804E /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673461D27A683008B804E /* ioapi.c */; };
+		5256738E1D27A683008B804E /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673481D27A683008B804E /* unzip.c */; };
+		5256738F1D27A683008B804E /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5256734A1D27A683008B804E /* zip.c */; };
+		525673901D27A683008B804E /* OZFileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 525673511D27A683008B804E /* OZFileInZipInfo.m */; };
+		525673911D27A683008B804E /* OZZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 525673551D27A683008B804E /* OZZipException.m */; };
+		525673921D27A683008B804E /* OZZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 525673591D27A683008B804E /* OZZipFile.m */; };
+		525673931D27A683008B804E /* OZZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5256735F1D27A683008B804E /* OZZipReadStream.m */; };
+		525673941D27A683008B804E /* OZZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 525673641D27A683008B804E /* OZZipWriteStream.m */; };
+		525673981D27A683008B804E /* objective-zip.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5256736B1D27A683008B804E /* objective-zip.podspec */; };
+		525673991D27A683008B804E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5256736F1D27A683008B804E /* README.md */; };
+		5256739A1D27A683008B804E /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673711D27A683008B804E /* adler32.c */; };
+		5256739B1D27A683008B804E /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673721D27A683008B804E /* compress.c */; };
+		5256739C1D27A683008B804E /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673731D27A683008B804E /* crc32.c */; };
+		5256739D1D27A683008B804E /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673751D27A683008B804E /* deflate.c */; };
+		5256739E1D27A683008B804E /* gzclose.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673771D27A683008B804E /* gzclose.c */; };
+		5256739F1D27A683008B804E /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673791D27A683008B804E /* gzlib.c */; };
+		525673A01D27A683008B804E /* gzread.c in Sources */ = {isa = PBXBuildFile; fileRef = 5256737A1D27A683008B804E /* gzread.c */; };
+		525673A11D27A683008B804E /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 5256737B1D27A683008B804E /* gzwrite.c */; };
+		525673A21D27A683008B804E /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 5256737C1D27A683008B804E /* infback.c */; };
+		525673A31D27A683008B804E /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = 5256737D1D27A683008B804E /* inffast.c */; };
+		525673A41D27A683008B804E /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673801D27A683008B804E /* inflate.c */; };
+		525673A51D27A683008B804E /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673821D27A683008B804E /* inftrees.c */; };
+		525673A61D27A683008B804E /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673841D27A683008B804E /* trees.c */; };
+		525673A71D27A683008B804E /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673861D27A683008B804E /* uncompr.c */; };
+		525673A81D27A683008B804E /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 525673891D27A683008B804E /* zutil.c */; };
+		525673B91D27C222008B804E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525673B81D27C222008B804E /* CloudKit.framework */; };
 		5283A9A9193074240025CEAB /* menu_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A3193074240025CEAB /* menu_1.png */; };
 		5283A9AA193074240025CEAB /* menu_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A4193074240025CEAB /* menu_2.png */; };
 		5283A9AB193074240025CEAB /* menu_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A5193074240025CEAB /* menu_3.png */; };
 		5283A9AC193074240025CEAB /* menu_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A6193074240025CEAB /* menu_4.png */; };
 		5283A9AD193074240025CEAB /* menu_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A7193074240025CEAB /* menu_5.png */; };
 		5283A9AE193074240025CEAB /* menu_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A8193074240025CEAB /* menu_6.png */; };
+		529BB7781D29513C00F86D2B /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529BB7771D29513C00F86D2B /* KakaoOpenSDK.framework */; };
 		52B9C6BF1935FED600F89711 /* MNMBottomPullToRefresh.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6B81935FED600F89711 /* MNMBottomPullToRefresh.strings */; };
 		52B9C6C01935FED600F89711 /* MNMBottomPullToRefreshArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6B91935FED600F89711 /* MNMBottomPullToRefreshArrow.png */; };
 		52B9C6C11935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6BA1935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png */; };
@@ -61,7 +58,6 @@
 		52B9C7A41935FFA700F89711 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7A21935FFA700F89711 /* menu.png */; };
 		52B9C7A51935FFA700F89711 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7A31935FFA700F89711 /* menu@2x.png */; };
 		52B9C7F11939626500F89711 /* kjvActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B9C7F01939626500F89711 /* kjvActivity.m */; };
-		52B9C7F3193970A500F89711 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B9C7F2193970A500F89711 /* KakaoOpenSDK.framework */; };
 		52B9C7FE1939EB0100F89711 /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FA1939EB0100F89711 /* highlight.png */; };
 		52B9C7FF1939EB0100F89711 /* highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FB1939EB0100F89711 /* highlight@2x.png */; };
 		52B9C8001939EB0100F89711 /* kakaotalk.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FC1939EB0100F89711 /* kakaotalk.png */; };
@@ -84,14 +80,39 @@
 		64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DB7192245D9006C07C4 /* Main_iPad.storyboard */; };
 		64BA1DBC192245D9006C07C4 /* kjvMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */; };
 		64BA1DC1192245D9006C07C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DC0192245D9006C07C4 /* Images.xcassets */; };
-		64BA1DC8192245D9006C07C4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DC7192245D9006C07C4 /* XCTest.framework */; };
 		64BA1DC9192245D9006C07C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DA2192245D9006C07C4 /* Foundation.framework */; };
 		64BA1DCA192245D9006C07C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DA6192245D9006C07C4 /* UIKit.framework */; };
-		64BA1DD2192245D9006C07C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DD0192245D9006C07C4 /* InfoPlist.strings */; };
-		64BA1DD4192245D9006C07C4 /* kjvBibleViewerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DD3192245D9006C07C4 /* kjvBibleViewerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		525673AD1D27A683008B804E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5256736C1D27A683008B804E /* Objective-Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CC2FC581B91E63E00D5E05F;
+			remoteInfo = "Objective-Zip";
+		};
+		525673AF1D27A683008B804E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5256736C1D27A683008B804E /* Objective-Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CC2FC621B91E63E00D5E05F;
+			remoteInfo = "Objective-Zip Tests";
+		};
+		525673B11D27A683008B804E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5256736C1D27A683008B804E /* Objective-Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CC2FC731B91E65200D5E05F;
+			remoteInfo = "Objective-Zip OS X";
+		};
+		525673B31D27A683008B804E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5256736C1D27A683008B804E /* Objective-Zip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CC2FC7D1B91E65200D5E05F;
+			remoteInfo = "Objective-Zip OS X Tests";
+		};
 		64BA1DCB192245D9006C07C4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 64BA1D97192245D8006C07C4 /* Project object */;
@@ -113,68 +134,79 @@
 		52267AEB192CDC28002573A7 /* kjvBibleDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvBibleDownloadViewController.h; sourceTree = "<group>"; };
 		52267AEC192CDC28002573A7 /* kjvBibleDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvBibleDownloadViewController.m; sourceTree = "<group>"; };
 		52267C1B192E1546002573A7 /* Stainless-steel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Stainless-steel.png"; path = "kjvBibleViewer/Stainless-steel.png"; sourceTree = "<group>"; };
-		5230CB2E19271D8900A63792 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		5230CB3019271D8900A63792 /* ARCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCHelper.h; sourceTree = "<group>"; };
-		5230CB3619271D8900A63792 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		5230CB3719271D8900A63792 /* GETTING_STARTED.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GETTING_STARTED.md; sourceTree = "<group>"; };
-		5230CB3819271D8900A63792 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = "<group>"; };
-		5230CB3A19271D8900A63792 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		5230CB3C19271D8900A63792 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		5230CB3D19271D8900A63792 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		5230CB3E19271D8900A63792 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		5230CB3F19271D8900A63792 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		5230CB4019271D8900A63792 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		5230CB4119271D8900A63792 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		5230CB4219271D8900A63792 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		5230CB4319271D8900A63792 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		5230CB4419271D8900A63792 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		5230CB4619271D8900A63792 /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileInZipInfo.h; sourceTree = "<group>"; };
-		5230CB4719271D8900A63792 /* FileInZipInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileInZipInfo.m; sourceTree = "<group>"; };
-		5230CB4819271D8900A63792 /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipException.h; sourceTree = "<group>"; };
-		5230CB4919271D8900A63792 /* ZipException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipException.m; sourceTree = "<group>"; };
-		5230CB4A19271D8900A63792 /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipFile.h; sourceTree = "<group>"; };
-		5230CB4B19271D8900A63792 /* ZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipFile.m; sourceTree = "<group>"; };
-		5230CB4C19271D8900A63792 /* ZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipReadStream.h; sourceTree = "<group>"; };
-		5230CB4D19271D8900A63792 /* ZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipReadStream.m; sourceTree = "<group>"; };
-		5230CB4E19271D8900A63792 /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipWriteStream.h; sourceTree = "<group>"; };
-		5230CB4F19271D8900A63792 /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipWriteStream.m; sourceTree = "<group>"; };
-		5230CB5319271D8900A63792 /* Objective_Zip-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Objective_Zip-Info.plist"; sourceTree = "<group>"; };
-		5230CB5419271D8900A63792 /* Objective_Zip_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Objective_Zip_Prefix.pch; sourceTree = "<group>"; };
-		5230CB5519271D8900A63792 /* Objective_ZipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Objective_ZipViewController.xib; sourceTree = "<group>"; };
-		5230CB5619271D8900A63792 /* ObjectiveZipIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ObjectiveZipIcon.png; sourceTree = "<group>"; };
-		5230CB5719271D8900A63792 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		5230CB5919271D8900A63792 /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = adler32.c; sourceTree = "<group>"; };
-		5230CB5A19271D8900A63792 /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
-		5230CB5B19271D8900A63792 /* crc32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
-		5230CB5C19271D8900A63792 /* crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc32.h; sourceTree = "<group>"; };
-		5230CB5D19271D8900A63792 /* deflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = deflate.c; sourceTree = "<group>"; };
-		5230CB5E19271D8900A63792 /* deflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deflate.h; sourceTree = "<group>"; };
-		5230CB5F19271D8900A63792 /* gzclose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzclose.c; sourceTree = "<group>"; };
-		5230CB6019271D8900A63792 /* gzguts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gzguts.h; sourceTree = "<group>"; };
-		5230CB6119271D8900A63792 /* gzlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzlib.c; sourceTree = "<group>"; };
-		5230CB6219271D8900A63792 /* gzread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzread.c; sourceTree = "<group>"; };
-		5230CB6319271D8900A63792 /* gzwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzwrite.c; sourceTree = "<group>"; };
-		5230CB6419271D8900A63792 /* infback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = infback.c; sourceTree = "<group>"; };
-		5230CB6519271D8900A63792 /* inffast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inffast.c; sourceTree = "<group>"; };
-		5230CB6619271D8900A63792 /* inffast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffast.h; sourceTree = "<group>"; };
-		5230CB6719271D8900A63792 /* inffixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffixed.h; sourceTree = "<group>"; };
-		5230CB6819271D8900A63792 /* inflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inflate.c; sourceTree = "<group>"; };
-		5230CB6919271D8900A63792 /* inflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inflate.h; sourceTree = "<group>"; };
-		5230CB6A19271D8900A63792 /* inftrees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inftrees.c; sourceTree = "<group>"; };
-		5230CB6B19271D8900A63792 /* inftrees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inftrees.h; sourceTree = "<group>"; };
-		5230CB6C19271D8900A63792 /* trees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trees.c; sourceTree = "<group>"; };
-		5230CB6D19271D8900A63792 /* trees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trees.h; sourceTree = "<group>"; };
-		5230CB6E19271D8900A63792 /* uncompr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uncompr.c; sourceTree = "<group>"; };
-		5230CB6F19271D8900A63792 /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
-		5230CB7019271D8900A63792 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
-		5230CB7119271D8900A63792 /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
-		5230CB7219271D8900A63792 /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
+		5256733D1D27A3FD008B804E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5256733E1D27A3FD008B804E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		525673421D27A683008B804E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		525673431D27A683008B804E /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		525673451D27A683008B804E /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		525673461D27A683008B804E /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		525673471D27A683008B804E /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		525673481D27A683008B804E /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		525673491D27A683008B804E /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		5256734A1D27A683008B804E /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		5256734B1D27A683008B804E /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		5256734D1D27A683008B804E /* Objective-Zip+NSError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Objective-Zip+NSError.h"; sourceTree = "<group>"; };
+		5256734E1D27A683008B804E /* Objective-Zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Objective-Zip.h"; sourceTree = "<group>"; };
+		5256734F1D27A683008B804E /* OZFileInZipInfo+Internals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZFileInZipInfo+Internals.h"; sourceTree = "<group>"; };
+		525673501D27A683008B804E /* OZFileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZFileInZipInfo.h; sourceTree = "<group>"; };
+		525673511D27A683008B804E /* OZFileInZipInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OZFileInZipInfo.m; sourceTree = "<group>"; };
+		525673521D27A683008B804E /* OZZipCompressionLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZZipCompressionLevel.h; sourceTree = "<group>"; };
+		525673531D27A683008B804E /* OZZipException+Internals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipException+Internals.h"; sourceTree = "<group>"; };
+		525673541D27A683008B804E /* OZZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZZipException.h; sourceTree = "<group>"; };
+		525673551D27A683008B804E /* OZZipException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OZZipException.m; sourceTree = "<group>"; };
+		525673561D27A683008B804E /* OZZipFile+NSError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipFile+NSError.h"; sourceTree = "<group>"; };
+		525673571D27A683008B804E /* OZZipFile+Standard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipFile+Standard.h"; sourceTree = "<group>"; };
+		525673581D27A683008B804E /* OZZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZZipFile.h; sourceTree = "<group>"; };
+		525673591D27A683008B804E /* OZZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OZZipFile.m; sourceTree = "<group>"; };
+		5256735A1D27A683008B804E /* OZZipFileMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZZipFileMode.h; sourceTree = "<group>"; };
+		5256735B1D27A683008B804E /* OZZipReadStream+Internals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipReadStream+Internals.h"; sourceTree = "<group>"; };
+		5256735C1D27A683008B804E /* OZZipReadStream+NSError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipReadStream+NSError.h"; sourceTree = "<group>"; };
+		5256735D1D27A683008B804E /* OZZipReadStream+Standard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipReadStream+Standard.h"; sourceTree = "<group>"; };
+		5256735E1D27A683008B804E /* OZZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZZipReadStream.h; sourceTree = "<group>"; };
+		5256735F1D27A683008B804E /* OZZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OZZipReadStream.m; sourceTree = "<group>"; };
+		525673601D27A683008B804E /* OZZipWriteStream+Internals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipWriteStream+Internals.h"; sourceTree = "<group>"; };
+		525673611D27A683008B804E /* OZZipWriteStream+NSError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipWriteStream+NSError.h"; sourceTree = "<group>"; };
+		525673621D27A683008B804E /* OZZipWriteStream+Standard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OZZipWriteStream+Standard.h"; sourceTree = "<group>"; };
+		525673631D27A683008B804E /* OZZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZZipWriteStream.h; sourceTree = "<group>"; };
+		525673641D27A683008B804E /* OZZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OZZipWriteStream.m; sourceTree = "<group>"; };
+		5256736B1D27A683008B804E /* objective-zip.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "objective-zip.podspec"; sourceTree = "<group>"; };
+		5256736C1D27A683008B804E /* Objective-Zip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "Objective-Zip.xcodeproj"; sourceTree = "<group>"; };
+		5256736F1D27A683008B804E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		525673711D27A683008B804E /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = adler32.c; sourceTree = "<group>"; };
+		525673721D27A683008B804E /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
+		525673731D27A683008B804E /* crc32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
+		525673741D27A683008B804E /* crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc32.h; sourceTree = "<group>"; };
+		525673751D27A683008B804E /* deflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = deflate.c; sourceTree = "<group>"; };
+		525673761D27A683008B804E /* deflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deflate.h; sourceTree = "<group>"; };
+		525673771D27A683008B804E /* gzclose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzclose.c; sourceTree = "<group>"; };
+		525673781D27A683008B804E /* gzguts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gzguts.h; sourceTree = "<group>"; };
+		525673791D27A683008B804E /* gzlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzlib.c; sourceTree = "<group>"; };
+		5256737A1D27A683008B804E /* gzread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzread.c; sourceTree = "<group>"; };
+		5256737B1D27A683008B804E /* gzwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzwrite.c; sourceTree = "<group>"; };
+		5256737C1D27A683008B804E /* infback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = infback.c; sourceTree = "<group>"; };
+		5256737D1D27A683008B804E /* inffast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inffast.c; sourceTree = "<group>"; };
+		5256737E1D27A683008B804E /* inffast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffast.h; sourceTree = "<group>"; };
+		5256737F1D27A683008B804E /* inffixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffixed.h; sourceTree = "<group>"; };
+		525673801D27A683008B804E /* inflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inflate.c; sourceTree = "<group>"; };
+		525673811D27A683008B804E /* inflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inflate.h; sourceTree = "<group>"; };
+		525673821D27A683008B804E /* inftrees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inftrees.c; sourceTree = "<group>"; };
+		525673831D27A683008B804E /* inftrees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inftrees.h; sourceTree = "<group>"; };
+		525673841D27A683008B804E /* trees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trees.c; sourceTree = "<group>"; };
+		525673851D27A683008B804E /* trees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trees.h; sourceTree = "<group>"; };
+		525673861D27A683008B804E /* uncompr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uncompr.c; sourceTree = "<group>"; };
+		525673871D27A683008B804E /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
+		525673881D27A683008B804E /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		525673891D27A683008B804E /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
+		5256738A1D27A683008B804E /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
+		525673B71D27C1FC008B804E /* kjvBibleViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = kjvBibleViewer.entitlements; sourceTree = "<group>"; };
+		525673B81D27C222008B804E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5283A9A3193074240025CEAB /* menu_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_1.png; path = kjvBibleViewer/menu_1.png; sourceTree = "<group>"; };
 		5283A9A4193074240025CEAB /* menu_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_2.png; path = kjvBibleViewer/menu_2.png; sourceTree = "<group>"; };
 		5283A9A5193074240025CEAB /* menu_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_3.png; path = kjvBibleViewer/menu_3.png; sourceTree = "<group>"; };
 		5283A9A6193074240025CEAB /* menu_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_4.png; path = kjvBibleViewer/menu_4.png; sourceTree = "<group>"; };
 		5283A9A7193074240025CEAB /* menu_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_5.png; path = kjvBibleViewer/menu_5.png; sourceTree = "<group>"; };
 		5283A9A8193074240025CEAB /* menu_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_6.png; path = kjvBibleViewer/menu_6.png; sourceTree = "<group>"; };
+		529BB7771D29513C00F86D2B /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		52B9C6B81935FED600F89711 /* MNMBottomPullToRefresh.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = MNMBottomPullToRefresh.strings; path = kjvBibleViewer/MNMBottomPullToRefresh.strings; sourceTree = SOURCE_ROOT; };
 		52B9C6B91935FED600F89711 /* MNMBottomPullToRefreshArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MNMBottomPullToRefreshArrow.png; path = kjvBibleViewer/MNMBottomPullToRefreshArrow.png; sourceTree = SOURCE_ROOT; };
 		52B9C6BA1935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MNMBottomPullToRefreshArrow@2x.png"; path = "kjvBibleViewer/MNMBottomPullToRefreshArrow@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -188,7 +220,6 @@
 		52B9C7A31935FFA700F89711 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@2x.png"; path = "kjvBibleViewer/menu@2x.png"; sourceTree = "<group>"; };
 		52B9C7EF1939626500F89711 /* kjvActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjvActivity.h; sourceTree = "<group>"; };
 		52B9C7F01939626500F89711 /* kjvActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kjvActivity.m; sourceTree = "<group>"; };
-		52B9C7F2193970A500F89711 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		52B9C7FA1939EB0100F89711 /* highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight.png; sourceTree = "<group>"; };
 		52B9C7FB1939EB0100F89711 /* highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "highlight@2x.png"; sourceTree = "<group>"; };
 		52B9C7FC1939EB0100F89711 /* kakaotalk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakaotalk.png; sourceTree = "<group>"; };
@@ -226,10 +257,6 @@
 		64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvMasterViewController.m; sourceTree = "<group>"; };
 		64BA1DC0192245D9006C07C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		64BA1DC6192245D9006C07C4 /* kjvBibleViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kjvBibleViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		64BA1DC7192245D9006C07C4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		64BA1DCF192245D9006C07C4 /* kjvBibleViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kjvBibleViewerTests-Info.plist"; sourceTree = "<group>"; };
-		64BA1DD1192245D9006C07C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		64BA1DD3192245D9006C07C4 /* kjvBibleViewerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvBibleViewerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,8 +264,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525673B91D27C222008B804E /* CloudKit.framework in Frameworks */,
 				64BA1DA5192245D9006C07C4 /* CoreGraphics.framework in Frameworks */,
-				52B9C7F3193970A500F89711 /* KakaoOpenSDK.framework in Frameworks */,
+				529BB7781D29513C00F86D2B /* KakaoOpenSDK.framework in Frameworks */,
 				64BA1DA7192245D9006C07C4 /* UIKit.framework in Frameworks */,
 				64BA1DA3192245D9006C07C4 /* Foundation.framework in Frameworks */,
 			);
@@ -248,7 +276,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64BA1DC8192245D9006C07C4 /* XCTest.framework in Frameworks */,
 				64BA1DCA192245D9006C07C4 /* UIKit.framework in Frameworks */,
 				64BA1DC9192245D9006C07C4 /* Foundation.framework in Frameworks */,
 			);
@@ -288,97 +315,115 @@
 			path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController";
 			sourceTree = "<group>";
 		};
-		5230CB2D19271D8900A63792 /* Objective-Zip-master */ = {
+		5256733C1D27A3DB008B804E /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				5230CB2E19271D8900A63792 /* .gitignore */,
-				5230CB2F19271D8900A63792 /* ARCHelper */,
-				5230CB3619271D8900A63792 /* Default.png */,
-				5230CB3719271D8900A63792 /* GETTING_STARTED.md */,
-				5230CB3819271D8900A63792 /* LICENSE.md */,
-				5230CB3A19271D8900A63792 /* MainWindow.xib */,
-				5230CB3B19271D8900A63792 /* MiniZip */,
-				5230CB4519271D8900A63792 /* Objective-Zip */,
-				5230CB5319271D8900A63792 /* Objective_Zip-Info.plist */,
-				5230CB5419271D8900A63792 /* Objective_Zip_Prefix.pch */,
-				5230CB5519271D8900A63792 /* Objective_ZipViewController.xib */,
-				5230CB5619271D8900A63792 /* ObjectiveZipIcon.png */,
-				5230CB5719271D8900A63792 /* README.md */,
-				5230CB5819271D8900A63792 /* ZLib */,
+				5256733D1D27A3FD008B804E /* Reachability.h */,
+				5256733E1D27A3FD008B804E /* Reachability.m */,
 			);
-			path = "Objective-Zip-master";
+			name = Reachability;
 			sourceTree = "<group>";
 		};
-		5230CB2F19271D8900A63792 /* ARCHelper */ = {
+		525673411D27A683008B804E /* Objective-Zip */ = {
 			isa = PBXGroup;
 			children = (
-				5230CB3019271D8900A63792 /* ARCHelper.h */,
-			);
-			path = ARCHelper;
-			sourceTree = "<group>";
-		};
-		5230CB3B19271D8900A63792 /* MiniZip */ = {
-			isa = PBXGroup;
-			children = (
-				5230CB3C19271D8900A63792 /* crypt.h */,
-				5230CB3D19271D8900A63792 /* ioapi.c */,
-				5230CB3E19271D8900A63792 /* ioapi.h */,
-				5230CB3F19271D8900A63792 /* mztools.c */,
-				5230CB4019271D8900A63792 /* mztools.h */,
-				5230CB4119271D8900A63792 /* unzip.c */,
-				5230CB4219271D8900A63792 /* unzip.h */,
-				5230CB4319271D8900A63792 /* zip.c */,
-				5230CB4419271D8900A63792 /* zip.h */,
-			);
-			path = MiniZip;
-			sourceTree = "<group>";
-		};
-		5230CB4519271D8900A63792 /* Objective-Zip */ = {
-			isa = PBXGroup;
-			children = (
-				5230CB4619271D8900A63792 /* FileInZipInfo.h */,
-				5230CB4719271D8900A63792 /* FileInZipInfo.m */,
-				5230CB4819271D8900A63792 /* ZipException.h */,
-				5230CB4919271D8900A63792 /* ZipException.m */,
-				5230CB4A19271D8900A63792 /* ZipFile.h */,
-				5230CB4B19271D8900A63792 /* ZipFile.m */,
-				5230CB4C19271D8900A63792 /* ZipReadStream.h */,
-				5230CB4D19271D8900A63792 /* ZipReadStream.m */,
-				5230CB4E19271D8900A63792 /* ZipWriteStream.h */,
-				5230CB4F19271D8900A63792 /* ZipWriteStream.m */,
+				525673421D27A683008B804E /* .gitignore */,
+				525673431D27A683008B804E /* LICENSE.md */,
+				525673441D27A683008B804E /* MiniZip */,
+				5256734C1D27A683008B804E /* Objective-Zip */,
+				5256736B1D27A683008B804E /* objective-zip.podspec */,
+				5256736C1D27A683008B804E /* Objective-Zip.xcodeproj */,
+				5256736F1D27A683008B804E /* README.md */,
+				525673701D27A683008B804E /* ZLib */,
 			);
 			path = "Objective-Zip";
 			sourceTree = "<group>";
 		};
-		5230CB5819271D8900A63792 /* ZLib */ = {
+		525673441D27A683008B804E /* MiniZip */ = {
 			isa = PBXGroup;
 			children = (
-				5230CB5919271D8900A63792 /* adler32.c */,
-				5230CB5A19271D8900A63792 /* compress.c */,
-				5230CB5B19271D8900A63792 /* crc32.c */,
-				5230CB5C19271D8900A63792 /* crc32.h */,
-				5230CB5D19271D8900A63792 /* deflate.c */,
-				5230CB5E19271D8900A63792 /* deflate.h */,
-				5230CB5F19271D8900A63792 /* gzclose.c */,
-				5230CB6019271D8900A63792 /* gzguts.h */,
-				5230CB6119271D8900A63792 /* gzlib.c */,
-				5230CB6219271D8900A63792 /* gzread.c */,
-				5230CB6319271D8900A63792 /* gzwrite.c */,
-				5230CB6419271D8900A63792 /* infback.c */,
-				5230CB6519271D8900A63792 /* inffast.c */,
-				5230CB6619271D8900A63792 /* inffast.h */,
-				5230CB6719271D8900A63792 /* inffixed.h */,
-				5230CB6819271D8900A63792 /* inflate.c */,
-				5230CB6919271D8900A63792 /* inflate.h */,
-				5230CB6A19271D8900A63792 /* inftrees.c */,
-				5230CB6B19271D8900A63792 /* inftrees.h */,
-				5230CB6C19271D8900A63792 /* trees.c */,
-				5230CB6D19271D8900A63792 /* trees.h */,
-				5230CB6E19271D8900A63792 /* uncompr.c */,
-				5230CB6F19271D8900A63792 /* zconf.h */,
-				5230CB7019271D8900A63792 /* zlib.h */,
-				5230CB7119271D8900A63792 /* zutil.c */,
-				5230CB7219271D8900A63792 /* zutil.h */,
+				525673451D27A683008B804E /* crypt.h */,
+				525673461D27A683008B804E /* ioapi.c */,
+				525673471D27A683008B804E /* ioapi.h */,
+				525673481D27A683008B804E /* unzip.c */,
+				525673491D27A683008B804E /* unzip.h */,
+				5256734A1D27A683008B804E /* zip.c */,
+				5256734B1D27A683008B804E /* zip.h */,
+			);
+			path = MiniZip;
+			sourceTree = "<group>";
+		};
+		5256734C1D27A683008B804E /* Objective-Zip */ = {
+			isa = PBXGroup;
+			children = (
+				5256734D1D27A683008B804E /* Objective-Zip+NSError.h */,
+				5256734E1D27A683008B804E /* Objective-Zip.h */,
+				5256734F1D27A683008B804E /* OZFileInZipInfo+Internals.h */,
+				525673501D27A683008B804E /* OZFileInZipInfo.h */,
+				525673511D27A683008B804E /* OZFileInZipInfo.m */,
+				525673521D27A683008B804E /* OZZipCompressionLevel.h */,
+				525673531D27A683008B804E /* OZZipException+Internals.h */,
+				525673541D27A683008B804E /* OZZipException.h */,
+				525673551D27A683008B804E /* OZZipException.m */,
+				525673561D27A683008B804E /* OZZipFile+NSError.h */,
+				525673571D27A683008B804E /* OZZipFile+Standard.h */,
+				525673581D27A683008B804E /* OZZipFile.h */,
+				525673591D27A683008B804E /* OZZipFile.m */,
+				5256735A1D27A683008B804E /* OZZipFileMode.h */,
+				5256735B1D27A683008B804E /* OZZipReadStream+Internals.h */,
+				5256735C1D27A683008B804E /* OZZipReadStream+NSError.h */,
+				5256735D1D27A683008B804E /* OZZipReadStream+Standard.h */,
+				5256735E1D27A683008B804E /* OZZipReadStream.h */,
+				5256735F1D27A683008B804E /* OZZipReadStream.m */,
+				525673601D27A683008B804E /* OZZipWriteStream+Internals.h */,
+				525673611D27A683008B804E /* OZZipWriteStream+NSError.h */,
+				525673621D27A683008B804E /* OZZipWriteStream+Standard.h */,
+				525673631D27A683008B804E /* OZZipWriteStream.h */,
+				525673641D27A683008B804E /* OZZipWriteStream.m */,
+			);
+			path = "Objective-Zip";
+			sourceTree = "<group>";
+		};
+		5256736D1D27A683008B804E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				525673AE1D27A683008B804E /* libObjective-Zip.a */,
+				525673B01D27A683008B804E /* Objective-Zip Tests.xctest */,
+				525673B21D27A683008B804E /* libObjective-Zip_OS_X.a */,
+				525673B41D27A683008B804E /* Objective-Zip OS X Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		525673701D27A683008B804E /* ZLib */ = {
+			isa = PBXGroup;
+			children = (
+				525673711D27A683008B804E /* adler32.c */,
+				525673721D27A683008B804E /* compress.c */,
+				525673731D27A683008B804E /* crc32.c */,
+				525673741D27A683008B804E /* crc32.h */,
+				525673751D27A683008B804E /* deflate.c */,
+				525673761D27A683008B804E /* deflate.h */,
+				525673771D27A683008B804E /* gzclose.c */,
+				525673781D27A683008B804E /* gzguts.h */,
+				525673791D27A683008B804E /* gzlib.c */,
+				5256737A1D27A683008B804E /* gzread.c */,
+				5256737B1D27A683008B804E /* gzwrite.c */,
+				5256737C1D27A683008B804E /* infback.c */,
+				5256737D1D27A683008B804E /* inffast.c */,
+				5256737E1D27A683008B804E /* inffast.h */,
+				5256737F1D27A683008B804E /* inffixed.h */,
+				525673801D27A683008B804E /* inflate.c */,
+				525673811D27A683008B804E /* inflate.h */,
+				525673821D27A683008B804E /* inftrees.c */,
+				525673831D27A683008B804E /* inftrees.h */,
+				525673841D27A683008B804E /* trees.c */,
+				525673851D27A683008B804E /* trees.h */,
+				525673861D27A683008B804E /* uncompr.c */,
+				525673871D27A683008B804E /* zconf.h */,
+				525673881D27A683008B804E /* zlib.h */,
+				525673891D27A683008B804E /* zutil.c */,
+				5256738A1D27A683008B804E /* zutil.h */,
 			);
 			path = ZLib;
 			sourceTree = "<group>";
@@ -455,11 +500,12 @@
 			isa = PBXGroup;
 			children = (
 				64BA1DA8192245D9006C07C4 /* kjvBibleViewer */,
-				64BA1DCD192245D9006C07C4 /* kjvBibleViewerTests */,
 				64BA1DA1192245D9006C07C4 /* Frameworks */,
 				64BA1DA0192245D9006C07C4 /* Products */,
 			);
 			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
 		};
 		64BA1DA0192245D9006C07C4 /* Products */ = {
 			isa = PBXGroup;
@@ -473,11 +519,11 @@
 		64BA1DA1192245D9006C07C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				52B9C7F2193970A500F89711 /* KakaoOpenSDK.framework */,
+				529BB7771D29513C00F86D2B /* KakaoOpenSDK.framework */,
+				525673B81D27C222008B804E /* CloudKit.framework */,
 				64BA1DA2192245D9006C07C4 /* Foundation.framework */,
 				64BA1DA4192245D9006C07C4 /* CoreGraphics.framework */,
 				64BA1DA6192245D9006C07C4 /* UIKit.framework */,
-				64BA1DC7192245D9006C07C4 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -485,9 +531,11 @@
 		64BA1DA8192245D9006C07C4 /* kjvBibleViewer */ = {
 			isa = PBXGroup;
 			children = (
+				525673B71D27C1FC008B804E /* kjvBibleViewer.entitlements */,
+				525673411D27A683008B804E /* Objective-Zip */,
+				5256733C1D27A3DB008B804E /* Reachability */,
 				52267C1D192F9CFF002573A7 /* SWRevealViewController */,
 				52D56DB01927E8F800F2579A /* MNMBottomPullToRefresh */,
-				5230CB2D19271D8900A63792 /* Objective-Zip-master */,
 				52267AEE192E1521002573A7 /* Resource */,
 				52B32796192F9D720052BAEB /* Classes */,
 				646DC576192399DF0092C090 /* Storyboard */,
@@ -507,24 +555,6 @@
 				64BA1DAB192245D9006C07C4 /* InfoPlist.strings */,
 				64BA1DAE192245D9006C07C4 /* main.m */,
 				64BA1DB0192245D9006C07C4 /* kjvBibleViewer-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		64BA1DCD192245D9006C07C4 /* kjvBibleViewerTests */ = {
-			isa = PBXGroup;
-			children = (
-				64BA1DD3192245D9006C07C4 /* kjvBibleViewerTests.m */,
-				64BA1DCE192245D9006C07C4 /* Supporting Files */,
-			);
-			path = kjvBibleViewerTests;
-			sourceTree = "<group>";
-		};
-		64BA1DCE192245D9006C07C4 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				64BA1DCF192245D9006C07C4 /* kjvBibleViewerTests-Info.plist */,
-				64BA1DD0192245D9006C07C4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -574,7 +604,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = kjv;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = chan;
 				TargetAttributes = {
 					64BA1D9E192245D9006C07C4 = {
@@ -582,6 +612,9 @@
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
 							};
 						};
 					};
@@ -591,7 +624,7 @@
 				};
 			};
 			buildConfigurationList = 64BA1D9A192245D9006C07C4 /* Build configuration list for PBXProject "kjvBibleViewer" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -602,6 +635,12 @@
 			mainGroup = 64BA1D96192245D8006C07C4;
 			productRefGroup = 64BA1DA0192245D9006C07C4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5256736D1D27A683008B804E /* Products */;
+					ProjectRef = 5256736C1D27A683008B804E /* Objective-Zip.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				64BA1D9E192245D9006C07C4 /* kjvBibleViewer */,
@@ -610,17 +649,47 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		525673AE1D27A683008B804E /* libObjective-Zip.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libObjective-Zip.a";
+			remoteRef = 525673AD1D27A683008B804E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		525673B01D27A683008B804E /* Objective-Zip Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Objective-Zip Tests.xctest";
+			remoteRef = 525673AF1D27A683008B804E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		525673B21D27A683008B804E /* libObjective-Zip_OS_X.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libObjective-Zip_OS_X.a";
+			remoteRef = 525673B11D27A683008B804E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		525673B41D27A683008B804E /* Objective-Zip OS X Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Objective-Zip OS X Tests.xctest";
+			remoteRef = 525673B31D27A683008B804E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		64BA1D9D192245D9006C07C4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				52267C1C192E1546002573A7 /* Stainless-steel.png in Resources */,
-				5230CB7319271D8900A63792 /* .gitignore in Resources */,
+				5256738B1D27A683008B804E /* .gitignore in Resources */,
 				5283A9AC193074240025CEAB /* menu_4.png in Resources */,
 				52B9C7A51935FFA700F89711 /* menu@2x.png in Resources */,
 				52B9C7FE1939EB0100F89711 /* highlight.png in Resources */,
-				5230CB7619271D8900A63792 /* Default.png in Resources */,
 				5283A9AD193074240025CEAB /* menu_5.png in Resources */,
 				64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */,
 				52B9C6BF1935FED600F89711 /* MNMBottomPullToRefresh.strings in Resources */,
@@ -628,22 +697,16 @@
 				52C0245219DFDC7100DDB428 /* Main_iPhone.storyboard in Resources */,
 				64BA1DC1192245D9006C07C4 /* Images.xcassets in Resources */,
 				5283A9AE193074240025CEAB /* menu_6.png in Resources */,
-				5230CB8719271D8900A63792 /* README.md in Resources */,
+				525673981D27A683008B804E /* objective-zip.podspec in Resources */,
 				52B9C8011939EB0100F89711 /* kakaotalk@2x.png in Resources */,
-				5230CB7819271D8900A63792 /* LICENSE.md in Resources */,
 				5283A9A9193074240025CEAB /* menu_1.png in Resources */,
 				52B9C8001939EB0100F89711 /* kakaotalk.png in Resources */,
 				52B9C7A41935FFA700F89711 /* menu.png in Resources */,
 				64BA1DAD192245D9006C07C4 /* InfoPlist.strings in Resources */,
 				5283A9AB193074240025CEAB /* menu_3.png in Resources */,
-				5230CB7719271D8900A63792 /* GETTING_STARTED.md in Resources */,
-				5230CB8419271D8900A63792 /* Objective_Zip-Info.plist in Resources */,
-				5230CB8519271D8900A63792 /* Objective_ZipViewController.xib in Resources */,
-				5230CB8619271D8900A63792 /* ObjectiveZipIcon.png in Resources */,
 				52B9C7FF1939EB0100F89711 /* highlight@2x.png in Resources */,
 				52B9C6C01935FED600F89711 /* MNMBottomPullToRefreshArrow.png in Resources */,
 				52B9C6C11935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png in Resources */,
-				5230CB7A19271D8900A63792 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,7 +714,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64BA1DD2192245D9006C07C4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,50 +724,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525673A81D27A683008B804E /* zutil.c in Sources */,
 				648020CC1926586100FB6BB0 /* lfbContainer.m in Sources */,
 				52B9C7F11939626500F89711 /* kjvActivity.m in Sources */,
+				525673A21D27A683008B804E /* infback.c in Sources */,
 				52B9C6C21935FED600F89711 /* MNMBottomPullToRefreshManager.m in Sources */,
-				5230CB8219271D8900A63792 /* ZipReadStream.m in Sources */,
-				5230CB8E19271D8900A63792 /* gzread.c in Sources */,
+				525673931D27A683008B804E /* OZZipReadStream.m in Sources */,
 				646DC58519239EAE0092C090 /* kjvSearchViewController.m in Sources */,
-				5230CB8319271D8900A63792 /* ZipWriteStream.m in Sources */,
-				5230CB8C19271D8900A63792 /* gzclose.c in Sources */,
 				648020CD1926586100FB6BB0 /* lfbSearchContainer.m in Sources */,
-				5230CB8F19271D8900A63792 /* gzwrite.c in Sources */,
 				646DC572192395B80092C090 /* kjvAboutViewController.m in Sources */,
-				5230CB8019271D8900A63792 /* ZipException.m in Sources */,
-				5230CB9619271D8900A63792 /* zutil.c in Sources */,
-				5230CB7B19271D8900A63792 /* ioapi.c in Sources */,
-				5230CB7F19271D8900A63792 /* FileInZipInfo.m in Sources */,
+				5256738E1D27A683008B804E /* unzip.c in Sources */,
+				525673991D27A683008B804E /* README.md in Sources */,
 				64BA1DB3192245D9006C07C4 /* kjvAppDelegate.m in Sources */,
+				525673A31D27A683008B804E /* inffast.c in Sources */,
+				525673A11D27A683008B804E /* gzwrite.c in Sources */,
 				52267AE7192CDB44002573A7 /* kjvBibleSelectViewController.m in Sources */,
-				5230CB7E19271D8900A63792 /* zip.c in Sources */,
+				525673A51D27A683008B804E /* inftrees.c in Sources */,
 				52267AEA192CDC16002573A7 /* kjvChapterSelectController.m in Sources */,
 				52267AED192CDC28002573A7 /* kjvBibleDownloadViewController.m in Sources */,
+				525673A41D27A683008B804E /* inflate.c in Sources */,
+				5256738C1D27A683008B804E /* LICENSE.md in Sources */,
+				5256738D1D27A683008B804E /* ioapi.c in Sources */,
 				52B9C6C61935FEF200F89711 /* SWRevealViewController.m in Sources */,
 				646DC58219239D0C0092C090 /* kjvHighlightViewController.m in Sources */,
-				5230CB8119271D8900A63792 /* ZipFile.m in Sources */,
-				5230CB8D19271D8900A63792 /* gzlib.c in Sources */,
+				5256739E1D27A683008B804E /* gzclose.c in Sources */,
 				52B9C6C31935FED600F89711 /* MNMBottomPullToRefreshView.m in Sources */,
+				5256739F1D27A683008B804E /* gzlib.c in Sources */,
+				525673A01D27A683008B804E /* gzread.c in Sources */,
 				64BA1DAF192245D9006C07C4 /* main.m in Sources */,
+				5256739C1D27A683008B804E /* crc32.c in Sources */,
 				646DC56C19225AEB0092C090 /* kjvBibleViewController.m in Sources */,
+				525673A71D27A683008B804E /* uncompr.c in Sources */,
+				525673921D27A683008B804E /* OZZipFile.m in Sources */,
+				5256738F1D27A683008B804E /* zip.c in Sources */,
 				52218C9D193131DF00F6F34C /* kjvQuickBibleSelectController.m in Sources */,
-				5230CB8A19271D8900A63792 /* crc32.c in Sources */,
 				646DC57919239C8D0092C090 /* kjvSettingViewController.m in Sources */,
-				5230CB7C19271D8900A63792 /* mztools.c in Sources */,
-				5230CB9219271D8900A63792 /* inflate.c in Sources */,
-				5230CB9119271D8900A63792 /* inffast.c in Sources */,
+				525673911D27A683008B804E /* OZZipException.m in Sources */,
+				5256739A1D27A683008B804E /* adler32.c in Sources */,
+				5256739D1D27A683008B804E /* deflate.c in Sources */,
 				52218CA01935FCA000F6F34C /* DejalActivityView.m in Sources */,
-				5230CB8B19271D8900A63792 /* deflate.c in Sources */,
+				5256733F1D27A3FD008B804E /* Reachability.m in Sources */,
 				64BA1DBC192245D9006C07C4 /* kjvMasterViewController.m in Sources */,
-				5230CB9419271D8900A63792 /* trees.c in Sources */,
-				5230CB9019271D8900A63792 /* infback.c in Sources */,
-				5230CB8919271D8900A63792 /* compress.c in Sources */,
 				648020CB1926586100FB6BB0 /* global_variable.m in Sources */,
-				5230CB7D19271D8900A63792 /* unzip.c in Sources */,
-				5230CB9519271D8900A63792 /* uncompr.c in Sources */,
-				5230CB8819271D8900A63792 /* adler32.c in Sources */,
-				5230CB9319271D8900A63792 /* inftrees.c in Sources */,
+				525673941D27A683008B804E /* OZZipWriteStream.m in Sources */,
+				525673901D27A683008B804E /* OZFileInZipInfo.m in Sources */,
+				5256739B1D27A683008B804E /* compress.c in Sources */,
+				525673A61D27A683008B804E /* trees.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,7 +777,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64BA1DD4192245D9006C07C4 /* kjvBibleViewerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,14 +816,6 @@
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
-		64BA1DD0192245D9006C07C4 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64BA1DD1192245D9006C07C4 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -783,6 +838,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: 찬 Chan (85KYZ3DMU3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 찬 Chan (85KYZ3DMU3)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -797,7 +853,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "F8FB61EA-E92A-4F84-AEA9-0E69EAC14DF1";
 				SDKROOT = iphoneos;
@@ -833,7 +889,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "F8FB61EA-E92A-4F84-AEA9-0E69EAC14DF1";
 				SDKROOT = iphoneos;
@@ -847,9 +903,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 찬 Chan (85KYZ3DMU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_ENTITLEMENTS = kjvBibleViewer/kjvBibleViewer.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -857,12 +913,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kjvBibleViewer/kjvBibleViewer-Prefix.pch";
 				INFOPLIST_FILE = "kjvBibleViewer/kjvBibleViewer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = "chan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F8FB61EA-E92A-4F84-AEA9-0E69EAC14DF1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -871,9 +929,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 찬 Chan (85KYZ3DMU3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_ENTITLEMENTS = kjvBibleViewer/kjvBibleViewer.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -881,12 +939,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kjvBibleViewer/kjvBibleViewer-Prefix.pch";
 				INFOPLIST_FILE = "kjvBibleViewer/kjvBibleViewer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = "chan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F8FB61EA-E92A-4F84-AEA9-0E69EAC14DF1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -907,6 +967,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "kjvBibleViewerTests/kjvBibleViewerTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "chan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -925,6 +986,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kjvBibleViewer/kjvBibleViewer-Prefix.pch";
 				INFOPLIST_FILE = "kjvBibleViewerTests/kjvBibleViewerTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "chan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

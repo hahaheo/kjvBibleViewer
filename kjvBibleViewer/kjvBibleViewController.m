@@ -15,6 +15,7 @@
 #import "kjvBibleSelectController.h"
 #import "kjvActivity.h"
 
+@import CloudKit;
 @interface kjvBibleViewController ()
 
 @end
@@ -34,7 +35,7 @@
 {
     [super viewWillAppear:animated];
     
-    int color = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_color"];
+    NSInteger color = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_color"];
     if(color == 1)
     {
         self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
@@ -107,7 +108,6 @@
     // 값이 이상하면 무조껀 초기화
     if ((bookid > 66 || bookid < 1) || (chapterid > 150 || chapterid < 1 ))
     {
-        NSLog(@"ERROR!!");
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saved_bookid"];
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saved_chapterid"];
         bookid = 1;
@@ -161,7 +161,7 @@
     //DEBUG 용
     //[[NSUserDefaults standardUserDefaults] setObject:@"|01_01_001|03_02_012|02_11_010|10_01_002|66_02_011" forKey:@"saved_highlight"];
     
-    int color = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_color"];
+    NSInteger color = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_color"];
     if(color == 1)
     {
         self.tableView.backgroundColor = [UIColor blackColor];
@@ -176,7 +176,7 @@
     }
     
     // 락스크린 해제/설정 확인
-    int lockscreen = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_lockscreen"];
+    NSInteger lockscreen = [[NSUserDefaults standardUserDefaults] integerForKey:@"saved_lockscreen"];
     if(lockscreen == 1)
         [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     else
@@ -195,16 +195,22 @@
     {
         if(![global_variable checkConnectedToInternet])
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"처음 성경을 다운로드 받기 위해서는 인터넷 연결이 필요합니다. 인터넷 연결 후 다시 시도하세요" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"ERROR" message:@"기본 역본을 다운로드 받기 위해서는 인터넷 연결이 필요합니다. 인터넷 연결 후 다시 시도하세요" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *retry = [UIAlertAction
+                                    actionWithTitle:@"Retry"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        [self viewDidLoad];
+                                        return;
+                                    }];
+            [alert addAction:retry];
+            [self presentViewController:alert animated:YES completion:nil];
             //is_firststart = YES;
             return;
         }
         else
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"성경 파일이 없습니다. 한글KJV흠정역을 기본으로 다운로드 받습니다." delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-            [alert show];
-            [DejalBezelActivityView activityViewForView:self.view withLabel:@"다운로드중입니다..."];
+            [DejalBezelActivityView activityViewForView:self.view withLabel:@"기본 역본을 다운로드중입니다."];
             [NSThread detachNewThreadSelector:@selector(kjvDownloadThread:) toTarget:self withObject:DEFAULT_BIBLE];
             //[self kjvDownloadThread: DEFAULT_BIBLE];
             //is_firststart = NO;
@@ -230,27 +236,51 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *finalPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.kjv",arg]];
-    NSData *datakjv = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:KJV_DOWNLOAD_URL,arg]]];
-    if(datakjv)
-    {
-        [datakjv writeToFile:finalPath atomically:YES];
-        // 파일 백업 금지하기 (icloud위반)
-        NSURL *url = [NSURL fileURLWithPath:finalPath];
-        [global_variable addSkipBackupAttributeToItemAtURL:url];
-    }
-    else
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR" message:@"다운로드 url주소가 정확하지 않습니다. 개발자에게 문의바랍니다." delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    [DejalBezelActivityView removeViewAnimated:YES];
-    //책 이름 설정 (처음 시작이 아니라는 것임을 알림)
-    [[NSUserDefaults standardUserDefaults] setObject:arg forKey:@"saved_bookname"];
-    BookName = [[NSUserDefaults standardUserDefaults] stringForKey:@"saved_bookname"];
     
-    //[self saveCurrentid];
-    [self loadContent:BookName bookid:bookid chapterid:chapterid];
+    CKDatabase *publicDatabase = [[CKContainer defaultContainer] publicCloudDatabase];
+    CKRecordID *recordID = [[CKRecordID alloc] initWithRecordName:arg];
+    [publicDatabase fetchRecordWithID:recordID completionHandler:^(CKRecord *record, NSError *error) {
+        if (error) {
+            // enabled touch
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            
+            // Error handling for failed fetch from public database
+            UIAlertController *alert = [UIAlertController alloc];
+            if ([error code] == 1) {
+                alert = [UIAlertController alertControllerWithTitle:@"ERROR" message:[NSString stringWithFormat:@"애플계정이 활성화되지 않았습니다. 역본 다운로드를 위해 애플계정 로그인이 필요합니다. 설정->iCloud 에서 애플계정 로그인을 해주세요. %@",error.description] preferredStyle:UIAlertControllerStyleAlert];
+            }
+            else {
+                alert = [UIAlertController alertControllerWithTitle:@"ERROR" message:[NSString stringWithFormat:@"다운로드가 유효하지 않습니다. 개발자에게 문의 바랍니다. %@",error.description] preferredStyle:UIAlertControllerStyleAlert];
+            }
+            UIAlertAction *retry = [UIAlertAction
+                                 actionWithTitle:@"Retry"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action) {
+                                     [self kjvDownloadThread: arg];
+                                     return;
+                                 }];
+            [alert addAction:retry];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else {
+            // Display the fetched record
+            CKAsset *asset = [record objectForKey:@"file"];
+            NSData *datalfa = [NSData dataWithContentsOfURL:[asset fileURL]];
+            [datalfa writeToFile:finalPath atomically:YES];
+            // 파일 백업 금지하기 (icloud위반)
+            [global_variable addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:finalPath]];
+            [DejalActivityView removeView];
+            //책 이름 설정 (처음 시작이 아니라는 것임을 알림)
+            [[NSUserDefaults standardUserDefaults] setObject:arg forKey:@"saved_bookname"];
+            BookName = [[NSUserDefaults standardUserDefaults] stringForKey:@"saved_bookname"];
+            
+            //[self saveCurrentid];
+            [self loadContent:BookName bookid:bookid chapterid:chapterid];
+        }
+        
+        return;
+    }];
+    
 }
 
 - (void)loadContent:(NSString*)bible_name bookid:(int)book_id chapterid:(int)chapter_id
@@ -276,8 +306,8 @@
 - (void)contentDataCall:(id)arg
 {
     NSString *bible_name = [arg objectForKey:@"bibleName"];
-    int book_id = [[arg objectForKey:@"bookId"] integerValue];
-    int chapter_id = [[arg objectForKey:@"chapterId"] integerValue];
+    NSInteger book_id = [[arg objectForKey:@"bookId"] integerValue];
+    NSInteger chapter_id = [[arg objectForKey:@"chapterId"] integerValue];
     // 임시저장변수
     NSMutableArray *temp_contents = [[NSMutableArray alloc] init];
     
@@ -306,7 +336,9 @@
                     for(int k=0; k<=j; k++)
                         [separator appendString:@"_"];
                 }
-                [temp_contents addObject:[NSString stringWithFormat:@"%@%@",[[temp_a objectAtIndex:j] objectAtIndex:i],separator]];
+                if ([[temp_a objectAtIndex:j] count] <= i)
+                  [temp_contents addObject:[NSString stringWithFormat:@"%ld:%d%@", (long)chapter_id, i+1, separator]];
+                else [temp_contents addObject:[NSString stringWithFormat:@"%@%@",[[temp_a objectAtIndex:j] objectAtIndex:i],separator]];
             }
         }
     }
@@ -317,9 +349,7 @@
     }
     
     cellCount += [temp_contents count] + 1;
-        
-    // 이동하자마자 업데이트 하는것 방지하는 용도
-    refreshDownLock = YES;
+    
     // 책이 바뀐 경우 아예 새로 고침
     if(bookid != startBookid)
     {
@@ -380,6 +410,7 @@
     [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange([BibleName length] + 1, 1)];
     [attString addAttribute:NSForegroundColorAttributeName value:_black range:NSMakeRange(0, [navBibleTitle length])];
     [_navTitleBibleButton setAttributedTitle:attString forState:UIControlStateNormal];
+    
     //현재 보는 책과 챕터수 저장
     bookid = book_id;
     chapterid = chapter_id;
@@ -396,6 +427,11 @@
          
 - (void)refreshUp:(id)arg
 {
+    // 새로고침시 선택한 오브젝트 삭제
+    [selectedRows removeAllObjects];
+    // 오른쪽 아이콘 이름 변경한다
+    [self updateSelectedRowCountButton];
+    
     // 맨 위에서 새로고침 했을때, 새로운 장 업데이트 하기
     // !!TODO 나중에: 장 타이틀을 보고 업데이트 하자
     //int chapter_id = [_navTitleChapterButton.titleLabel.text intValue];
@@ -406,6 +442,8 @@
         chapterid = [[[global_variable getNumberofChapterinBook] objectAtIndex:(bookid-1)] intValue];
         startChapterid = chapterid;
         lastChapterid = chapterid;
+        // 업할때 마지막 자동리플래쉬 되지 말라고 설정
+        refreshDownBottomCheck = YES;
     }
     else if(bookid <= 1 && chapterid < 1)
     {
@@ -413,6 +451,8 @@
         chapterid = [[[global_variable getNumberofChapterinBook] objectAtIndex:(bookid-1)] intValue];
         startChapterid = chapterid;
         lastChapterid = chapterid;
+        // 업할때 마지막 자동리플래쉬 되지 말라고 설정
+        refreshDownBottomCheck = YES;
     }
     
     // 테이블 위에다가 새로 추가
@@ -430,6 +470,16 @@
          
 - (void)refreshDown:(id)arg
 {
+    // 락걸려있으면 죽음
+    if (refreshDownLock) return;
+    // 락 걸기
+    refreshDownLock = YES;
+    
+    // 새로고침시 선택한 오브젝트 삭제
+    [selectedRows removeAllObjects];
+    // 오른쪽 아이콘 이름 변경한다
+    [self updateSelectedRowCountButton];
+    
     // 맨 아래로 갔을때 새로운 장 업데이트 하기
     int MAXchapter = [[[global_variable getNumberofChapterinBook] objectAtIndex:(bookid-1)] intValue];
     
@@ -463,6 +513,8 @@
         // 테이블 아래다가 새로 추가
         [self loadContent:BookName bookid:bookid chapterid:chapterid];
     }
+    // 락 해제
+    refreshDownLock = NO;
 }
 
 /**
@@ -476,6 +528,7 @@
     //NSLog(@"%d", chapterid);
     //[NSThread detachNewThreadSelector:@selector(refreshDown:) toTarget:self withObject:[NSNumber numberWithInt:chapterid + 1]];
     [NSThread detachNewThreadSelector:@selector(refreshDown:) toTarget:self withObject:nil];
+    refreshDownBottomCheck = YES;
     //[pullToRefreshManager_ tableViewReloadFinished];
 }
 
@@ -522,8 +575,18 @@
             [dic removeObjectForKey:@"id"];
         }
         
-        // 맨 처음에 역본/성경 추가하기
-        [selectedRows insertObject:[NSString stringWithFormat:@"[%@] %@",[[global_variable getBibleNameConverter] objectForKey:BookName], [[global_variable getNamedBookofBible] objectAtIndex:(bookid-1)]] atIndex:0];
+        // 다중 역본일 경우, 맨처음에 성경이름만 추가하기
+        NSArray *sep = [a_BookName componentsSeparatedByString:@"|"];
+        if (sep.count > 1)
+        {
+            // 맨 처음에 성경 추가하기
+            [selectedRows insertObject:[NSString stringWithFormat:@"%@",[[global_variable getNamedBookofBible] objectAtIndex:(bookid-1)]] atIndex:0];
+        }
+        else
+        {
+            // 맨 처음에 역본/성경 추가하기
+            [selectedRows insertObject:[NSString stringWithFormat:@"[%@] %@",[[global_variable getBibleNameConverter] objectForKey:BookName], [[global_variable getNamedBookofBible] objectAtIndex:(bookid-1)]] atIndex:0];
+        }
         
         // activity 실행        
         // 커스텀 액티비티 추가
@@ -550,8 +613,9 @@
             // 오른쪽 아이콘 이름 변경한다
             //[self updateSelectedRowCountButton];
         }];
+        
         // 완료시 테이블 업데이트
-        [self.activityViewController setCompletionHandler:^(NSString *act, BOOL done)
+        [self.activityViewController setCompletionWithItemsHandler:^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError)
         {
              // 밑줄 업데이트 하고
              // 하이라이트 있으면 파싱하기
@@ -564,8 +628,10 @@
     }
     else if(doSearch) // 검색모드때 disable
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"검색모드에서는 다른 성경으로 이동할 수 없습니다" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"알림" message:@"검색모드에서는 다른 성경으로 이동할 수 없습니다." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){[alert dismissViewControllerAnimated:YES completion:nil];}];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     else
     {
@@ -585,9 +651,10 @@
 - (IBAction)navTitleBibleClick:(id)sender {
     if(doSearch) // 검색모드때 disable
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"알림" message:@"검색모드에서는 다른 장으로 이동할 수 없습니다" delegate:nil cancelButtonTitle:@"닫기" otherButtonTitles:nil];
-        [alert show];
-
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"알림" message:@"검색모드에서는 다른 장으로 이동할 수 없습니다" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){[alert dismissViewControllerAnimated:YES completion:nil];}];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     else
         [self performSegueWithIdentifier:@"bibleSegue" sender:self];
@@ -634,14 +701,14 @@
     // 이는 장점프나 성경전환/ 즉 테이블 내용이 초기화될떄 같이 초기화 된다.
 
     // 각 성경의 마지막 장인 경우 다음 업데이트가 자동으로 되지 않도록 막음
-    if([[[global_variable getNumberofChapterinBook] objectAtIndex:bookid-1] isEqualToString:[NSString stringWithFormat:@"%d",lastChapterid]])
+    if([[[global_variable getNumberofChapterinBook] objectAtIndex:bookid-1] isEqualToString:[NSString stringWithFormat:@"%ld",(long)lastChapterid]])
     {
         //NSLog(@"%@ %@",[[global_variable getNumberofChapterinBook] objectAtIndex:bookid-1], [NSString stringWithFormat:@"%d",chapterid]);
         //NSLog(@"%d",chapterid);
-        refreshDownLock = YES;
+        refreshDownBottomCheck = YES;
     }
     else
-        refreshDownLock = NO;
+        refreshDownBottomCheck = NO;
     //NSLog(@"Will begin dragging");
 }
 
@@ -686,7 +753,7 @@
         NSArray *temp_2 = [[temp_1 objectAtIndex:0] componentsSeparatedByString:@":"];
         int chapter_id = [[temp_2 objectAtIndex:0] intValue];
         int verse_id = [[temp_2 objectAtIndex:1] intValue];
-        NSString *currentPosition = [NSString stringWithFormat:@"%02d_%02d_%03d", bookid, chapter_id, verse_id];
+        NSString *currentPosition = [NSString stringWithFormat:@"%02ld_%02d_%03d", (long)bookid, chapter_id, verse_id];
         if(([highlightRange indexOfObject:currentPosition] != NSNotFound))
         {
             cell.textLabel.textColor = [UIColor blackColor];
@@ -758,7 +825,9 @@
 
         //화면 넓이를 토대로 폰트길이구하기(290)
         //TODO: 화면 로테이션시 가끔 업데이트가 되지 않고 기존의 길이가 유지될 때가 있음.
-        CGSize labelSize = [content sizeWithFont:cellFont constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];
+        CGRect rect = [content boundingRectWithSize:CGSizeMake(screen_width, 9999) options:NSStringEnumerationByWords|NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cellFont} context:nil];
+        CGSize labelSize = rect.size;
+        //CGSize labelSize = [content sizeWithFont:cellFont constrainedToSize:CGSizeMake(screen_width, 9999) lineBreakMode:NSLineBreakByCharWrapping];
         
         // 검색시 verse까지의 height를 구한다
         //if ((verseJumpid - 1) > indexPath.row)
@@ -766,7 +835,7 @@
         
         //TODO: HARDCODING
         // 마지막절은 보정해준다
-        if([chapterVerseCount indexOfObject:[NSNumber numberWithInt:(indexPath.row + 1)]] != NSNotFound)
+        /*if([chapterVerseCount indexOfObject:[NSNumber numberWithInt:(indexPath.row + 1)]] != NSNotFound)
         {
             if([[NSUserDefaults standardUserDefaults] floatForKey:@"saved_fontsize"] == SMALL_FONT_SIZE)
                 labelSize.height -= 11.9f; // sml
@@ -774,7 +843,7 @@
                 labelSize.height -= 27.9f; // nor
             else
                 labelSize.height -= 17.9f; // nor
-        }
+        }*/
         
         //NSLog(@"%@", [contents objectAtIndex:indexPath.row]);
         //NSLog(@"%d %f", screen_width, labelSize.height);
@@ -810,7 +879,7 @@
     }
     
     // 마지막 앞3으로 다가오면 새로운 장 업데이트 하기 (스레드 런)
-    if(!doSearch && !refreshDownLock && (([contents count] - 2) == indexPath.row))
+    if(!doSearch && !refreshDownBottomCheck && (([contents count] - 2) == indexPath.row))
     {
         //NSArray *cellChapter = [[contents objectAtIndex:indexPath.row] componentsSeparatedByString:@":"];
         //NSNumber *nextChapter = [NSNumber numberWithInt:[[cellChapter objectAtIndex:0] intValue] + 1];
@@ -822,7 +891,7 @@
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"checkCell"];
         NSArray *cellChapter = [[contents objectAtIndex:indexPath.row-1] componentsSeparatedByString:@":"];
-        NSString *string = [NSString stringWithFormat:@"%02d_%03d", bookid, [[cellChapter objectAtIndex:0] intValue]];
+        NSString *string = [NSString stringWithFormat:@"%02ld_%03d", (long)bookid, [[cellChapter objectAtIndex:0] intValue]];
         NSRange delRange = [readBible rangeOfString:string];
         cell.textLabel.text = [NSString stringWithFormat:@"%@ %@장을 읽음표시 합니다",BibleName, [cellChapter objectAtIndex:0]];
         if([[NSUserDefaults standardUserDefaults] integerForKey:@"saved_color"] == 1) // 색반전일 경우
@@ -916,11 +985,28 @@
     {
         // 선택한 내용을 삭제하기
         NSString *deSelectedRow = [contents objectAtIndex:indexPath.row];
+        
+        // 다중 역본일 경우, 앞에 해당 책 이름 붙이기
+        NSArray *sep = [a_BookName componentsSeparatedByString:@"|"];
+        if (sep.count > 1)
+        {
+            // 뒤에 suffix개수 확인
+            NSInteger times = [[deSelectedRow componentsSeparatedByString:@"_"] count]-1;
+            NSString *aBookName;
+            if (times == 0)
+                aBookName = [NSString stringWithFormat:@"[%@] ",[[global_variable getBibleNameConverter] objectForKey:BookName]];
+            else
+                aBookName = [NSString stringWithFormat:@"[%@] ",[[global_variable getBibleNameConverter] objectForKey:[sep objectAtIndex:times-1]]];
+            deSelectedRow = [aBookName stringByAppendingString:deSelectedRow];
+            // 다중 역본일 경우 마지막 suffix제거
+            deSelectedRow = [deSelectedRow stringByReplacingOccurrencesOfString:@"_" withString:@""];
+        }
+        
         // key/value 로 bibleid_bookid_chapterid를 구함
         NSArray *tem = [deSelectedRow componentsSeparatedByString:@":"]; // 12:11 ...
         NSArray *tem2 = [[tem objectAtIndex:1] componentsSeparatedByString:@" "]; // 11 하나님 가라사대...
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:[NSString stringWithFormat:@"%02d_%02d_%03d", bookid, [[tem objectAtIndex:0] intValue], [[tem2 objectAtIndex:0] intValue]] forKey:@"id"];
+        [dic setObject:[NSString stringWithFormat:@"%02ld_%02d_%03d", (long)bookid, [[tem objectAtIndex:0] intValue], [[tem2 objectAtIndex:0] intValue]] forKey:@"id"];
         [dic setObject:deSelectedRow forKey:@"content"];
         [selectedRows removeObject:dic];
         //NSLog(@"%d",[tableView indexPathForSelectedRow].row);
@@ -943,7 +1029,7 @@
         NSArray *a_readBible = [readBible componentsSeparatedByString:sep_bar];
         
         NSArray *cellChapter = [[contents objectAtIndex:indexPath.row-1] componentsSeparatedByString:@":"];
-        NSString *string = [NSString stringWithFormat:@"%02d_%03d", bookid, [[cellChapter objectAtIndex:0] intValue]];
+        NSString *string = [NSString stringWithFormat:@"%02ld_%03d", (long)bookid, [[cellChapter objectAtIndex:0] intValue]];
         //NSString *string = [NSString stringWithFormat:@"%02d_%03d",bookid,chapterid];
         // 체크된것 (del action 지우기) format: 9_12|1_13|3_12|1_19
         NSRange delRange = [readBible rangeOfString:string];
@@ -984,11 +1070,27 @@
     {
         // 일반 성경 내용을 선택한 경우 해당 내용을 배열에 넣기
         NSString *selectedRow = [contents objectAtIndex:indexPath.row];
+        // 다중 역본일 경우, 앞에 해당 책 이름 붙이기
+        NSArray *sep = [a_BookName componentsSeparatedByString:@"|"];
+        if (sep.count > 1)
+        {
+            // 뒤에 suffix개수 확인
+            NSInteger times = [[selectedRow componentsSeparatedByString:@"_"] count]-1;
+            NSString *aBookName;
+            if (times == 0)
+                aBookName = [NSString stringWithFormat:@"[%@] ",[[global_variable getBibleNameConverter] objectForKey:BookName]];
+            else
+                aBookName = [NSString stringWithFormat:@"[%@] ",[[global_variable getBibleNameConverter] objectForKey:[sep objectAtIndex:times-1]]];
+            selectedRow = [aBookName stringByAppendingString:selectedRow];
+            // 다중 역본일 경우 마지막 suffix제거
+            selectedRow = [selectedRow stringByReplacingOccurrencesOfString:@"_" withString:@""];
+        }
+        
         // key/value 로 bibleid_bookid_chapterid를 구함
         NSArray *tem = [selectedRow componentsSeparatedByString:@":"]; // 12:11 ...
         NSArray *tem2 = [[tem objectAtIndex:1] componentsSeparatedByString:@" "]; // 11 하나님 가라사대...
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:[NSString stringWithFormat:@"%02d_%02d_%03d", bookid, [[tem objectAtIndex:0] intValue], [[tem2 objectAtIndex:0] intValue]] forKey:@"id"];
+        [dic setObject:[NSString stringWithFormat:@"%02ld_%02d_%03d", (long)bookid, [[tem objectAtIndex:0] intValue], [[tem2 objectAtIndex:0] intValue]] forKey:@"id"];
         [dic setObject:selectedRow forKey:@"content"];
         [selectedRows addObject:dic];
         
@@ -1011,7 +1113,7 @@
     else
     {
         // 오른쪽 아이콘 이름 바꾸기
-        NSString *str = [NSString stringWithFormat:@"%d개 선택됨", [selectedRows count]];
+        NSString *str = [NSString stringWithFormat:@"%lu개 선택됨", (unsigned long)[selectedRows count]];
         NSString *navBibleChapter = [NSString stringWithFormat:@"%@ ▼", str];
         NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:navBibleChapter];
         UIColor *_black = [UIColor blackColor];

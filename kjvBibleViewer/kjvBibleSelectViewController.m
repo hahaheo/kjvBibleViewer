@@ -197,7 +197,7 @@
         
         
         // 사이드메뉴 타이틀 바꾸기
-        NSString* BookName = [[global_variable getBibleNameConverter] objectForKey:bname];
+        //NSString* BookName = [[global_variable getBibleNameConverter] objectForKey:bname];
         //[(kjvMasterViewController *)[[UIApplication sharedApplication] delegate] vc].Title.text = BookName;
     }
     //다중역본 선택한 경우
@@ -239,9 +239,11 @@
             }
             else
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"경고" message:[NSString stringWithFormat:@"%d권 이상 동시에 볼 수 없습니다", MAXIMUM_CONCURRNET_BIBLE] delegate:self cancelButtonTitle: @"닫기" otherButtonTitles:nil];
-                alert.tag = 103;
-                [alert show];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"알림" message:[NSString stringWithFormat:@"%d권 이상 동시에 볼 수 없습니다", MAXIMUM_CONCURRNET_BIBLE] preferredStyle:UIAlertControllerStyleAlert];
+                [self presentViewController:alert animated:YES completion:nil];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [alert dismissViewControllerAnimated:YES completion:nil];
+                });
                 return;
             }
         }
