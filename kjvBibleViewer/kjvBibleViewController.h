@@ -36,6 +36,9 @@ static BOOL doviewDidLoad = NO; // viewdidload에서 초기화 처리 함
     NSInteger bookid;
     NSInteger chapterid;
     
+    // 최초 다운로드시 nav업데이트 안하는 flag
+    BOOL firstdownload_bible;
+    
     // 나타내야할 셀 갯수
     int cellCount;
     

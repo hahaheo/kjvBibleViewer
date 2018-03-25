@@ -47,8 +47,10 @@
         //self.navigationController.navigationBar.translucent = YES;
     }
     // 다른view에서 새로고침이 필요한 경우 수행됨
-    if(doviewDidLoad)
+    if(doviewDidLoad) {
        [self viewDidLoad];
+        refreshDownLock = NO;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -78,9 +80,10 @@
     
     // 검색모드일때 백버튼 감추기
     // 버튼 감추기
-    if(doSearch)
+    if(doSearch) {
         self.navigationItem.leftBarButtonItem = nil;
         //self.navigationItem.hidesBackButton = YES;
+    }
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -89,7 +92,10 @@
     self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     
     //필요 변수 초기화
+    int offset_y = 0;
+    if (doviewDidLoad == YES) offset_y = -70;
     doviewDidLoad = NO;
+    firstdownload_bible = NO;
     contents = [[NSMutableArray alloc] init];
     chapterVerseCount = [[NSMutableArray alloc] init];
     selectedRows = [[NSMutableArray alloc] init];
@@ -205,24 +211,23 @@
                                     }];
             [alert addAction:retry];
             [self presentViewController:alert animated:YES completion:nil];
-            //is_firststart = YES;
             return;
         }
         else
         {
             [DejalBezelActivityView activityViewForView:self.view withLabel:@"기본 역본을 다운로드중입니다."];
             [NSThread detachNewThreadSelector:@selector(kjvDownloadThread:) toTarget:self withObject:DEFAULT_BIBLE];
+            firstdownload_bible = YES;
             //[self kjvDownloadThread: DEFAULT_BIBLE];
-            //is_firststart = NO;
         }
     }
     else
     {
         [self loadContent:BookName bookid:bookid chapterid:chapterid];
         //처음 성경 이동후 맨 위로 이동
-        [self.tableView setContentOffset:CGPointMake(0, 0)];
+        [self.tableView setContentOffset:CGPointMake(0, 0 + offset_y)];
+        [self.tableView reloadData];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -401,7 +406,7 @@
     [self.tableView reloadData];
     
     // 업데이트된 이름으로 성경이름 바꾸기
-    BibleName = [[global_variable getNamedBookofBible] objectAtIndex:(bookid-1)];
+    /*BibleName = [[global_variable getNamedBookofBible] objectAtIndex:(bookid-1)];
     // 상단 이름 업데이트
     NSString *navBibleTitle = [NSString stringWithFormat:@"%@ ▼", BibleName];
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:navBibleTitle];
@@ -409,7 +414,8 @@
     UIFont *font = [UIFont systemFontOfSize:8.0f];
     [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange([BibleName length] + 1, 1)];
     [attString addAttribute:NSForegroundColorAttributeName value:_black range:NSMakeRange(0, [navBibleTitle length])];
-    [_navTitleBibleButton setAttributedTitle:attString forState:UIControlStateNormal];
+    [_navTitleBibleButton setAttributedTitle:attString forState:UIControlStateNormal];*/
+    //NSLog(@"%@",BibleName);
     
     //현재 보는 책과 챕터수 저장
     bookid = book_id;
@@ -427,6 +433,8 @@
          
 - (void)refreshUp:(id)arg
 {
+    // 락 걸기
+    refreshDownLock = YES;
     // 새로고침시 선택한 오브젝트 삭제
     [selectedRows removeAllObjects];
     // 오른쪽 아이콘 이름 변경한다
@@ -462,10 +470,13 @@
     //NSLog(@"%d",ip.row);
     CGRect rect = [self.tableView convertRect:[self.tableView rectForRowAtIndexPath:ip] toView:[self.tableView superview]];
     // 마지막으로 이동하기
-    [self.tableView setContentOffset:rect.origin];
-    [self.tableView reloadData];
+    //[self.tableView setContentOffset:rect.origin];
+    //[self.tableView reloadData];
     
     [refreshControl endRefreshing];
+    
+    // 락 해제
+    refreshDownLock = NO;
 }
          
 - (void)refreshDown:(id)arg
@@ -493,7 +504,7 @@
         
         // 테이블 갱신
         [self loadContent:BookName bookid:bookid chapterid:chapterid];
-        [self.tableView setContentOffset:CGPointMake(0, 0)];
+        [self.tableView setContentOffset:CGPointMake(0, -70)];
         [self.tableView reloadData];
     }
     else if(bookid >= 66 && chapterid > MAXchapter)
@@ -505,7 +516,7 @@
         
         // 테이블 갱신
         [self loadContent:BookName bookid:bookid chapterid:chapterid];
-        [self.tableView setContentOffset:CGPointMake(0, 0)];
+        [self.tableView setContentOffset:CGPointMake(0, -70)];
         [self.tableView reloadData];
     }
     else
@@ -588,6 +599,24 @@
             [selectedRows insertObject:[NSString stringWithFormat:@"[%@] %@",[[global_variable getBibleNameConverter] objectForKey:BookName], [[global_variable getNamedBookofBible] objectAtIndex:(bookid-1)]] atIndex:0];
         }
         
+        // 선택한 범위 모두 없애고
+        int idx = 0;
+        NSMutableArray *remove = [NSMutableArray array];
+        NSMutableArray *add = [NSMutableArray array];
+        for (id string in selectedRows){
+            // replace dictionary
+            if (idx >= 1) {
+             // Add to the array of objects to be removed
+             [remove addObject:string];
+             // Add to the array of objects to be added
+             [add addObject:[string objectForKey:@"content"]];
+             }
+             idx++;
+        }
+        [selectedRows removeObjectsInArray:remove]; // Remove objects
+        [selectedRows addObjectsFromArray:add]; // Add new objects
+        //NSString *string=[selectedRows componentsJoinedByString:@"\n"];
+        
         // activity 실행        
         // 커스텀 액티비티 추가
         kjvActivity *highlightCustomActivity = [[kjvActivity alloc] init];
@@ -596,27 +625,35 @@
         
         //item 추가
         self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:selectedRows applicationActivities:applicationActivities];
-        self.activityViewController.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter,UIActivityTypeAirDrop];
+        self.activityViewController.excludedActivityTypes =
+            @[UIActivityTypePostToFacebook,
+              UIActivityTypePostToTwitter,
+              UIActivityTypeAirDrop,
+              UIActivityTypeAddToReadingList,
+              UIActivityTypeAssignToContact,
+              UIActivityTypeOpenInIBooks,
+              UIActivityTypePrint,
+              UIActivityTypeSaveToCameraRoll,
+              @"com.apple.mobilenotes.SharingExtension",
+              @"com.apple.reminders.RemindersEditorExtension",
+              @"com.apple.CloudDocsUI.AddToiCloudDrive"];
+
         //ios8 대응 업데이트
-        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1)
-            self.activityViewController.popoverPresentationController.sourceView = sender;
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) self.activityViewController.popoverPresentationController.sourceView = sender;
         [self presentViewController:self.activityViewController animated:YES completion:^
         { // 완료시 실행이 아니라 액티비티 버튼 누르면 시작되는 거임
-            // 선택한 범위 모두 없애고
-            for (NSString *string in selectedRows)
-            {
-                NSIndexPath *ip = [NSIndexPath indexPathForRow:[contents indexOfObject:string] inSection:0];
-                [self.tableView deselectRowAtIndexPath:ip animated:NO];
-            }
-            // 완료되면 오브젝트 삭제하고
-            [selectedRows removeAllObjects];
-            // 오른쪽 아이콘 이름 변경한다
-            //[self updateSelectedRowCountButton];
         }];
         
         // 완료시 테이블 업데이트
         [self.activityViewController setCompletionWithItemsHandler:^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError)
         {
+            for (id string in selectedRows){
+                // deselect process
+                NSIndexPath *ip = [NSIndexPath indexPathForRow:[contents indexOfObject:string] inSection:0];
+                [self.tableView deselectRowAtIndexPath:ip animated:NO];
+            }
+            // 완료되면 오브젝트 삭제하고
+            [selectedRows removeAllObjects];
              // 밑줄 업데이트 하고
              // 하이라이트 있으면 파싱하기
              NSString *highlight = [[NSUserDefaults standardUserDefaults] stringForKey:@"saved_highlight"];
@@ -624,7 +661,6 @@
              // 오른쪽 아이콘 이름 변경한다
              [self updateSelectedRowCountButton];
         }];
-        
     }
     else if(doSearch) // 검색모드때 disable
     {
@@ -691,6 +727,7 @@
 + (void)setdoviewDidLoad:(BOOL)toggle
 {
     doviewDidLoad = toggle;
+    refreshDownLock = YES;
     return;
 }
 
@@ -745,6 +782,7 @@
 {
     // 하이라이트 체크한 구절은 노랑, 체크하지 않은 구절은 클리어컬러 주기
     // 먼저 지금 절을 00_00_000 형태로 변환하기 단, chapterid를 사용하지 말고, content내용을 파싱해서 봐야 한다
+    if([contents count] <= indexPath.row) return; //v2.13 exception handling
     NSString *content = [contents objectAtIndex:indexPath.row];
     NSArray *temp_1 = [content componentsSeparatedByString:@" "];
     // 성경이 아닌것을 볼때는 패스
@@ -778,6 +816,7 @@
 // 열의 높이를 설정
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if([contents count] <= indexPath.row) return 0.0f; // v2.13 exception handling
     // 마지막 행의 경우 크기를 fix
     if([chapterVerseCount indexOfObject:[NSNumber numberWithInt:indexPath.row]] != NSNotFound)
         return 60.0f;
@@ -852,6 +891,7 @@
     }
 }
 
+NSString *before_text;
 // 열에 표시할 내용 정의
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -859,14 +899,17 @@
     for(UITableViewCell *cell in [self.tableView visibleCells])
     {
         // 셀에 선택한 부분이 있으면 업데이트 생략
-        if([selectedRows count] != 0)
-            break;
+        if([selectedRows count] != 0) break;
+        // 이전 이름과 같으면 생략
+        if([cell.textLabel.text isEqualToString:before_text]) break;
         // 상단 이름 업데이트
         //NSLog(@"%@", cell.textLabel.text);
+        before_text = cell.textLabel.text;
         NSArray *chapterStrA = [cell.textLabel.text componentsSeparatedByString:@":"];
         NSString *chapterStr = [chapterStrA objectAtIndex:0];
-        if([chapterStr length] > 3) // 중간자일 경우 브래이크로 처리
-            break;
+        // 중간자일 경우 브래이크로 처리
+        if([chapterStr length] > 3) break;
+        
         //chapterid = [chapterStr intValue];
         NSString *navBibleChapter = [NSString stringWithFormat:@"%@장 ▼", chapterStr];
         NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:navBibleChapter];
@@ -874,13 +917,28 @@
         UIFont *font = [UIFont systemFontOfSize:8.0f];
         [attString addAttribute:NSFontAttributeName value:font range:NSMakeRange([chapterStr length] + 2, 1)];
         [attString addAttribute:NSForegroundColorAttributeName value:_black range:NSMakeRange(0, [navBibleChapter length])];
+        
+        BibleName = [[global_variable getNamedBookofBible] objectAtIndex:(bookid-1)];
+        // 상단 이름 업데이트 (매번 변경되도록 수정.... 이름이 사라질때가 있어서...)
+        NSString *navBibleTitle = [NSString stringWithFormat:@"%@ ▼", BibleName];
+        NSMutableAttributedString *attString2 = [[NSMutableAttributedString alloc] initWithString:navBibleTitle];
+        [attString2 addAttribute:NSFontAttributeName value:font range:NSMakeRange([BibleName length] + 1, 1)];
+        [attString2 addAttribute:NSForegroundColorAttributeName value:_black range:NSMakeRange(0, [navBibleTitle length])];
+        
+        // 성경 및 장 업데이트 진행
+        if (firstdownload_bible) {
+            break;
+        }
         [_navTitleChapterButton setAttributedTitle:attString forState:UIControlStateNormal];
+        [_navTitleBibleButton setAttributedTitle:attString2 forState:UIControlStateNormal];
+        
         break;
     }
     
     // 마지막 앞3으로 다가오면 새로운 장 업데이트 하기 (스레드 런)
     if(!doSearch && !refreshDownBottomCheck && (([contents count] - 2) == indexPath.row))
     {
+        //NSLog(@"refreshcheck %d", refreshDownBottomCheck);
         //NSArray *cellChapter = [[contents objectAtIndex:indexPath.row] componentsSeparatedByString:@":"];
         //NSNumber *nextChapter = [NSNumber numberWithInt:[[cellChapter objectAtIndex:0] intValue] + 1];
         [NSThread detachNewThreadSelector:@selector(refreshDown:) toTarget:self withObject:nil];
@@ -970,6 +1028,12 @@
         
         return cell;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //NSLog(@"finished");
+    if(firstdownload_bible) firstdownload_bible = NO;
 }
 
 // 열을 선택해제한 경우

@@ -43,6 +43,8 @@
             NSString *temp = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
             // 앞에 \n01창 을 자름으로써 형태를 잡는다
+            if([bible isEqualToString:@"korcath"] && [[NSString stringWithFormat:@"%@", sBookName] isEqualToString:@"에"])
+                sBookName = [NSString stringWithFormat:@"더"];
             f_return = [[temp componentsSeparatedByString:[NSString stringWithFormat:@"\n%02d%@ ", book, sBookName]] mutableCopy];
             // 맨뒤 '/n' 지워줌
             NSString *first = [f_return objectAtIndex:0] ;
@@ -65,7 +67,7 @@
     NSMutableArray *f_return;
     NSArray *infos= [unzipFile listFileInZipInfos];
     for (OZFileInZipInfo *info in infos) {
-        //NSLog(@"- %@ %@ %d (%d)", info.name, info.date, info.size, info.level);
+        NSLog(@"- %@ %@ %d (%d)", info.name, info.date, info.size, info.level);
         
         if([info.name isEqualToString:[NSString stringWithFormat:@"%@%02d_%d.lfb", bible, book, chapter]]) {
             //locate the file in the zip

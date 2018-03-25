@@ -13,16 +13,7 @@
 - (id) activityViewController:(UIActivityViewController *)activityViewController
           itemForActivityType:(NSString *)activityType
 {
-    if ( [activityType isEqualToString:UIActivityTypePostToTwitter] )
-        return @"This is a #twitter post!";
-    if ( [activityType isEqualToString:UIActivityTypePostToFacebook] )
-        return @"This is a facebook post!";
-    if ( [activityType isEqualToString:UIActivityTypeMessage] )
-        return @"SMS message text";
-    if ( [activityType isEqualToString:UIActivityTypeMail] )
-        return @"Email text here!";
-    if ( [activityType isEqualToString:@"it.albertopasca.myApp"] )
-        return @"OpenMyapp custom text";
+   
     return nil;
 }
 - (id) activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController { return @""; }
@@ -63,7 +54,7 @@
     // 선택된 데이터 파싱 작업
     for(int i=1; i<activityItems.count; i++)
     {
-        NSArray *temp = [[activityItems[i] valueForKey:@"content"] componentsSeparatedByString:@":"];
+        NSArray *temp = [activityItems[i] componentsSeparatedByString:@":"];
         NSArray *temp2 = [temp[1] componentsSeparatedByString:@" "];
         // 다중역본일 경우 앞에 역본괄호 제거
         NSArray *sep = [[[NSUserDefaults standardUserDefaults] stringForKey:@"saved_another_bookname"] componentsSeparatedByString:@"|"];

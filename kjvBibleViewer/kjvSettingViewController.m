@@ -357,6 +357,9 @@
                               [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"saved_highlight"];
                           }];
                 break;
+            default:
+                return;
+                break;
         }
         [alert addAction:delete];
         [alert addAction:cancel];

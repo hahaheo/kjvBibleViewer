@@ -29,7 +29,7 @@
 //  Credit: inspired by Matt Gallagher's LoadingView blog post:
 //  http://cocoawithlove.com/2009/04/showing-message-over-iphone-keyboard.html
 //
- 
+
 
 #import "DejalActivityView.h"
 #import <QuartzCore/QuartzCore.h>
@@ -62,7 +62,7 @@ static DejalActivityView *dejalActivityView = nil;
  Returns the currently displayed activity view, or nil if there isn't one.
  
  Written by DJS 2009-07.
-*/
+ */
 
 + (DejalActivityView *)currentActivityView;
 {
@@ -77,7 +77,7 @@ static DejalActivityView *dejalActivityView = nil;
  Written by DJS 2009-07.
  Changed by DJS 2010-06 to add "new" prefix to the method name to make it clearer that this returns a retained object.
  Changed by DJS 2011-08 to remove the "new" prefix again.
-*/
+ */
 
 + (DejalActivityView *)activityViewForView:(UIView *)addToView;
 {
@@ -92,7 +92,7 @@ static DejalActivityView *dejalActivityView = nil;
  Written by DJS 2009-07.
  Changed by DJS 2010-06 to add "new" prefix to the method name to make it clearer that this returns a retained object.
  Changed by DJS 2011-08 to remove the "new" prefix again.
-*/
+ */
 
 + (DejalActivityView *)activityViewForView:(UIView *)addToView withLabel:(NSString *)labelText;
 {
@@ -107,7 +107,7 @@ static DejalActivityView *dejalActivityView = nil;
  Written by DJS 2009-07.
  Changed by DJS 2010-06 to add "new" prefix to the method name to make it clearer that this returns a retained object.
  Changed by DJS 2011-08 to remove the "new" prefix again, and move the singleton stuff to here.
-*/
+ */
 
 + (DejalActivityView *)activityViewForView:(UIView *)addToView withLabel:(NSString *)labelText width:(NSUInteger)aLabelWidth;
 {
@@ -115,8 +115,6 @@ static DejalActivityView *dejalActivityView = nil;
     if (dejalActivityView)
         [self removeView];
     
-    // disabled touch
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     // Remember the new view (so this is a singleton):
     dejalActivityView = [[self alloc] initForView:addToView withLabel:labelText width:aLabelWidth];
     
@@ -130,13 +128,13 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by DJS 2011-08 to move the singleton stuff to the calling class method, where it should be.
-*/
+ */
 
 - (DejalActivityView *)initForView:(UIView *)addToView withLabel:(NSString *)labelText width:(NSUInteger)aLabelWidth;
 {
-	if (!(self = [super initWithFrame:CGRectZero]))
-		return nil;
-	
+    if (!(self = [super initWithFrame:CGRectZero]))
+        return nil;
+    
     // Allow subclasses to change the view to which to add the activity view (e.g. to cover the keyboard):
     self.originalView = addToView;
     addToView = [self viewForView:addToView];
@@ -149,15 +147,15 @@ static DejalActivityView *dejalActivityView = nil;
     self.activityLabel = [self makeActivityLabelWithText:labelText];
     
     // Assemble the subviews:
-	[addToView addSubview:self];
+    [addToView addSubview:self];
     [self addSubview:self.borderView];
     [self.borderView addSubview:self.activityIndicator];
     [self.borderView addSubview:self.activityLabel];
     
-	// Animate the view in, if appropriate:
-	[self animateShow];
+    // Animate the view in, if appropriate:
+    [self animateShow];
     
-	return self;
+    return self;
 }
 
 - (void)dealloc;
@@ -173,7 +171,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by DJS 2009-09 to disable the network activity indicator if it was shown by this view.
-*/
+ */
 
 + (void)removeView;
 {
@@ -185,8 +183,6 @@ static DejalActivityView *dejalActivityView = nil;
     
     [dejalActivityView removeFromSuperview];
     
-    // enabled touch
-    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     // Remove the global reference:
     dejalActivityView = nil;
 }
@@ -197,7 +193,7 @@ static DejalActivityView *dejalActivityView = nil;
  Returns the view to which to add the activity view.  By default returns the same view.  Subclasses may override this to change the view.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (UIView *)viewForView:(UIView *)view;
 {
@@ -210,7 +206,7 @@ static DejalActivityView *dejalActivityView = nil;
  Returns the frame to use for the activity view.  Defaults to the superview's bounds.  Subclasses may override this to use something different, if desired.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (CGRect)enclosingFrame;
 {
@@ -223,11 +219,11 @@ static DejalActivityView *dejalActivityView = nil;
  Configure the background of the activity view.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)setupBackground;
 {
-	self.opaque = NO;
+    self.opaque = NO;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
@@ -238,7 +234,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by DJS 2011-11 to simplify and make it easier to override.
-*/
+ */
 
 - (UIView *)makeBorderView;
 {
@@ -257,7 +253,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by DJS 2011-11 to simplify and make it easier to override.
-*/
+ */
 
 - (UIActivityIndicatorView *)makeActivityIndicator;
 {
@@ -276,7 +272,7 @@ static DejalActivityView *dejalActivityView = nil;
  Written by DJS 2009-07.
  Changed by DJS 2011-11 to simplify and make it easier to override.
  Changed by chrisledet 2013-01 to use NSTextAlignmentLeft instead of the deprecated UITextAlignmentLeft.
-*/
+ */
 
 - (UILabel *)makeActivityLabelWithText:(NSString *)labelText;
 {
@@ -299,7 +295,7 @@ static DejalActivityView *dejalActivityView = nil;
  Positions and sizes the various views that make up the activity view, including after rotation.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)layoutSubviews;
 {
@@ -309,8 +305,16 @@ static DejalActivityView *dejalActivityView = nil;
     if (!CGAffineTransformIsIdentity(self.borderView.transform))
         return;
     
-    CGSize textSize = [self.activityLabel.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:[UIFont systemFontSize]]}];
-    //CGSize textSize = [self.activityLabel.text sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]]];
+    CGSize textSize;
+    if ([self.activityLabel.text respondsToSelector:@selector(sizeWithAttributes:)]) {
+        textSize = [self.activityLabel.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont systemFontSize]]}];
+    }
+    else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        textSize = [self.activityLabel.text sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]]];
+#pragma clang diagnostic pop
+    }
     
     // Use the fixed width if one is specified:
     if (self.labelWidth > 10)
@@ -319,23 +323,23 @@ static DejalActivityView *dejalActivityView = nil;
     self.activityLabel.frame = CGRectMake(self.activityLabel.frame.origin.x, self.activityLabel.frame.origin.y, textSize.width, textSize.height);
     
     // Calculate the size and position for the border view: with the indicator to the left of the label, and centered in the receiver:
-	CGRect borderFrame = CGRectZero;
+    CGRect borderFrame = CGRectZero;
     borderFrame.size.width = self.activityIndicator.frame.size.width + textSize.width + 25.0;
     borderFrame.size.height = self.activityIndicator.frame.size.height + 10.0;
     borderFrame.origin.x = floor(0.5 * (self.frame.size.width - borderFrame.size.width));
     borderFrame.origin.y = floor(0.5 * (self.frame.size.height - borderFrame.size.height - 20.0));
     self.borderView.frame = borderFrame;
-	
+    
     // Calculate the position of the indicator: vertically centered and at the left of the border view:
     CGRect indicatorFrame = self.activityIndicator.frame;
-	indicatorFrame.origin.x = 10.0;
-	indicatorFrame.origin.y = 0.5 * (borderFrame.size.height - indicatorFrame.size.height);
+    indicatorFrame.origin.x = 10.0;
+    indicatorFrame.origin.y = 0.5 * (borderFrame.size.height - indicatorFrame.size.height);
     self.activityIndicator.frame = indicatorFrame;
     
     // Calculate the position of the label: vertically centered and at the right of the border view:
-	CGRect labelFrame = self.activityLabel.frame;
+    CGRect labelFrame = self.activityLabel.frame;
     labelFrame.origin.x = borderFrame.size.width - labelFrame.size.width - 10.0;
-	labelFrame.origin.y = floor(0.5 * (borderFrame.size.height - labelFrame.size.height));
+    labelFrame.origin.y = floor(0.5 * (borderFrame.size.height - labelFrame.size.height));
     self.activityLabel.frame = labelFrame;
 }
 
@@ -345,7 +349,7 @@ static DejalActivityView *dejalActivityView = nil;
  Animates the view into visibility.  Does nothing for the simple activity view.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)animateShow;
 {
@@ -358,7 +362,7 @@ static DejalActivityView *dejalActivityView = nil;
  Animates the view out of visibiltiy.  Does nothng for the simple activity view.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)animateRemove;
 {
@@ -371,7 +375,7 @@ static DejalActivityView *dejalActivityView = nil;
  Sets whether or not to show the network activity indicator in the status bar.  Set to YES if the activity is network-related.  This can be toggled on and off as desired while the activity view is visible (e.g. have it on while fetching data, then disable it while parsing it).  By default it is not shown.
  
  Written by DJS 2009-09.
-*/
+ */
 
 - (void)setShowNetworkActivityIndicator:(BOOL)show;
 {
@@ -397,7 +401,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-10.
  Changed by DJS 2011-11 to simplify and make it easier to override.
-*/
+ */
 
 - (UIActivityIndicatorView *)makeActivityIndicator;
 {
@@ -415,7 +419,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-10.
  Changed by DJS 2011-11 to simplify and make it easier to override.
-*/
+ */
 
 - (UILabel *)makeActivityLabelWithText:(NSString *)labelText;
 {
@@ -443,7 +447,7 @@ static DejalActivityView *dejalActivityView = nil;
  Returns the view to which to add the activity view.  For the bezel style, if there is a keyboard displayed, the view is changed to the keyboard's superview.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (UIView *)viewForView:(UIView *)view;
 {
@@ -461,7 +465,7 @@ static DejalActivityView *dejalActivityView = nil;
  Returns the frame to use for the activity view.  For the bezel style, if there is a keyboard displayed, the frame is changed to cover the keyboard too.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (CGRect)enclosingFrame;
 {
@@ -479,13 +483,13 @@ static DejalActivityView *dejalActivityView = nil;
  Configure the background of the activity view.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)setupBackground;
 {
     [super setupBackground];
     
-	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.35];
+    self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.35];
 }
 
 /*
@@ -495,7 +499,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by DJS 2011-11 to simplify and make it easier to override.
-*/
+ */
 
 - (UIView *)makeBorderView;
 {
@@ -514,7 +518,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by DJS 2011-11 to simplify and make it easier to override.
-*/
+ */
 
 - (UIActivityIndicatorView *)makeActivityIndicator;
 {
@@ -534,7 +538,7 @@ static DejalActivityView *dejalActivityView = nil;
  Changed by Suleman Sidat 2011-07 to support a multi-line label.
  Changed by DJS 2011-11 to simplify and make it easier to override.
  Changed by chrisledet 2013-01 to use NSTextAlignmentCenter and NSLineBreakByWordWrapping instead of the deprecated UITextAlignmentCenter and UILineBreakModeWordWrap.
-*/
+ */
 
 - (UILabel *)makeActivityLabelWithText:(NSString *)labelText;
 {
@@ -558,7 +562,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by Suleman Sidat 2011-07 to support a multi-line label.
-*/
+ */
 
 - (void)layoutSubviews;
 {
@@ -569,10 +573,26 @@ static DejalActivityView *dejalActivityView = nil;
     self.frame = [self enclosingFrame];
     
     CGSize maxSize = CGSizeMake(260, 400);
-    CGRect rect = [self.activityLabel.text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading
-                                          attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:[UIFont systemFontSize]]} context:nil];
-    CGSize textSize = rect.size;
-    //CGSize textSize = [self.activityLabel.text sizeWithFont:[UIFont boldSystemFontOfSize:[UIFont systemFontSize]] constrainedToSize:maxSize lineBreakMode:self.activityLabel.lineBreakMode];
+    
+    CGSize textSize;
+    if ([self.activityLabel.text respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
+        NSMutableParagraphStyle *para = [NSMutableParagraphStyle new];
+        para.lineBreakMode = self.activityLabel.lineBreakMode;
+        textSize = [self.activityLabel.text boundingRectWithSize:maxSize
+                                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                                      attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:[UIFont systemFontSize]],
+                                                                   NSParagraphStyleAttributeName:para}
+                                                         context:nil].size;
+        
+    }
+    else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        textSize = [self.activityLabel.text sizeWithFont:[UIFont boldSystemFontOfSize:[UIFont systemFontSize]]
+                                       constrainedToSize:maxSize
+                                           lineBreakMode:self.activityLabel.lineBreakMode];
+#pragma clang diagnostic pop
+    }
     
     // Use the fixed width if one is specified:
     if (self.labelWidth > 10)
@@ -589,23 +609,23 @@ static DejalActivityView *dejalActivityView = nil;
     self.activityLabel.frame = CGRectMake(self.activityLabel.frame.origin.x, self.activityLabel.frame.origin.y, textSize.width, textSize.height);
     
     // Calculate the size and position for the border view: with the indicator vertically above the label, and centered in the receiver:
-	CGRect borderFrame = CGRectZero;
+    CGRect borderFrame = CGRectZero;
     borderFrame.size.width = textSize.width + 30.0;
     borderFrame.size.height = self.activityIndicator.frame.size.height + textSize.height + 40.0;
     borderFrame.origin.x = floor(0.5 * (self.frame.size.width - borderFrame.size.width));
     borderFrame.origin.y = floor(0.5 * (self.frame.size.height - borderFrame.size.height));
     self.borderView.frame = borderFrame;
-	
+    
     // Calculate the position of the indicator: horizontally centered and near the top of the border view:
     CGRect indicatorFrame = self.activityIndicator.frame;
-	indicatorFrame.origin.x = 0.5 * (borderFrame.size.width - indicatorFrame.size.width);
-	indicatorFrame.origin.y = 20.0;
+    indicatorFrame.origin.x = 0.5 * (borderFrame.size.width - indicatorFrame.size.width);
+    indicatorFrame.origin.y = 20.0;
     self.activityIndicator.frame = indicatorFrame;
     
     // Calculate the position of the label: horizontally centered and near the bottom of the border view:
-	CGRect labelFrame = self.activityLabel.frame;
+    CGRect labelFrame = self.activityLabel.frame;
     labelFrame.origin.x = floor(0.5 * (borderFrame.size.width - labelFrame.size.width));
-	labelFrame.origin.y = borderFrame.size.height - labelFrame.size.height - 10.0;
+    labelFrame.origin.y = borderFrame.size.height - labelFrame.size.height - 10.0;
     self.activityLabel.frame = labelFrame;
 }
 
@@ -615,20 +635,20 @@ static DejalActivityView *dejalActivityView = nil;
  Animates the view into visibility.  For the bezel style, fades in the background and zooms the bezel down from a large size.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)animateShow;
 {
     self.alpha = 0.0;
     self.borderView.transform = CGAffineTransformMakeScale(3.0, 3.0);
     
-	[UIView beginAnimations:nil context:nil];
-//	[UIView setAnimationDuration:5.0];            // Uncomment to see the animation in slow motion
-	
+    [UIView beginAnimations:nil context:nil];
+    //    [UIView setAnimationDuration:5.0];            // Uncomment to see the animation in slow motion
+    
     self.borderView.transform = CGAffineTransformIdentity;
     self.alpha = 1.0;
     
-	[UIView commitAnimations];
+    [UIView commitAnimations];
 }
 
 /*
@@ -638,7 +658,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by DJS 2009-09 to disable the network activity indicator if it was shown by this view.
-*/
+ */
 
 - (void)animateRemove;
 {
@@ -647,20 +667,23 @@ static DejalActivityView *dejalActivityView = nil;
     
     self.borderView.transform = CGAffineTransformIdentity;
     
-	[UIView beginAnimations:nil context:nil];
-//	[UIView setAnimationDuration:5.0];            // Uncomment to see the animation in slow motion
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(removeAnimationDidStop:finished:context:)];
-	
+    [UIView beginAnimations:nil context:nil];
+    //    [UIView setAnimationDuration:5.0];            // Uncomment to see the animation in slow motion
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(removeAnimationDidStop:finished:context:)];
+    
     self.borderView.transform = CGAffineTransformMakeScale(0.5, 0.5);
     self.alpha = 0.0;
     
-	[UIView commitAnimations];
+    [UIView commitAnimations];
 }
 
 - (void)removeAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
 {
-    [[self class] removeView];
+    if([finished boolValue])
+    {
+        [[self class] removeView];
+    }
 }
 
 /*
@@ -669,18 +692,15 @@ static DejalActivityView *dejalActivityView = nil;
  Animates the view out from the superview and releases it, or simply removes and releases it immediately if not animating.
  
  Written by DJS 2009-07.
-*/
+ */
 
 + (void)removeViewAnimated:(BOOL)animated;
 {
     if (!dejalActivityView)
         return;
     
-    if (animated) {
+    if (animated)
         [dejalActivityView animateRemove];
-        // enabled touch
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    }
     else
         [[self class] removeView];
 }
@@ -703,7 +723,7 @@ static DejalActivityView *dejalActivityView = nil;
  Written by DJS 2009-07.
  Changed by DJS 2010-06 to add "new" prefix to the method name to make it clearer that this returns a retained object.
  Changed by DJS 2011-08 to remove the "new" prefix again.
-*/
+ */
 
 + (DejalKeyboardActivityView *)activityView;
 {
@@ -718,7 +738,7 @@ static DejalActivityView *dejalActivityView = nil;
  Written by DJS 2009-07.
  Changed by DJS 2010-06 to add "new" prefix to the method name to make it clearer that this returns a retained object.
  Changed by DJS 2011-08 to remove the "new" prefix again.
-*/
+ */
 
 + (DejalKeyboardActivityView *)activityViewWithLabel:(NSString *)labelText;
 {
@@ -736,7 +756,7 @@ static DejalActivityView *dejalActivityView = nil;
  Returns the view to which to add the activity view.  For the keyboard style, returns the same view (which will already be the keyboard).
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (UIView *)viewForView:(UIView *)view;
 {
@@ -749,18 +769,18 @@ static DejalActivityView *dejalActivityView = nil;
  Animates the view into visibility.  For the keyboard style, simply fades in.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)animateShow;
 {
     self.alpha = 0.0;
     
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:1.0];
-	
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    
     self.alpha = 1.0;
     
-	[UIView commitAnimations];
+    [UIView commitAnimations];
 }
 
 /*
@@ -769,18 +789,18 @@ static DejalActivityView *dejalActivityView = nil;
  Animates the view out, deferring the removal until the animation is complete.  For the keyboard style, simply fades out.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)animateRemove;
 {
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:1.0];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(removeAnimationDidStop:finished:context:)];
-	
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(removeAnimationDidStop:finished:context:)];
+    
     self.alpha = 0.0;
     
-	[UIView commitAnimations];
+    [UIView commitAnimations];
 }
 
 /*
@@ -789,7 +809,7 @@ static DejalActivityView *dejalActivityView = nil;
  Configure the background of the activity view.
  
  Written by DJS 2009-07.
-*/
+ */
 
 - (void)setupBackground;
 {
@@ -805,7 +825,7 @@ static DejalActivityView *dejalActivityView = nil;
  
  Written by DJS 2009-07.
  Changed by DJS 2011-11 to simplify and make it easier to override.
-*/
+ */
 
 - (UIView *)makeBorderView;
 {
@@ -829,7 +849,7 @@ static DejalActivityView *dejalActivityView = nil;
 //  keyboardView
 //
 //  Copyright Matt Gallagher 2009. All rights reserved.
-// 
+//
 //  Permission is given to use this source code file, free of charge, in any
 //  project, commercial or otherwise, entirely at your risk, with the condition
 //  that any redistribution (in part or whole) of source code must retain
@@ -838,21 +858,20 @@ static DejalActivityView *dejalActivityView = nil;
 
 - (UIView *)keyboardView;
 {
-	NSArray *windows = [self windows];
-	for (UIWindow *window in [windows reverseObjectEnumerator])
-	{
-		for (UIView *view in [window subviews])
-		{
+    NSArray *windows = [self windows];
+    for (UIWindow *window in [windows reverseObjectEnumerator])
+    {
+        for (UIView *view in [window subviews])
+        {
             // UIPeripheralHostView is used from iOS 4.0, UIKeyboard was used in previous versions:
-			if (!strcmp(object_getClassName(view), "UIPeripheralHostView") || !strcmp(object_getClassName(view), "UIKeyboard"))
-			{
-				return view;
-			}
-		}
-	}
-	
-	return nil;
+            if (!strcmp(object_getClassName(view), "UIPeripheralHostView") || !strcmp(object_getClassName(view), "UIKeyboard"))
+            {
+                return view;
+            }
+        }
+    }
+    
+    return nil;
 }
 
 @end
-

@@ -48,7 +48,6 @@
 		5283A9AC193074240025CEAB /* menu_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A6193074240025CEAB /* menu_4.png */; };
 		5283A9AD193074240025CEAB /* menu_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A7193074240025CEAB /* menu_5.png */; };
 		5283A9AE193074240025CEAB /* menu_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5283A9A8193074240025CEAB /* menu_6.png */; };
-		529BB7781D29513C00F86D2B /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529BB7771D29513C00F86D2B /* KakaoOpenSDK.framework */; };
 		52B9C6BF1935FED600F89711 /* MNMBottomPullToRefresh.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6B81935FED600F89711 /* MNMBottomPullToRefresh.strings */; };
 		52B9C6C01935FED600F89711 /* MNMBottomPullToRefreshArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6B91935FED600F89711 /* MNMBottomPullToRefreshArrow.png */; };
 		52B9C6C11935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C6BA1935FED600F89711 /* MNMBottomPullToRefreshArrow@2x.png */; };
@@ -63,6 +62,7 @@
 		52B9C8001939EB0100F89711 /* kakaotalk.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FC1939EB0100F89711 /* kakaotalk.png */; };
 		52B9C8011939EB0100F89711 /* kakaotalk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C7FD1939EB0100F89711 /* kakaotalk@2x.png */; };
 		52C0245219DFDC7100DDB428 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DB4192245D9006C07C4 /* Main_iPhone.storyboard */; };
+		52CE030C206694BC0071D70C /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529BB7771D29513C00F86D2B /* KakaoOpenSDK.framework */; };
 		646DC56C19225AEB0092C090 /* kjvBibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC56B19225AEB0092C090 /* kjvBibleViewController.m */; };
 		646DC572192395B80092C090 /* kjvAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC571192395B80092C090 /* kjvAboutViewController.m */; };
 		646DC57919239C8D0092C090 /* kjvSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DC57819239C8D0092C090 /* kjvSettingViewController.m */; };
@@ -77,7 +77,6 @@
 		64BA1DAD192245D9006C07C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DAB192245D9006C07C4 /* InfoPlist.strings */; };
 		64BA1DAF192245D9006C07C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DAE192245D9006C07C4 /* main.m */; };
 		64BA1DB3192245D9006C07C4 /* kjvAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DB2192245D9006C07C4 /* kjvAppDelegate.m */; };
-		64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DB7192245D9006C07C4 /* Main_iPad.storyboard */; };
 		64BA1DBC192245D9006C07C4 /* kjvMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */; };
 		64BA1DC1192245D9006C07C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BA1DC0192245D9006C07C4 /* Images.xcassets */; };
 		64BA1DC9192245D9006C07C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BA1DA2192245D9006C07C4 /* Foundation.framework */; };
@@ -252,7 +251,6 @@
 		64BA1DB0192245D9006C07C4 /* kjvBibleViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kjvBibleViewer-Prefix.pch"; sourceTree = "<group>"; };
 		64BA1DB1192245D9006C07C4 /* kjvAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kjvAppDelegate.h; sourceTree = "<group>"; };
 		64BA1DB2192245D9006C07C4 /* kjvAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvAppDelegate.m; sourceTree = "<group>"; };
-		64BA1DB8192245D9006C07C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		64BA1DBA192245D9006C07C4 /* kjvMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kjvMasterViewController.h; sourceTree = "<group>"; };
 		64BA1DBB192245D9006C07C4 /* kjvMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kjvMasterViewController.m; sourceTree = "<group>"; };
 		64BA1DC0192245D9006C07C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -264,9 +262,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CE030C206694BC0071D70C /* KakaoOpenSDK.framework in Frameworks */,
 				525673B91D27C222008B804E /* CloudKit.framework in Frameworks */,
 				64BA1DA5192245D9006C07C4 /* CoreGraphics.framework in Frameworks */,
-				529BB7781D29513C00F86D2B /* KakaoOpenSDK.framework in Frameworks */,
 				64BA1DA7192245D9006C07C4 /* UIKit.framework in Frameworks */,
 				64BA1DA3192245D9006C07C4 /* Foundation.framework in Frameworks */,
 			);
@@ -491,7 +489,6 @@
 			isa = PBXGroup;
 			children = (
 				64BA1DB4192245D9006C07C4 /* Main_iPhone.storyboard */,
-				64BA1DB7192245D9006C07C4 /* Main_iPad.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -609,6 +606,7 @@
 				TargetAttributes = {
 					64BA1D9E192245D9006C07C4 = {
 						DevelopmentTeam = P67HCTD2FJ;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -691,7 +689,6 @@
 				52B9C7A51935FFA700F89711 /* menu@2x.png in Resources */,
 				52B9C7FE1939EB0100F89711 /* highlight.png in Resources */,
 				5283A9AD193074240025CEAB /* menu_5.png in Resources */,
-				64BA1DB9192245D9006C07C4 /* Main_iPad.storyboard in Resources */,
 				52B9C6BF1935FED600F89711 /* MNMBottomPullToRefresh.strings in Resources */,
 				5283A9AA193074240025CEAB /* menu_2.png in Resources */,
 				52C0245219DFDC7100DDB428 /* Main_iPhone.storyboard in Resources */,
@@ -808,14 +805,6 @@
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		64BA1DB7192245D9006C07C4 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64BA1DB8192245D9006C07C4 /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -906,6 +895,7 @@
 				CODE_SIGN_ENTITLEMENTS = kjvBibleViewer/kjvBibleViewer.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = P67HCTD2FJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -919,6 +909,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "chan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -932,6 +923,7 @@
 				CODE_SIGN_ENTITLEMENTS = kjvBibleViewer/kjvBibleViewer.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = P67HCTD2FJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -945,6 +937,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "chan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

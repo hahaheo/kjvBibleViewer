@@ -165,8 +165,10 @@
         [contents addObject:[temp objectAtIndex:i]];
     
     // 검색 후 각종 설정
-    [_SearchBar setShowsCancelButton:NO animated:YES];
-    //[_SearchBar resignFirstResponder];
+    dispatch_sync(dispatch_get_main_queue(), ^{ // v2.13 main thread로 작업 변경
+        [_SearchBar setShowsCancelButton:NO animated:YES];
+        //[_SearchBar resignFirstResponder];
+    });
     _TableView.allowsSelection = YES;
     _TableView.scrollEnabled = YES;
     [_TableView reloadData];
